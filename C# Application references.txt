@@ -1,0 +1,211 @@
+C# Application references
+
+// Getting the set cursor position (The cursor position in C#)
+https://www.geeksforgeeks.org/console-setcursorposition-method-in-c-sharp/
+\\
+
+// Playing sound in console
+https://www.youtube.com/watch?v=wAYN2BABnG0
+\\
+
+
+
+// /u00b[32m Allennn /u0590[0m 
+
+Programming task 
+
+
+
+1. Build the Game UI{
+    [] The Game Algorithm
+        []Player Attack 
+        [x]Player Health System
+        [p]Player Progress Bar (Health and  Story Progress System)
+        []High Score System
+        {p} Game SFX and BGM
+            // Partly done with the selection sound
+                [x] Selection SFX
+                [] BGM
+                []
+
+        []Enemyyyyyyy Algorithm  
+        [] New Battle Pannel
+
+
+
+
+}
+
+2. Code and Design the game{
+    [] Finalize
+}
+
+
+//////// Code Snippet
+
+--> dotnet publish --configuration Release // Build the console app in to an -.exe file
+
+Ternary Operations:
+    --> string answer = five == 5 ? "true" : "false"
+
+Colorization of console
+    --> Console.BackgroundColor = ConsoleColor.Black;
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Red text over black.");
+references <a href ="https://stackoverflow.com/questions/2743260/is-it-possible-to-write-to-the-console-in-colour-in-net">color</a>
+
+ANSI color escape{
+    --> 
+
+    <ln>https://stackoverflow.com/questions/4842424/list-of-ansi-color-escape-sequences</ln>
+}
+
+
+
+List of the methods used
+
+-> mainmenu.cs 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Decorators
+
+
+
+
+The Title Screen:
+
+
+████████╗██╗  ██╗███████╗    ██╗      ██████╗ ███████╗████████╗    ██╗  ██╗███████╗██████╗ ██████╗  ██████╗ ███╗   ██╗
+╚══██╔══╝██║  ██║██╔════╝    ██║     ██╔═══██╗██╔════╝╚══██╔══╝    ██║  ██║██╔════╝██╔══██╗██╔══██╗██╔═══██╗████╗  ██║
+   ██║   ███████║█████╗      ██║     ██║   ██║███████╗   ██║       ███████║█████╗  ██████╔╝██████╔╝██║   ██║██╔██╗ ██║
+   ██║   ██╔══██║██╔══╝      ██║     ██║   ██║╚════██║   ██║       ██╔══██║██╔══╝  ██╔══██╗██╔══██╗██║   ██║██║╚██╗██║
+   ██║   ██║  ██║███████╗    ███████╗╚██████╔╝███████║   ██║       ██║  ██║███████╗██║  ██║██║  ██║╚██████╔╝██║ ╚████║
+   ╚═╝   ╚═╝  ╚═╝╚══════╝    ╚══════╝ ╚═════╝ ╚══════╝   ╚═╝       ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
+                                                                                                                      
+
+The Game Over Screen 
+
+
+  ▄████  ▄▄▄       ███▄ ▄███▓▓█████     ▒█████   ██▒   █▓▓█████  ██▀███  
+ ██▒ ▀█▒▒████▄    ▓██▒▀█▀ ██▒▓█   ▀    ▒██▒  ██▒▓██░   █▒▓█   ▀ ▓██ ▒ ██▒
+▒██░▄▄▄░▒██  ▀█▄  ▓██    ▓██░▒███      ▒██░  ██▒ ▓██  █▒░▒███   ▓██ ░▄█ ▒
+░▓█  ██▓░██▄▄▄▄██ ▒██    ▒██ ▒▓█  ▄    ▒██   ██░  ▒██ █░░▒▓█  ▄ ▒██▀▀█▄  
+░▒▓███▀▒ ▓█   ▓██▒▒██▒   ░██▒░▒████▒   ░ ████▓▒░   ▒▀█░  ░▒████▒░██▓ ▒██▒
+ ░▒   ▒  ▒▒   ▓▒█░░ ▒░   ░  ░░░ ▒░ ░   ░ ▒░▒░▒░    ░ ▐░  ░░ ▒░ ░░ ▒▓ ░▒▓░
+  ░   ░   ▒   ▒▒ ░░  ░      ░ ░ ░  ░     ░ ▒ ▒░    ░ ░░   ░ ░  ░  ░▒ ░ ▒░
+░ ░   ░   ░   ▒   ░      ░      ░      ░ ░ ░ ▒       ░░     ░     ░░   ░ 
+      ░       ░  ░       ░      ░  ░       ░ ░        ░     ░  ░   ░     
+
+                                                     ░                          
+
+Ending Screen 
+
+,--,--'.        .-,--.       . 
+`- |   |-. ,-.   `\__  ,-. ,-| 
+ , |   | | |-'    /    | | | | 
+ `-'   ' ' `-'   '`--' ' ' `-^ 
+
+
+ ██╗      ██████╗ ██████╗ ███████╗
+ ██║     ██╔═══██╗██╔══██╗██╔════╝
+ ██║     ██║   ██║██║  ██║███████╗
+ ██║     ██║   ██║██║  ██║╚════██║
+ ███████╗╚██████╔╝██████╔╝███████║
+ ╚══════╝ ╚═════╝ ╚═════╝ ╚══════╝
+
+ Creaated By
+
+     ██ ██████  ██    ██ ████████ ███████ 
+    ███ ██   ██  ██  ██     ██    ██      
+     ██ ██████    ████      ██    █████   
+     ██ ██   ██    ██       ██    ██      
+     ██ ██████     ██       ██    ███████ 
+
+
+     ███╗   ███╗ ██████╗  ██████╗ ███████╗
+     ████╗ ████║██╔═══██╗██╔════╝ ██╔════╝
+     ██╔████╔██║██║   ██║██║  ███╗███████╗
+     ██║╚██╔╝██║██║   ██║██║   ██║╚════██║
+     ██║ ╚═╝ ██║╚██████╔╝╚██████╔╝███████║
+     ╚═╝     ╚═╝ ╚═════╝  ╚═════╝ ╚══════╝
+                                          
+    
+     ██▓     ▒█████  ▓█████▄   ██████ 
+    ▓██▒    ▒██▒  ██▒▒██▀ ██▌▒██    ▒ 
+    ▒██░    ▒██░  ██▒░██   █▌░ ▓██▄   
+    ▒██░    ▒██   ██░░▓█▄   ▌  ▒   ██▒
+    ░██████▒░ ████▓▒░░▒████▓ ▒██████▒▒
+    ░ ▒░▓  ░░ ▒░▒░▒░  ▒▒▓  ▒ ▒ ▒▓▒ ▒ ░
+    ░ ░ ▒  ░  ░ ▒ ▒░  ░ ▒  ▒ ░ ░▒  ░ ░
+      ░ ░   ░ ░ ░ ▒   ░ ░  ░ ░  ░  ░  
+        ░  ░    ░ ░     ░          ░  
+                      ░               
+
+                                  H   
+
+███████╗██╗  ██╗███████╗███████╗██╗  ██╗██╗  ██╗██╗  ██╗
+██╔════╝██║  ██║██╔════╝██╔════╝██║  ██║██║  ██║██║  ██║
+███████╗███████║█████╗  ███████╗███████║███████║███████║
+╚════██║██╔══██║██╔══╝  ╚════██║██╔══██║██╔══██║██╔══██║
+███████║██║  ██║███████╗███████║██║  ██║██║  ██║██║  ██║
+╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝
+                                                             
+
+
+                               
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+/////-----> ANSI Colorization escape Code
+
+ Console.WriteLine("\x1b[31mRed text\x1b[0m");     // Red text
+        Console.WriteLine("\x1b[32mGreen text\x1b[0m");   // Green text
+        Console.WriteLine("\x1b[33mYellow text\x1b[0m");  // Yellow text
+        Console.WriteLine("\x1b[34mBlue text\x1b[0m");    // Blue text
+        Console.WriteLine("\x1b[35mMagenta text\x1b[0m"); // Magenta text
+        Console.WriteLine("\x1b[36mCyan text\x1b[0m");    // Cyan text
+        Console.WriteLine("\x1b[37mWhite text\x1b[0m");   // White text
+
+        Console.WriteLine("\x1b[1mBold text\x1b[0m");        // Bold text
+        Console.WriteLine("\x1b[4mUnderlined text\x1b[0m"); // Underlined text
+        Console.WriteLine("\x1b[7mInverse text\x1b[0m");    // Inverse text (swap background and foreground colors)
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

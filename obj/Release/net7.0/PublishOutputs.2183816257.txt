@@ -1,0 +1,5 @@
+D:\Programming Projects\Console application Project\bin\Release\net7.0\publish\Testtt 1.exe
+D:\Programming Projects\Console application Project\bin\Release\net7.0\publish\Testtt 1.dll
+D:\Programming Projects\Console application Project\bin\Release\net7.0\publish\Testtt 1.deps.json
+D:\Programming Projects\Console application Project\bin\Release\net7.0\publish\Testtt 1.runtimeconfig.json
+D:\Programming Projects\Console application Project\bin\Release\net7.0\publish\Testtt 1.pdb
