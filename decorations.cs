@@ -25,7 +25,7 @@ class decorations{
         for (int a = 0; a < 2; a++){
             
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Thread.Sleep(500);
+            Thread.Sleep(70);
             Console.ResetColor();
             
         }
