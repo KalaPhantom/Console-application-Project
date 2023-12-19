@@ -3,6 +3,7 @@ using player;
 using Story;
 using Testtt_1;
 using Death;
+using System.Threading;
 
 
 // This portion is the main activity
@@ -14,6 +15,7 @@ namespace tesst_1
      
         public static void Main(string[] args)
         {
+          Console.Clear();
 
           bool a = true;
 
@@ -31,12 +33,27 @@ namespace tesst_1
                   menu.mainmenu1();
                   // account creation
                   menu.acc_creation();
+
+                  // Dialogue Callings ----------------------------------------------------------------------------------->
                   story.Dialogue_1();
                   story.Dialogue_2();
+                  story.Dialogue_3();
+                  story.Dialogue_4();
+                  story.Dialogue_5();
+                  story.Dialogue_5_5();
+                  story.Dialogue_7();
+                  story.Dialogue_10();
+                  story.Dialogue_11();
+                  story.Dialogue_12();
+                  story.Dialogue_13();
+
+                  // ------- Under this markings, does the main activity should thrive
+                  
+                  
                   
                   
                  
-                  // Test damage ------
+                  // Test damage ----------------------------------------------------------------------------------->
                   bool dm = true;
 
                   while (dm == true){
@@ -73,8 +90,8 @@ namespace tesst_1
                   progress_bar.bar1();
                   Console.Write("\n\nWelcome");
                   Console.Clear();
-
-                  decorations.headphone();
+                  // -------------------------------------------------------------------------------------> end of the test damage
+                  //decorations.headphone();
                   Console.Clear();
             
                    // Call test for the title screens

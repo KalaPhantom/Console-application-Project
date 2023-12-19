@@ -5,8 +5,7 @@ namespace enemy{ // sets the enemy damage
     class Enemy{
         //public static bool ene_dmg = false;
         public static void enemy_damage(){
-            //progress_bar.healthbar(); // This is temporary
-
+            // DMG 
             Player.health -= 5;
         }
         public static void Ogre(){
@@ -18,7 +17,12 @@ namespace enemy{ // sets the enemy damage
         public static void Ghost(){
             Player.sanity -= 20;
         }
-        
-        
     }
+    class Enemy_Health{
+
+        public static int generic_test = 20;
+
+    }
+
+
 }

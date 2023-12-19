@@ -189,11 +189,50 @@ Ending Screen
         Console.WriteLine("\x1b[7mInverse text\x1b[0m");    // Inverse text (swap background and foreground colors)
 
 
+ // Text colors
+        Console.WriteLine("\x1b[30mBlack\x1b[0m");
+        Console.WriteLine("\x1b[31mRed\x1b[0m");
+        Console.WriteLine("\x1b[32mGreen\x1b[0m");
+        Console.WriteLine("\x1b[33mYellow\x1b[0m");
+        Console.WriteLine("\x1b[34mBlue\x1b[0m");
+        Console.WriteLine("\x1b[35mMagenta\x1b[0m");
+        Console.WriteLine("\x1b[36mCyan\x1b[0m");
+        Console.WriteLine("\x1b[37mWhite\x1b[0m");
+
+        // Background colors
+        Console.WriteLine("\x1b[40mBlack background\x1b[0m");
+        Console.WriteLine("\x1b[41mRed background\x1b[0m");
+        Console.WriteLine("\x1b[42mGreen background\x1b[0m");
+        Console.WriteLine("\x1b[43mYellow background\x1b[0m");
+        Console.WriteLine("\x1b[44mBlue background\x1b[0m");
+        Console.WriteLine("\x1b[45mMagenta background\x1b[0m");
+        Console.WriteLine("\x1b[46mCyan background\x1b[0m");
+        Console.WriteLine("\x1b[47mWhite background\x1b[0m");
+
+        // Text attributes
+        Console.WriteLine("\x1b[1mBold text\x1b[0m");
+        Console.WriteLine("\x1b[4mUnderlined text\x1b[0m");
+        Console.WriteLine("\x1b[7mInverse colors\x1b[0m");
+
+        // Combination of attributes and colors
+        Console.WriteLine("\x1b[1;31mBold red text\x1b[0m");
+        Console.WriteLine("\x1b[4;32mUnderlined green text\x1b[0m");
+        Console.WriteLine("\x1b[1;4;33mBold and underlined yellow text\x1b[0m");
+
+
+        Move cursor up: \x1b[A or \x1b[<n>A (where <n> is the number of lines to move up)
+        Move cursor down: \x1b[B or \x1b[<n>B (where <n> is the number of lines to move down)
+        Move cursor forward (right): \x1b[C or \x1b[<n>C (where <n> is the number of characters to move forward)
+        Move cursor backward (left): \x1b[D or \x1b[<n>D (where <n> is the number of characters to move backward)
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
+LOGS
 
+Lerado -> The System.Threading could be only used for the constant updates of data such as the scores and healthbars. It is not supposed to used in the 
+Displays of all of the necessary datas (Using the WritelIne Methods and or anny related methods in the C# libraries)
 
 
 

@@ -26,7 +26,6 @@ namespace Testtt_1
             Console.WriteLine("\n\tPress any key to continue");
             Console.ReadLine(); 
         }
-
         
         public static void healthbar(){ // Health bar indicator
                 Console.SetCursorPosition(2,23);
