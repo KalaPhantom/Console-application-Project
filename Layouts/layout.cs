@@ -2,6 +2,12 @@ class layout{
     private const int Height = 20; // unused
     private const int With = 40; // unused
 
+    public static int w;
+    public static int h;
+
+    public static int s_h = 10; // Def 7
+    public static int s_w = 20; // Def 15
+
     public static void Layout1() // Unfinished layout
     {
         Console.Clear();
@@ -73,6 +79,35 @@ class layout{
     }
     public static void def_layout(){
         Console.SetCursorPosition(4,4);
+    }
+
+    public static void Box_generator(){
+         Console.SetCursorPosition(w,h);
+
+            for (int a = 0; a <= s_w; ++a){// top
+                Console.BackgroundColor = ConsoleColor.Gray;
+                Console.Write("#");
+                Console.ResetColor();
+            }
+            for (int b = 0; b <= s_h; ++b){ // left
+                Console.BackgroundColor = ConsoleColor.Gray;
+                Console.SetCursorPosition(w,b+h);
+                Console.WriteLine("#");
+                Console.ResetColor();
+            }
+            for (int b = 0; b <= s_h; ++b){ // right
+                Console.BackgroundColor = ConsoleColor.Gray;
+                Console.SetCursorPosition(w+s_w,b+h);
+                Console.WriteLine("#");
+                Console.ResetColor();
+            }
+             Console.SetCursorPosition(w,h+s_h);
+             
+             for (int a = 0; a <= s_w; ++a){// bottom
+                Console.BackgroundColor = ConsoleColor.Gray;
+                Console.Write("#");
+                Console.ResetColor();
+            }
     }
 
     public static string Byte1(){

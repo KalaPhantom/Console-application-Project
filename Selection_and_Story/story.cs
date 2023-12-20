@@ -1,9 +1,8 @@
 
+using enemy;
 using player;
 using Selection;
-using System.Diagnostics.SymbolStore;
-using System.Net.NetworkInformation;
-using System.Threading;
+using Battle_Mechanics;
 
 
 /*
@@ -16,6 +15,9 @@ Use the methods:
     sel_1() - this is reserved
     sel_2() - in-line selecttion -> can take 4 arguments
     sel_3() - horizontal selsction -> can take 4 arguments
+
+    health_bar.Battle() - calls for default battle layout
+
 
 
 
@@ -32,7 +34,7 @@ namespace Story{
 
         public static bool static_story1 ; // Map is accepted
          public static bool static_story2 ; // Knowledge of the dwarf
-          public static bool static_story3 ; 
+          public static bool static_story3 ; // Good eending
 
 
         public static int pos_t;
@@ -42,9 +44,12 @@ namespace Story{
             layout.border_layout();
             Console.SetCursorPosition(3,3);
         }
+        public static void Health_reset(){
+            Player.battle_health = 50;
+        }
         public static void Press(){ // Ask for the user input. to continue the story even further 
-            //Console.Write("\n\n\t\t\t\t\x1b[4m                                  \x1b[0m");
-            Console.Write("\n\n\n\t\t\t\t\x1b[1mPress any key to continue. . . . . . . . . . . .\x1b[0m ");
+           
+            anima.anima1("\n\n\n\t\t\t\t\x1b[1mPress any key to continue. . . . . . . . . . . .\x1b[0m ");
             Console.ReadKey();
 
         }
@@ -54,6 +59,7 @@ namespace Story{
         }
         public static void battle_start(){
             Dlg_reseter();
+            Console.SetCursorPosition(45,10);
             anima.anima1("Begin Battle > > > > > ");
             Console.ReadKey();
         }
@@ -71,8 +77,8 @@ namespace Story{
             Console.SetCursorPosition(3,h+ 2);
             anima.anima1("Bearing the promise of having glory, and returning as a hero");
             Console.ReadLine();
-            Player.health = 100;
-            Player.damage = 1;
+            Player.health = 5;
+            Player.damage = 10;
             Player.armor = 1;
         }
         public static void Dialogue_2(){
@@ -115,6 +121,35 @@ namespace Story{
             layout.border_layout();
             anima.anima1("\n\n\tAs you delve into the heart of Darkwood, a forked path presents itself");
             system_selection.sel_3("Take the well-trodden path","Venture into the dense thicket");
+
+
+
+            // Battle happens
+            battle_start();
+            switch (system_selection.sel_option){
+                case 2: 
+
+                while (Player.Pl_alive == true && Enemy.En_alive == true){
+                    healthBar.Battle(Enemy_Health.Wolf_Health);
+
+                    //Wolf can dodge 
+                    Random rnd = new Random();
+                    int dodge_chances = rnd.Next(1,5);
+                    
+                    if (dodge_chances == 3){ 
+
+
+                    }
+                    else{
+
+                    }
+
+                    
+
+                }
+                break;
+            }
+
             Press();
         }
 

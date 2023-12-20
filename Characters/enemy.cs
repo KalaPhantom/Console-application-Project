@@ -3,6 +3,8 @@ using player;
 
 namespace enemy{ // sets the enemy damage
     class Enemy{
+
+        public static bool En_alive = true;
         //public static bool ene_dmg = false;
         public static void enemy_damage(){
             // DMG 
@@ -20,7 +22,8 @@ namespace enemy{ // sets the enemy damage
     }
     class Enemy_Health{
 
-        public static int generic_test = 20;
+       public static int Wolf_Health = 30;
+       public static int Wolf_Damage = 5;
 
     }
 

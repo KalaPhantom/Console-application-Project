@@ -1,7 +1,7 @@
 
 
 using player;
-using enemy;
+
 
 
 namespace Battle_Mechanics{
@@ -10,13 +10,10 @@ namespace Battle_Mechanics{
     public static int healthbar_position = 30;
 
 
-    public static void Battle(){
+    public static void Battle(int Enemy_Health){
 
-        int turns = 5;
-        Console.CursorVisible = false;
-
-        while (turns != 0){ // Healthbar of the player
-            //Console.Clear();
+     
+            Console.CursorVisible = false;
 
             Console.SetCursorPosition(healthbar_position, 15); // w / h
              for (int a = 0; a <= Player.battle_health; ++a){
@@ -26,12 +23,10 @@ namespace Battle_Mechanics{
                 Console.Write("#");
                 
                 Console.ResetColor();
-               
-              
             }
             Console.Write("                                        "); // => The easiest solution on deleting a certain part in the console
             Console.SetCursorPosition(healthbar_position,17);// --------------w / h --------------------
-            for (int b = 0; b <= Enemy_Health.generic_test; ++b){ // Health bar of the enemy
+            for (int b = 0; b <= Enemy_Health; ++b){ // Health bar of the enemy
             
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.BackgroundColor = ConsoleColor.DarkRed;
@@ -40,23 +35,10 @@ namespace Battle_Mechanics{
                
             }
             Console.Write("                                        ");
-
-            ConsoleKeyInfo user_pressed = Console.ReadKey();
-
-            switch (user_pressed.Key){
-
-                case ConsoleKey.Y : Player.health -= 10; break;
-                case ConsoleKey.E: Enemy_Health.generic_test -= 10; break;
-
-            }
-
-            layout.border_layout();
-
-
-            turns -= 1;
+;
 
         }        
 
+    
     }
-}
 }

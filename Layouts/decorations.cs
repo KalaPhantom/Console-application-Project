@@ -1,5 +1,82 @@
 class decorations{
 
+
+
+
+    public static string Sword = """ 
+     ^
+     |
+     |
+     |
+    o+o
+     0
+    """;
+
+
+    public static string Sword2 =""" 
+       /\
+      \II/
+    (88II88)
+      /II\
+       II
+       II
+       II
+       II
+       \/
+    """;
+
+
+// https://www.asciiart.eu/books/books
+    public static string Book = """  
+
+        ,..........   ..........,
+     ,..,'          '.'          ',..,
+    ,' ,'            :            ', ',
+   ,' ,'             :             ', ',
+  ,' ,'              :              ', ',
+ ,' ,'............., : ,.............', ',
+,'  '............   '.'   ............'  ',
+ '''''''''''''''''';''';''''''''''''''''''
+                    '''
+    
+""";
+
+public static string Bow = """ 
+  (
+    \
+     )
+##-------->       
+     )
+    /
+   (
+
+""";
+
+public static string Herron = """
+
+                //,
+               ///i 
+             ,/ ).'i    
+              |   )-i  
+              |   )i 
+              '   )i
+             /    |- 
+        _.-./-.  /z_ 
+         `-. >._\ _ );i.
+          / `-'/`k-'`u)-'`
+         /    )-     
+  ,.----'   ) '                       
+  /      )1`  
+ ///v`-v\v        
+/v  
+
+""";
+
+
+    
+
+
+
     public static void headphone(){
         layout.border_layout();
         Console.SetCursorPosition(10,5);
