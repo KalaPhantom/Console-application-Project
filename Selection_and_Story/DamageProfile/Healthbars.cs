@@ -17,7 +17,7 @@ namespace Battle_Mechanics{
 
             Console.SetCursorPosition(healthbar_position, 15); // w / h
              for (int a = 0; a <= Player.battle_health; ++a){
-              
+                Thread.Sleep(1);
                 Console.ForegroundColor = ConsoleColor.DarkBlue;
                 Console.BackgroundColor = ConsoleColor.DarkBlue;
                 Console.Write("#");
@@ -27,7 +27,7 @@ namespace Battle_Mechanics{
             Console.Write("                                        "); // => The easiest solution on deleting a certain part in the console
             Console.SetCursorPosition(healthbar_position,17);// --------------w / h --------------------
             for (int b = 0; b <= Enemy_Health; ++b){ // Health bar of the enemy
-            
+                Thread.Sleep(1);
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.BackgroundColor = ConsoleColor.DarkRed;
                 Console.Write("#");

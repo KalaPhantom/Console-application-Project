@@ -2,7 +2,8 @@
 using enemy;
 using player;
 using Selection;
-using Battle_Mechanics;
+
+using Simulations;
 
 
 /*
@@ -12,11 +13,13 @@ IMPORTANT NOTE
 Use the methods: 
 
     Dlg_Resetter() - for resetting the consol layout
-    sel_1() - this is reserved
+    sel_1() - this is reserved for the introductory dialogue 
     sel_2() - in-line selecttion -> can take 4 arguments
-    sel_3() - horizontal selsction -> can take 4 arguments
+    sel_3() - horizontal selection -> can take 4 arguments
 
-    health_bar.Battle() - calls for default battle layout
+    health_bar.Battle() - calls for default battle layout // Already included in the  -->   BattleSimulations.battle1()
+    BattleSimulations.battle1() is called when a battle has to be settled in a story  --> Takes three arguments <for enemy health> <for enemy damage> <name of the enemy>
+
 
 
 
@@ -34,7 +37,7 @@ namespace Story{
 
         public static bool static_story1 ; // Map is accepted
          public static bool static_story2 ; // Knowledge of the dwarf
-          public static bool static_story3 ; // Good eending
+        public static bool static_story3 ; // Good ending
 
 
         public static int pos_t;
@@ -100,7 +103,7 @@ namespace Story{
             layout.border_layout();
 
             if (system_selection.sel_option != 1){
-                anima.anima1("\n\n\t\t . Refusing the map, you find yourself with little to do in the village, \x1b[31mgrowing weary\x1b[0m. \n\tIt forces you to go back to the old beggar and accept the map.");
+                anima.anima1("\n\n\n\t\t . Refusing the map, you find yourself with little to do in the village, \x1b[31mgrowing weary\x1b[0m. \n\tIt forces you to go back to the old beggar and accept the map.");
                 Press();
             }
 
@@ -110,7 +113,13 @@ namespace Story{
             layout.border_layout();
             anima.anima1("\t\tAccepting the map, you discover it leads to the legendary Lost Herron \n\t hidden deep within the treacherous Darkwood Forest.");
             system_selection.sel_3("Gather supplies from the village before embarking on the journey","Head straight to the Darkwood Forest without any preparation");
+            switch(system_selection.sel_option){
+                case 1: Console.WriteLine("You gathered the necessary supplies and go on your ways");break;
+                case 2: Console.WriteLine("FAIL");break;
+            }
             Press();
+
+
 
             // The Battle happen
 
@@ -124,32 +133,11 @@ namespace Story{
 
 
 
-            // Battle happens
+            // Battle happens // fight with a wolf
+
             battle_start();
-            switch (system_selection.sel_option){
-                case 2: 
-
-                while (Player.Pl_alive == true && Enemy.En_alive == true){
-                    healthBar.Battle(Enemy_Health.Wolf_Health);
-
-                    //Wolf can dodge 
-                    Random rnd = new Random();
-                    int dodge_chances = rnd.Next(1,5);
-                    
-                    if (dodge_chances == 3){ 
-
-
-                    }
-                    else{
-
-                    }
-
-                    
-
-                }
-                break;
-            }
-
+            Batte_Simulation.battle1(Enemy_Health.Wolf_Health,Enemy_Health.Wolf_Damage,"Wolf");
+            Player.battle_health = 50; // Reset
             Press();
         }
 
@@ -164,35 +152,67 @@ namespace Story{
             system_selection.sel_3("Approach the figure cautiously","Avoid the figure and continue on your way");
 
             switch (system_selection.sel_option){
-                case 1: Console.WriteLine("You approach the figure cautiously"); break;
-                case 2: Console.WriteLine("Avoiding the hooded figure, \n\t\t you encountered a magic troll"); battle_start();break;
+                case 1: Console.WriteLine("\n\n\t\tYou approach the figure cautiously"); break; //  friendly _ Easy // Normal - Random
+                case 2: Console.WriteLine("\n\n\t\tAvoiding the hooded figure, \n\t\t you encountered a magic troll"); battle_start();break;
             }
+            Batte_Simulation.battle1(Enemy_Health.Troll_Health,Enemy_Health.Troll_Dmg, "Magic Troll");
             Press();
 
         }
         public static void Dialogue_5_5(){
              Dlg_reseter();
              anima.anima1("Approaching the figure, they reveal themselves as a dark sorcerer, offering you a power and health");
-             system_selection.sel_2(" Accept","Decline");
+             system_selection.sel_2(" Accept","Decline"); 
 
              // Decline - initiatie battle 
 
-             if(system_selection.sel_option == 1){
+             if(system_selection.sel_option == 1){ // depends on the difficulty
+                Player.damage += 20;
 
              }
              else if (system_selection.sel_option == 2){
-
+                Batte_Simulation.battle1(Enemy_Health.Dark_sorcerer_health, Enemy_Health.Dark_sorcerer_dmg, "Dark Sorcerer");
              }
 
         }
         public static void Dialogue_7(){
             Dlg_reseter();
             anima.anima1("Continuing through Darkwood, you stumble upon a rickety bridge spanning a chasm.");
-            system_selection.sel_2("Cross the bridge carefull", "Look for an alternative route"); // -> Wrong decision will let the player to encounter am ogre
+            system_selection.sel_2("Cross the bridge carefull", "Look for an alternative route"); // -> Wrong decision will let the player to encounter am ogre // or a bridge will collapse
+
+            Random random_situation = new Random();
+            switch (system_selection.sel_option){
+                case 1:// -------
+                Console.WriteLine("\n\n\t\t You carefully thread the bridge"); 
+                int situation1 = random_situation.Next(1,4);
+
+                switch (situation1){
+                    case 1: case 2: break; //The bridge stay intacted
+                    case 3: Batte_Simulation.battle1(Enemy_Health.Ogre_Health,Enemy_Health.Ogre_dmg,"Ogre"); break; // You encountered an ogre
+                    case 4: Console.WriteLine("\n\n\t\t The Bridge Collapsed");Player.health -= 1 ;break; // The bridge collapse
+                    }
+                break;
+
+                case 2: // -----
+                Console.WriteLine("\n\n\t\t You look for the alternative route"); 
+                Random random_situation2 = new Random();
+                int situation2 = random_situation.Next(1,3);
+
+                switch (situation2){
+                    case 1: case 2: Console.WriteLine("\n\n\t\tYou successfully find an alternative route"); break;
+                    case 3: 
+                    Batte_Simulation.battle1(Enemy_Health.Ogre_Health,Enemy_Health.Ogre_dmg,"Ogre");
+                    break;
+                }
+                break;
+            }
+            
             Press();
 
         }
         public static void Dialogue_8(){
+            // Need of the use of switch 
+            // The Dialogue 8 and 7 is interconnected
             Dlg_reseter();
             anima.anima1("Crossing the bridge, you see a group of bandits holding hostage a dwarf.");
             system_selection.sel_2("Save the dwarf", "Don't save the dwarf");

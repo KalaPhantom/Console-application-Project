@@ -6,24 +6,27 @@ namespace enemy{ // sets the enemy damage
 
         public static bool En_alive = true;
         //public static bool ene_dmg = false;
-        public static void enemy_damage(){
-            // DMG 
-            Player.health -= 5;
-        }
-        public static void Ogre(){
-            Player.health -= 10;
-        }
-        public static void Wolf(){
-            Player.health -= 15;
-        }
-        public static void Ghost(){
-            Player.sanity -= 20;
-        }
+       
     }
     class Enemy_Health{
 
+        //Wolf
        public static int Wolf_Health = 30;
        public static int Wolf_Damage = 5;
+
+        //troll
+       public static int Troll_Health = 70;
+       public static int Troll_Dmg = 20;
+
+       // Mage
+       public static int Dark_sorcerer_health = 50;
+       public static int Dark_sorcerer_dmg = 20;
+
+       //Ogre
+       public static int Ogre_Health = 100;
+       public static int Ogre_dmg = 25;
+
+
 
     }
 

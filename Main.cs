@@ -54,42 +54,7 @@ namespace tesst_1
                   
                  
                   // Test damage ----------------------------------------------------------------------------------->
-                  bool dm = true;
-
-                  while (dm == true){
-                     //Console.WriteLine("Inflict damage by inputing number");
-                     Console.Clear();
-                     layout.border_layout();
-                     //enemy.Enemy.enemy_damage();
-                      progress_bar.healthbar();
-
-                     Console.WriteLine("Continue?? (Y/n)");
-                     char an = Convert.ToChar(Console.ReadLine());
-
-                     if (an == 'y' ){
-                        dm = true;
-                        Console.Clear();
-                        enemy.Enemy.enemy_damage();
-                        decorations.damage_decorator();
-                        layout.border_layout();
-                        End.Death();
-                        if (Player.health == 0){
-                          dm = false;
-                          End.Death();
-                        }
-                     }
-                     else {
-                      dm = false;
-                      Console.Clear();
-                      layout.border_layout();
-                     }
-                  }
-                  
-      
-                  Console.Clear();
-                  progress_bar.bar1();
-                  Console.Write("\n\nWelcome");
-                  Console.Clear();
+                 
                   // -------------------------------------------------------------------------------------> end of the test damage
                   //decorations.headphone();
                   Console.Clear();
