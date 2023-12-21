@@ -30,7 +30,7 @@ namespace Simulations{
 
                 // Battle event
                 bool enemy_dodge = false;
-                bool player_dodge = false;
+               
 
                 system_selection.sel_2("Attack","Dodge","Flee");
                 switch(system_selection.sel_option){
@@ -41,11 +41,12 @@ namespace Simulations{
                     
                         switch(en_actions <c? "attack" : en_actions >d? "dodge": "attack" ){ // Random enemy response
                             case "attack":  Player.battle_health -= b  *en_attack;  break; // enemy attack
-                            case "dodge": enemy_dodge = true; break;
+                            case "dodge": enemy_dodge = true; Console.WriteLine("Enemy dodge"); break;
                     
                          }
                           if (enemy_dodge == false){a -= Player.damage*pl_attack; }// Player attack
-                          else if (enemy_dodge == true){enemy_dodge = false;} 
+                          if (enemy_dodge == true) { enemy_dodge = false; }
+                          
                     break;
 
                     case 2: 
@@ -60,11 +61,11 @@ namespace Simulations{
 
 
 
-                Player.battle_health -= b  *en_attack; // enemy attack
                 Thread.Sleep(30);
             
                 if (a <= 0){
                     Enemy.En_alive = false;
+                    anima.anima1("Enemy defeated . . . . . ");
 
                 }
                 else if (Player.battle_health <= 0){
