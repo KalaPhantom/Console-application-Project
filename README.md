@@ -3,6 +3,4 @@
 
  Created by:
 
- Lerado, Allen N
- Gahuman, Reniel B
- Romulo, Jon Andrei M
+ Allen Lerado - - - Jon Andrei Rmulo - - - Reniel Gahuman
