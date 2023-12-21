@@ -114,8 +114,8 @@ namespace Story{
             anima.anima1("\t\tAccepting the map, you discover it leads to the legendary Lost Herron \n\t hidden deep within the treacherous Darkwood Forest.");
             system_selection.sel_3("Gather supplies from the village before embarking on the journey","Head straight to the Darkwood Forest without any preparation");
             switch(system_selection.sel_option){
-                case 1: Console.WriteLine("You gathered the necessary supplies and go on your ways");break;
-                case 2: Console.WriteLine("FAIL");break;
+                case 1: Console.WriteLine("\n\n\t\tYou gathered the necessary supplies and go on your ways");break;
+                case 2: Console.WriteLine("\n\n\t\tFAIL");break;
             }
             Press();
 
@@ -152,8 +152,8 @@ namespace Story{
             system_selection.sel_3("Approach the figure cautiously","Avoid the figure and continue on your way");
 
             switch (system_selection.sel_option){
-                case 1: Console.WriteLine("\n\n\t\tYou approach the figure cautiously"); break; //  friendly _ Easy // Normal - Random
-                case 2: Console.WriteLine("\n\n\t\tAvoiding the hooded figure, \n\t\t you encountered a magic troll"); battle_start();break;
+                case 1: anima.anima1("\n\n\t\tYou approach the figure cautiously"); break; //  friendly _ Easy // Normal - Random
+                case 2: anima.anima1("\n\n\t\tAvoiding the hooded figure, \n\t\t you encountered a magic troll"); battle_start();break;
             }
             Batte_Simulation.battle1(Enemy_Health.Troll_Health,Enemy_Health.Troll_Dmg, "Magic Troll");
             Press();
@@ -214,14 +214,40 @@ namespace Story{
             // Need of the use of switch 
             // The Dialogue 8 and 7 is interconnected
             Dlg_reseter();
-            anima.anima1("Crossing the bridge, you see a group of bandits holding hostage a dwarf.");
-            system_selection.sel_2("Save the dwarf", "Don't save the dwarf");
 
+            switch(system_selection.sel_option){
+                case 1: anima.anima1("Crossing the bridge, you see a group of bandits holding hostage a dwarf"); break;
+                case 2: anima.anima1("Threding thriugh the alternative route, you see a group of bandits \n\t holding a dwraf as their hostage"); break;
+
+            }
+            system_selection.sel_2("Save the dwarf", "Don't save the dwarf");
+            if (system_selection.sel_option == 1){
+                anima.anima1("\n\n\t\t\tYou decided to sav te hostage ........");
+                // battle of the bandits
+                Batte_Simulation.battle1(Enemy_Health.Bandits_health, Enemy_Health.Bandits_dm, "Group of bandits");
+
+            }
+            else{
+                anima.anima1("You escape the scene ............");
+
+            }
+            Press();
         }
-        public static void Dialogue_10(){
+        public static void Dialogue_10(){ // Death by poision -- epilogue
             Dlg_reseter();
             anima.anima1("After that encounter, you reach the Enchanted Cave where the Herron is rumored to rest.");
-            system_selection.sel_2("Scout the surroundings before entering", "Enter the cave boldly");
+            system_selection.sel_2("Scout the surroundings before entering", "Enter the cave boldly"); // Wrong choice will lead for the bubby trap with poison lessening the health of the player by 2
+            
+            switch (system_selection.sel_option){
+                case 1: anima.anima1("\n\n\t\tYou scouted the area and found a trap . . . . . "); anima.anima1("\n\n\t\t You manage to thread carefully");break;
+                case 2: 
+                anima.anima1("\n\n\t\tWith overwhelming confidence, you decided to eneter to the cave boldy         ");
+                anima.anima1("\n\n\t\t CLAANGGG!!!!, A spike trap impaled your feet inflicting poison to your body"); // We can give the player a choice tyo give up - if the player given up - it will give us an immidiete ending  - either the player died of poison, or the player manage to arrive in the3 nearby town for a posion cure 
+                // Poison attribute goes here 
+                break;
+
+            }
+
             Press();
 
         }

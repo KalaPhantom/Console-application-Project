@@ -81,35 +81,40 @@ class layout{
         Console.SetCursorPosition(4,4);
     }
 
-    public static void Box_generator(){
-         Console.SetCursorPosition(w,h);
+   public static void Box_Generator(int w, int h, int s_h, int s_w){
+
+
+
+            Console.SetCursorPosition(w,h);
 
             for (int a = 0; a <= s_w; ++a){// top
-                Console.BackgroundColor = ConsoleColor.Gray;
+                //Console.BackgroundColor = ConsoleColor.Gray;
                 Console.Write("#");
-                Console.ResetColor();
+                //Console.ResetColor();
             }
             for (int b = 0; b <= s_h; ++b){ // left
-                Console.BackgroundColor = ConsoleColor.Gray;
+                //Console.BackgroundColor = ConsoleColor.Gray;
                 Console.SetCursorPosition(w,b+h);
                 Console.WriteLine("#");
-                Console.ResetColor();
+                //Console.ResetColor();
             }
             for (int b = 0; b <= s_h; ++b){ // right
-                Console.BackgroundColor = ConsoleColor.Gray;
+                //Console.BackgroundColor = ConsoleColor.Gray;
                 Console.SetCursorPosition(w+s_w,b+h);
                 Console.WriteLine("#");
-                Console.ResetColor();
+                //Console.ResetColor();
             }
              Console.SetCursorPosition(w,h+s_h);
              
              for (int a = 0; a <= s_w; ++a){// bottom
-                Console.BackgroundColor = ConsoleColor.Gray;
+                //Console.BackgroundColor = ConsoleColor.Gray;
                 Console.Write("#");
-                Console.ResetColor();
+                //Console.ResetColor();
             }
-    }
-
+           
+        }
+        
+    
     public static string Byte1(){
 
 

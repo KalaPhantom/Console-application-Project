@@ -165,7 +165,7 @@ namespace Selection{
                 
                 ConsoleKeyInfo key = Console.ReadKey();
 
-                 SfX.Selection1(); // Caleed method for the Sound effects
+                 SfX.Selection1(); // Called method for the Sound effects
                 
                     switch (key.Key){
 

@@ -26,6 +26,10 @@ namespace enemy{ // sets the enemy damage
        public static int Ogre_Health = 100;
        public static int Ogre_dmg = 25;
 
+       //bandits 
+       public static int Bandits_health = 30;
+       public static int Bandits_dm = 10;
+
 
 
     }
