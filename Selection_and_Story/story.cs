@@ -2,7 +2,6 @@
 using enemy;
 using player;
 using Selection;
-
 using Simulations;
 
 
@@ -18,7 +17,7 @@ Use the methods:
     sel_3() - horizontal selection -> can take 4 arguments
 
     health_bar.Battle() - calls for default battle layout // Already included in the  -->   BattleSimulations.battle1()
-    BattleSimulations.battle1() is called when a battle has to be settled in a story  --> Takes three arguments <for enemy health> <for enemy damage> <name of the enemy>
+    BattleSimulations.battle1() is called when a battle has to be settled in a story  --> // Enemy-- Where a = for the enemy health ||| b is for the enemy damage ||| c is for the enemy dodge rate ||| d is for the enemy attack rate cc is for the name
 
 
 
@@ -38,6 +37,9 @@ namespace Story{
         public static bool static_story1 ; // Map is accepted
          public static bool static_story2 ; // Knowledge of the dwarf
         public static bool static_story3 ; // Good ending
+
+        public static bool epilogue_1; // The Escapist's ending
+        
 
 
         public static int pos_t;
@@ -136,7 +138,7 @@ namespace Story{
             // Battle happens // fight with a wolf
 
             battle_start();
-            Batte_Simulation.battle1(Enemy_Health.Wolf_Health,Enemy_Health.Wolf_Damage,"Wolf");
+            Batte_Simulation.battle1(Enemy_Health.Wolf_Health,Enemy_Health.Wolf_Damage,Enemy_Health.Wolf_dodge_rate, Enemy_Health.Wolf_attack_rate,"Wolf");
             Player.battle_health = 50; // Reset
             Press();
         }
@@ -155,7 +157,7 @@ namespace Story{
                 case 1: anima.anima1("\n\n\t\tYou approach the figure cautiously"); break; //  friendly _ Easy // Normal - Random
                 case 2: anima.anima1("\n\n\t\tAvoiding the hooded figure, \n\t\t you encountered a magic troll"); battle_start();break;
             }
-            Batte_Simulation.battle1(Enemy_Health.Troll_Health,Enemy_Health.Troll_Dmg, "Magic Troll");
+            Batte_Simulation.battle1(Enemy_Health.Troll_Health,Enemy_Health.Troll_Dmg,Enemy_Health.Troll_dodge_rate,Enemy_Health.Bandits_attack_rate, "Magic Troll");
             Press();
 
         }
@@ -171,7 +173,7 @@ namespace Story{
 
              }
              else if (system_selection.sel_option == 2){
-                Batte_Simulation.battle1(Enemy_Health.Dark_sorcerer_health, Enemy_Health.Dark_sorcerer_dmg, "Dark Sorcerer");
+                Batte_Simulation.battle1(Enemy_Health.Dark_sorcerer_health, Enemy_Health.Dark_sorcerer_dmg, Enemy_Health.Dark_sorcerer_dodge_rate,Enemy_Health.Bandits_attack_rate, "Dark Sorcerer");
              }
 
         }
@@ -188,7 +190,7 @@ namespace Story{
 
                 switch (situation1){
                     case 1: case 2: break; //The bridge stay intacted
-                    case 3: Batte_Simulation.battle1(Enemy_Health.Ogre_Health,Enemy_Health.Ogre_dmg,"Ogre"); break; // You encountered an ogre
+                    case 3: Batte_Simulation.battle1(Enemy_Health.Ogre_Health,Enemy_Health.Ogre_dmg,Enemy_Health.Ogre_dodge_rate,Enemy_Health.Ogre_attack_rate,"Ogre"); break; // You encountered an ogre
                     case 4: Console.WriteLine("\n\n\t\t The Bridge Collapsed");Player.health -= 1 ;break; // The bridge collapse
                     }
                 break;
@@ -201,7 +203,7 @@ namespace Story{
                 switch (situation2){
                     case 1: case 2: Console.WriteLine("\n\n\t\tYou successfully find an alternative route"); break;
                     case 3: 
-                    Batte_Simulation.battle1(Enemy_Health.Ogre_Health,Enemy_Health.Ogre_dmg,"Ogre");
+                    Batte_Simulation.battle1(Enemy_Health.Ogre_Health,Enemy_Health.Ogre_dmg,Enemy_Health.Ogre_dodge_rate,Enemy_Health.Ogre_attack_rate,"Ogre");
                     break;
                 }
                 break;
@@ -224,7 +226,7 @@ namespace Story{
             if (system_selection.sel_option == 1){
                 anima.anima1("\n\n\t\t\tYou decided to sav te hostage ........");
                 // battle of the bandits
-                Batte_Simulation.battle1(Enemy_Health.Bandits_health, Enemy_Health.Bandits_dm, "Group of bandits");
+                Batte_Simulation.battle1(Enemy_Health.Bandits_health, Enemy_Health.Bandits_dm,Enemy_Health.Bandits_dodge_rate,Enemy_Health.Bandits_attack_rate,"Group of bandits");
 
             }
             else{
