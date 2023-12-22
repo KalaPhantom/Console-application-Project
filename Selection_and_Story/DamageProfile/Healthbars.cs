@@ -4,17 +4,54 @@ using player;
 
 
 
-namespace Battle_Mechanics{
-    class healthBar{ // This class is used as a battle arena algorithm  ---> Must be always called inside the story class
+namespace Battle_Mechanics{ 
+    class healthBar{ // This class is used as a battle arena algorithm  ---> Must be always called inside the story class --
+                     // This is responsible for updating all of the info in the player and enemy info pannels 
 
-    public static int healthbar_position = 30;
+    public static int healthbar_position = 35;
 
 
-    public static void Battle(int Enemy_Health){
+    public static void Battle(int Enemy_Health, int dmg, string enemy_name){
 
      
             Console.CursorVisible = false;
+            layout.Battle_layout();
 
+            // To assig the value in this method  -- h -> position in y || w --> position in x || s_h is for the size in y || s_w - size in x
+            
+            //For player and enemy stats
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.White;
+            layout.Box_Generator(5,2,15,25);
+            Console.ResetColor();
+
+            // Player name and stats
+            int text_post_x = 7;
+            int text_post_y =3;
+
+            //player display stats
+            Console.SetCursorPosition(text_post_x,text_post_y);
+            Console.Write($" \x1b[34m[] {Player.Player_name}\x1b[0m"); // name
+            Console.SetCursorPosition(text_post_x,text_post_y + 1);
+            Console.Write($"* HP: {(Player.battle_health >20 ? $"\x1b[36m{Player.battle_health}\x1b[0m": $"\x1b[31m{Player.battle_health}\x1b[0m")}");
+            Console.SetCursorPosition(text_post_x,text_post_y+2);
+            Console.Write($"* Attack damage: \x1b[31m{Player.damage}\x1b[0m");
+
+            // Enemy display stats
+
+            Console.SetCursorPosition(text_post_x,text_post_y +4);
+             Console.Write($" \x1b[31m[] {enemy_name}\x1b[0m"); // name
+            Console.SetCursorPosition(text_post_x,text_post_y +5);
+             Console.Write($"* HP: {(Enemy_Health >20 ? $"\x1b[33m{Enemy_Health}\x1b[0m": $"\x1b[31m{Enemy_Health}\x1b[0m")}");
+            Console.SetCursorPosition(text_post_x,text_post_y +6);
+            Console.Write($"* Attack damage: \x1b[31m{dmg}\x1b[0m");
+
+            
+
+
+
+            Console.SetCursorPosition(healthbar_position, 14); // w / h
+            Console.Write($"\x1b[34m[] {Player.Player_name}\x1b[0m");
             Console.SetCursorPosition(healthbar_position, 15); // w / h
              for (int a = 0; a <= Player.battle_health; ++a){
                 Thread.Sleep(1);
@@ -24,7 +61,10 @@ namespace Battle_Mechanics{
                 
                 Console.ResetColor();
             }
-            Console.Write("                                        "); // => The easiest solution on deleting a certain part in the console
+           
+            Console.Write("                             "); // => The easiest solution on deleting a certain part in the console
+            Console.SetCursorPosition(healthbar_position,16);
+            Console.Write($"\x1b[31m[] {enemy_name}\x1b[0m");
             Console.SetCursorPosition(healthbar_position,17);// --------------w / h --------------------
             for (int b = 0; b <= Enemy_Health; ++b){ // Health bar of the enemy
                 Thread.Sleep(1);
@@ -34,7 +74,7 @@ namespace Battle_Mechanics{
                 Console.ResetColor();
                
             }
-            Console.Write("                                        ");
+      
 ;
 
         }        

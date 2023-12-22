@@ -8,22 +8,7 @@ class layout{
     public static int s_h = 10; // Def 7
     public static int s_w = 20; // Def 15
 
-    public static void Layout1() // Unfinished layout
-    {
-        Console.Clear();
-        Console.SetWindowSize(30,20);
-        Console.ForegroundColor = ConsoleColor.Gray;
-        Console.SetCursorPosition(10,5);
-        Console.ResetColor();
 
-        for (int a = 0; a < Console.WindowHeight; a++){
-            for (int b = 0; b < a; b++ ){
-                Console.WriteLine("#");
-            }
-            //Console.WriteLine("");
-        }
-        
-    }
 
     public static void Reset_or_Center(string a ){ // -> center a passed string on the console
         
@@ -81,9 +66,9 @@ class layout{
         Console.SetCursorPosition(4,4);
     }
 
-   public static void Box_Generator(int w, int h, int s_h, int s_w){
+   public static void Box_Generator(int w, int h, int s_h, int s_w){ // This method has no pre set colors
 
-
+// To assig the value in this method  -- h -> position in y || w --> position in x || s_h is forr the size in y || s_w - size in x
 
             Console.SetCursorPosition(w,h);
 
@@ -113,6 +98,45 @@ class layout{
             }
            
         }
+    
+    public static void Box_Generator_animated(int w, int h, int s_h, int s_w){ // This method has no pre set colors
+
+// To assig the value in this method  -- h -> position in y || w --> position in x || s_h is forr the size in y || s_w - size in x
+
+            Console.SetCursorPosition(w,h);
+            int animation_speed = 10000;
+
+            for (int a = 0; a <= s_w; ++a){// top
+                //Console.BackgroundColor = ConsoleColor.Gray;
+                
+                Console.Write("#");
+                Thread.SpinWait(animation_speed);
+                //Console.ResetColor();
+            }
+            for (int b = 0; b <= s_h; ++b){ // left
+                //Console.BackgroundColor = ConsoleColor.Gray;
+                Console.SetCursorPosition(w,b+h);
+                Console.WriteLine("#");
+                 Thread.SpinWait(animation_speed);
+                //Console.ResetColor();
+            }
+            for (int b = 0; b <= s_h; ++b){ // right
+                //Console.BackgroundColor = ConsoleColor.Gray;
+                Console.SetCursorPosition(w+s_w,b+h);
+                Console.WriteLine("#");
+                 Thread.SpinWait(animation_speed);
+                //Console.ResetColor();
+            }
+             Console.SetCursorPosition(w,h+s_h);
+             for (int a = 0; a <= s_w; ++a){// bottom
+                //Console.BackgroundColor = ConsoleColor.Gray;
+                Console.Write("#");
+                 Thread.SpinWait(animation_speed);
+                //Console.ResetColor();
+            }
+           
+        }
+        
         
     
     public static string Byte1(){
@@ -142,7 +166,6 @@ class layout{
 
             int def_width = 2;
             int def_height = 2;
-
 
             Console.SetWindowSize(aa,bb);
             Console.SetBufferSize(aa,bb);
@@ -182,7 +205,7 @@ class layout{
            
     }
 
-
-
+    public static void ClearLine(){
+        Console.Write(new string(' ', Console.BufferWidth - Console.CursorLeft));}
 
 }

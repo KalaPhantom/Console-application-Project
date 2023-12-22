@@ -73,7 +73,30 @@ public static string Herron = """
 """;
 
 
-    
+//Available at
+
+//------------------------------------------------
+//Thank you for visiting https://asciiart.website/
+//This ASCII pic can be found at
+//https://www.asciiart.website/index.php?art=objects/castles
+
+public static string Castle_home = """
+
+                 |ZZzzz
+                 |
+                 |
+    |ZZzzz      /^\            |ZZzzz
+    |          |~~~|           |
+    |        |^^^^^^^|        / \
+   /^\       |[]+    |       |~~~|
+|^^^^^^^|    |    +[]|       |   |
+|    +[]|/\/\/\/\^/\/\/\/\/|^^^^^^^|
+|+[]+   |~~~~~~~~~~~~~~~~~~|    +[]|
+|       |  []   /^\   []   |+[]+   |
+|   +[]+|  []  || ||  []   |   +[]+|
+|[]+    |      || ||       |[]+    |
+|_______|------------------|_______|
+""";
 
 
 

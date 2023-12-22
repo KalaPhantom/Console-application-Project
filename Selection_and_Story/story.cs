@@ -62,11 +62,11 @@ namespace Story{
             (pos_w, pos_t) = Console.GetCursorPosition();
             Console.SetCursorPosition(3,pos_t);
         }
-        public static void battle_start(){
+        public static void battle_start(){ // Called when an enemy encounter happens 
             Dlg_reseter();
-            Console.SetCursorPosition(45,10);
+            Console.SetCursorPosition(36,4);
             anima.anima1("Begin Battle > > > > > ");
-            Console.ReadKey();
+            layout.Battle_layout();
         }
 
         public static void Dialogue_1() // This is the welcoming dialogue
@@ -120,11 +120,7 @@ namespace Story{
                 case 2: Console.WriteLine("\n\n\t\tFAIL");break;
             }
             Press();
-
-
-
             // The Battle happen
-
         }
 
         public static void Dialogue_4(){
@@ -133,12 +129,26 @@ namespace Story{
             anima.anima1("\n\n\tAs you delve into the heart of Darkwood, a forked path presents itself");
             system_selection.sel_3("Take the well-trodden path","Venture into the dense thicket");
 
+            Random rnd = new Random();
+            int chances_random = rnd.Next(1,100);
 
 
+            if (system_selection.sel_option == 1){
+                switch (chances_random < 90? "avoid": chances_random > 90? "battle": "avoid"){
+                    case "avoid": anima.anima1("you passed safely"); break;
+                    case "battle": battle_start(); Batte_Simulation.battle1(Enemy_Health.Wolf_Health,Enemy_Health.Wolf_Damage,Enemy_Health.Wolf_dodge_rate, Enemy_Health.Wolf_attack_rate,"Wolf");
+                    break;
+                }
+            }
+            else if (system_selection.sel_option == 2){
+                switch (chances_random < 90? "battle": chances_random > 90? "avoid": "battle"){
+                    case "avoid": anima.anima1("you passed safely"); break;
+                    case "battle": battle_start(); Batte_Simulation.battle1(Enemy_Health.Wolf_Health,Enemy_Health.Wolf_Damage,Enemy_Health.Wolf_dodge_rate, Enemy_Health.Wolf_attack_rate,"Wolf");
+                    break;
+                }
+
+            }
             // Battle happens // fight with a wolf
-
-            battle_start();
-            Batte_Simulation.battle1(Enemy_Health.Wolf_Health,Enemy_Health.Wolf_Damage,Enemy_Health.Wolf_dodge_rate, Enemy_Health.Wolf_attack_rate,"Wolf");
             Player.battle_health = 50; // Reset
             Press();
         }
