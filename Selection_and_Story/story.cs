@@ -53,7 +53,7 @@ namespace Story{
             Player.battle_health = 50;
         }
         public static void Press(){ // Ask for the user input. to continue the story even further 
-           
+            
             anima.anima1("\n\n\n\t\t\t\t\x1b[1mPress any key to continue. . . . . . . . . . . .\x1b[0m ");
             Console.ReadKey();
 
@@ -66,6 +66,7 @@ namespace Story{
             Dlg_reseter();
             Console.SetCursorPosition(36,4);
             anima.anima1("Begin Battle > > > > > ");
+            Press();
             layout.Battle_layout();
         }
 
@@ -82,9 +83,8 @@ namespace Story{
             Console.SetCursorPosition(3,h+ 2);
             anima.anima1("Bearing the promise of having glory, and returning as a hero");
             Console.ReadLine();
-            Player.health = 5;
-            Player.damage = 10;
-            Player.armor = 1;
+      
+         
         }
         public static void Dialogue_2(){
             string a = $"You find yourself in the quaint village of Stellar,\n\t surrounded by towering medieval structures and cobbled streets. \n\t  The air is filled with the aroma of freshly baked bread, and distant sounds \n\t  of clashing swords echo from the training grounds. \n\t As you stroll through the marketplace, an old beggar approaches you,\n\t  handing you a weathered map";
@@ -136,14 +136,14 @@ namespace Story{
             if (system_selection.sel_option == 1){
                 switch (chances_random < 90? "avoid": chances_random > 90? "battle": "avoid"){
                     case "avoid": anima.anima1("you passed safely"); break;
-                    case "battle": battle_start(); Batte_Simulation.battle1(Enemy_Health.Wolf_Health,Enemy_Health.Wolf_Damage,Enemy_Health.Wolf_dodge_rate, Enemy_Health.Wolf_attack_rate,"Wolf");
+                    case "battle": battle_start(); Batte_Simulation.battle1(Enemy_Health.Wolf_Health,Enemy_Health.Wolf_Damage,Enemy_Health.Wolf_dodge_rate, Enemy_Health.Wolf_attack_rate,Enemy_Health.Wolf_miss_chances,"Wolf");
                     break;
                 }
             }
             else if (system_selection.sel_option == 2){
                 switch (chances_random < 90? "battle": chances_random > 90? "avoid": "battle"){
                     case "avoid": anima.anima1("you passed safely"); break;
-                    case "battle": battle_start(); Batte_Simulation.battle1(Enemy_Health.Wolf_Health,Enemy_Health.Wolf_Damage,Enemy_Health.Wolf_dodge_rate, Enemy_Health.Wolf_attack_rate,"Wolf");
+                    case "battle": battle_start(); Batte_Simulation.battle1(Enemy_Health.Wolf_Health,Enemy_Health.Wolf_Damage,Enemy_Health.Wolf_dodge_rate, Enemy_Health.Wolf_attack_rate,Enemy_Health.Wolf_miss_chances,"Wolf");
                     break;
                 }
 
@@ -167,7 +167,7 @@ namespace Story{
                 case 1: anima.anima1("\n\n\t\tYou approach the figure cautiously"); break; //  friendly _ Easy // Normal - Random
                 case 2: anima.anima1("\n\n\t\tAvoiding the hooded figure, \n\t\t you encountered a magic troll"); battle_start();break;
             }
-            Batte_Simulation.battle1(Enemy_Health.Troll_Health,Enemy_Health.Troll_Dmg,Enemy_Health.Troll_dodge_rate,Enemy_Health.Bandits_attack_rate, "Magic Troll");
+            Batte_Simulation.battle1(Enemy_Health.Troll_Health,Enemy_Health.Troll_Dmg,Enemy_Health.Troll_dodge_rate,Enemy_Health.Troll_attack_rate, Enemy_Health.Troll_miss_chances, "Magic Troll");
             Press();
 
         }
@@ -183,7 +183,7 @@ namespace Story{
 
              }
              else if (system_selection.sel_option == 2){
-                Batte_Simulation.battle1(Enemy_Health.Dark_sorcerer_health, Enemy_Health.Dark_sorcerer_dmg, Enemy_Health.Dark_sorcerer_dodge_rate,Enemy_Health.Bandits_attack_rate, "Dark Sorcerer");
+                Batte_Simulation.battle1(Enemy_Health.Dark_sorcerer_health, Enemy_Health.Dark_sorcerer_dmg, Enemy_Health.Dark_sorcerer_dodge_rate,Enemy_Health.Dark_sorcerer_attack_rate,Enemy_Health.Dark_sorcerer_miss_chances, "Dark Sorcerer");
              }
 
         }
@@ -200,7 +200,7 @@ namespace Story{
 
                 switch (situation1){
                     case 1: case 2: break; //The bridge stay intacted
-                    case 3: Batte_Simulation.battle1(Enemy_Health.Ogre_Health,Enemy_Health.Ogre_dmg,Enemy_Health.Ogre_dodge_rate,Enemy_Health.Ogre_attack_rate,"Ogre"); break; // You encountered an ogre
+                    case 3: Batte_Simulation.battle1(Enemy_Health.Ogre_Health,Enemy_Health.Ogre_dmg,Enemy_Health.Ogre_dodge_rate,Enemy_Health.Ogre_attack_rate,Enemy_Health.Ogre_miss_chances,"Ogre"); break; // You encountered an ogre
                     case 4: Console.WriteLine("\n\n\t\t The Bridge Collapsed");Player.health -= 1 ;break; // The bridge collapse
                     }
                 break;
@@ -213,7 +213,7 @@ namespace Story{
                 switch (situation2){
                     case 1: case 2: Console.WriteLine("\n\n\t\tYou successfully find an alternative route"); break;
                     case 3: 
-                    Batte_Simulation.battle1(Enemy_Health.Ogre_Health,Enemy_Health.Ogre_dmg,Enemy_Health.Ogre_dodge_rate,Enemy_Health.Ogre_attack_rate,"Ogre");
+                    Batte_Simulation.battle1(Enemy_Health.Ogre_Health,Enemy_Health.Ogre_dmg,Enemy_Health.Ogre_dodge_rate,Enemy_Health.Ogre_attack_rate,Enemy_Health.Ogre_miss_chances,"Ogre");
                     break;
                 }
                 break;
@@ -236,7 +236,7 @@ namespace Story{
             if (system_selection.sel_option == 1){
                 anima.anima1("\n\n\t\t\tYou decided to sav te hostage ........");
                 // battle of the bandits
-                Batte_Simulation.battle1(Enemy_Health.Bandits_health, Enemy_Health.Bandits_dm,Enemy_Health.Bandits_dodge_rate,Enemy_Health.Bandits_attack_rate,"Group of bandits");
+                Batte_Simulation.battle1(Enemy_Health.Bandits_health, Enemy_Health.Bandits_dm,Enemy_Health.Bandits_dodge_rate,Enemy_Health.Bandits_attack_rate,Enemy_Health.Bandits_miss_chances,"Group of bandits");
 
             }
             else{

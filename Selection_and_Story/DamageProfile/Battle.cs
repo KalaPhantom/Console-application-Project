@@ -22,9 +22,9 @@ namespace Simulations{
             Console.WriteLine("                                    ");                                                   
         }
       
-         public static void battle1(int a, int b,int c, int d, string cc){ // Enemy-- Where a = for the enemy health ||| b is for the enemy damage ||| c is for the enemy dodge rate ||| d is for the enemy attack rate 
+         public static void battle1(int a, int b,int c, int d, int e, string cc){ // Enemy-- Where a = for the enemy health ||| b is for the enemy damage ||| c is for the enemy dodge rate ||| d is for the enemy attack rate || e is for the enemy miss rate
          
-
+            Console.Clear();
             Console.BackgroundColor = ConsoleColor.DarkCyan;
             Console.ForegroundColor= ConsoleColor.DarkCyan;
            layout.Box_Generator(34,2,4,80);
@@ -36,18 +36,18 @@ namespace Simulations{
                 int pl_actions = dmg_e.Next(1,100); // Random Percentage 
                 int en_attack = dmg_e.Next(1,3); // Random attack attributer 
                 int pl_attack = dmg_e.Next(1,3); // Random attack attributer
-                int enemy_critical = dmg_e.Next(1,100); 
+                int en_miss_chances = dmg_e.Next(1,100);
 
                 // HP Visualization
-                healthBar.Battle(a,b, cc);
-                // damage magnifier
+                healthBar.Battle(a,b,pl_actions,d,c,cc);
+              
                
-                Thread.Sleep(30);
+                Thread.Sleep(5);
 
             
                 // Battle event
                 bool enemy_dodge = false;
-                bool enemy_miss_chances = false; // needed to be assigned so the enemy can also miss an attack bay 30 percent or depends on the enemy algorithm
+                 // needed to be assigned so the enemy can also miss an attack bay 30 percent or depends on the enemy algorithm
                
 
                 system_selection.sel_2_battle("Attack","Dodge","Flee"); // Called for the selection
@@ -56,20 +56,24 @@ namespace Simulations{
                     case 1: // Player attack choice
 
                    
-                    
+                        action_box_resetter(); action_box_pos(); anima.anima1("You choose to attack");
                         switch(en_actions <c? "attack" : en_actions >d? "dodge": "attack" ){ // Random enemy response
-                            case "attack":  Player.battle_health -= b  *en_attack;  break; // enemy attack
-                            case "dodge": enemy_dodge = true; action_box_resetter(); action_box_pos(); anima.anima1("Enemy dodged your attack"); break;
+                            case "attack":  
+                            if (enemy_dodge == false){a -= Player.damage*pl_attack; action_box_resetter(); action_box_pos(); Console.Write("You hit the enemy !!!"); healthBar.Battle(a,b,pl_actions,d,c,cc); }// Player attack
+                            if(en_miss_chances>e){ Player.battle_health -= b  *en_attack; action_box_resetter(); action_box_pos(); anima.anima1("The enemy manages to retaliate"); healthBar.Battle(a,b,pl_actions,d,c,cc);  }//Enemy retalliate
+                            else if(en_miss_chances < e){action_box_resetter(); action_box_pos(); anima.anima1("The enemy attack but misses"); Thread.Sleep(1000);}
+                           
+                            break; // enemy attack
+                            case "dodge": enemy_dodge = true; action_box_resetter(); action_box_pos(); Thread.Sleep(1000); anima.anima1("Enemy dodged your attack and retaliates"); Player.battle_health -= b  *en_attack;  healthBar.Battle(a,b,pl_actions,d,c,cc); break;
                     
                          }
-                          if (enemy_dodge == false){a -= Player.damage*pl_attack; }// Player attack
                           if (enemy_dodge == true) { enemy_dodge = false; }
                           
                     break;
 
                     case 2: // Player dodge choice 
                         switch (pl_actions <60? "Dodge" : pl_actions > 60?"Fail": "Dodge"){
-                            case "Dodge": action_box_resetter(); action_box_pos(); Console.WriteLine("you dodged");break;
+                            case "Dodge": action_box_resetter(); action_box_pos(); Console.WriteLine("you dodged the enemy");break;
                             case "Fail": action_box_resetter(); action_box_pos();anima.anima1("You failed to dodge");  Player.battle_health -= b  *en_attack; break; 
                         }
                      break;
@@ -77,15 +81,21 @@ namespace Simulations{
 
                 }
 
-                Thread.Sleep(30);
+               
+
+                // HP and stats visualization
+              
+                
             
-                if (a <= 0){
+                if (a <= 0 && Player.health >0){
                     Enemy.En_alive = false;
                     action_box_resetter(); action_box_pos();
                     anima.anima1("Enemy defeated . . . . . ");
+                    healthBar.Battle(a,b,pl_actions,d,c,cc);
 
                 }
-                else if (Player.battle_health <= 0){
+                else if (Player.battle_health <= 0 && a >0){
+                    healthBar.Battle(a,b,pl_actions,d,c,cc);
                     action_box_resetter(); action_box_pos();
                     anima.anima1("Fail - - "); // Temporary 
                     action_box_pos_s2();
@@ -93,17 +103,27 @@ namespace Simulations{
                     Player.Pl_alive = false;
                     Player.health -= 1; // Lessens the player overall health count out of maximum value 
                 }
+                else if (a <= 0 && Player.health <= 0){
+                    action_box_resetter(); action_box_pos();
+                    Thread.Sleep(2000);
+                    anima.anima1("Draw.......................");
+
+                }
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.BackgroundColor = ConsoleColor.White;
+              
                 
                 
 
                 Console.ResetColor();
             }
+            
             // Player and enemy attribute resetter
             Player.battle_health = 50;
             Player.Pl_alive = true;
             Enemy.En_alive = true;
+
+            action_box_pos();
 
         }
     }

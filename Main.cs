@@ -3,6 +3,7 @@ using player;
 using Story;
 using Testtt_1;
 using Death;
+using Game;
 using System.Threading;
 
 
@@ -32,6 +33,7 @@ namespace tesst_1
                  // main menus
                   menu.mainmenu1();
                   // account creation
+                  Difficulty.Global_difficulty();
                   menu.acc_creation();
 
                   // Dialogue Callings ----------------------------------------------------------------------------------->

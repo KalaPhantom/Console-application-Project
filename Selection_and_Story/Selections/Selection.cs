@@ -1,5 +1,6 @@
 
 using Sound;
+using Simulations;
 
 
 namespace Selection{
@@ -128,6 +129,14 @@ namespace Selection{
                 Console.Write($"  {(sel_option == 2 ? decorator : "   ")} {b} \u001b[0m");
                 Console.Write($"  {(sel_option == 3 ? decorator : "   ")} {c} \u001b[0m");
                 //Console.Write($"  {(sel_option == 4 ? decorator : "   ")} Ignore \u001b[0m");
+
+                
+                switch(sel_option){
+                    case 1: Batte_Simulation.action_box_resetter(); Batte_Simulation.action_box_pos(); Console.Write("Attack the enemy"); break;
+                    case 2: Batte_Simulation.action_box_resetter(); Batte_Simulation.action_box_pos(); Console.Write("dodge the enemy attack"); break;
+                    case 3: Batte_Simulation.action_box_resetter(); Batte_Simulation.action_box_pos(); Console.Write("Flee (10% success rate)"); break;
+                }
+
                 
                 ConsoleKeyInfo key = Console.ReadKey();
 
