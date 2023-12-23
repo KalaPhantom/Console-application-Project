@@ -31,10 +31,11 @@ namespace tesst_1
                  // movement.a = Console.ReadLine();
 
                  // main menus
-                  menu.mainmenu1();
+                 layout_preset.diff_selection();
                   // account creation
                   Difficulty.Global_difficulty();
                   menu.acc_creation();
+
 
                   // Dialogue Callings ----------------------------------------------------------------------------------->
                   story.Dialogue_1();

@@ -204,6 +204,59 @@ class layout{
             def_layout();
            
     }
+    public static void border_layout_1(){ // -> Creates a solid layout with yellow bg onto it 
+          
+         Console.SetCursorPosition(0,0);
+            int aa = 120; // Width 
+            int bb = 25; // Height
+
+            //Cursor position
+
+            int def_width = 2;
+            int def_height = 2;
+
+
+            Console.SetWindowSize(aa,bb);
+            Console.SetBufferSize(aa,bb);
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.BackgroundColor = ConsoleColor.DarkYellow;
+           
+            for (int a = 0; a< Console.WindowWidth -1; a++){
+             
+              
+                Console.Write("#");
+         
+           
+                
+            }
+              for (int b = 0; b< Console.WindowHeight; b++){
+                 
+                Console.WriteLine("#");
+                
+                
+            }
+          
+            for (int c =0; c < Console.WindowHeight; c++){
+                Console.SetCursorPosition(aa-1,c);
+                
+                Console.WriteLine("#");
+     
+
+            }
+
+            for (int d = 0; d < Console.WindowWidth ; d++){
+               
+                
+                Console.Write("#");
+           
+
+            }
+            Console.SetCursorPosition(def_width,def_height);
+            Console.ResetColor();
+            def_layout();
+           
+    }
+
 
     public static void ClearLine(){
         Console.Write(new string(' ', Console.BufferWidth - Console.CursorLeft));}

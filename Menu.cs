@@ -9,7 +9,7 @@ namespace Testtt_1
 {
     class menu{
         public static int dificulty = 0; // gets the difficulty
-        public static int option = 1;
+        public static int option = 1; // global difficulty option
         public static void mainmenu1(){
         
                 Console.Clear();
@@ -74,6 +74,8 @@ namespace Testtt_1
                  
 
         } 
+
+
         public static void acc_creation(){
             Console.WriteLine(" ");
             Console.Clear();

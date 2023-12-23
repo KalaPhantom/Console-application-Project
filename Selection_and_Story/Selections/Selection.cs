@@ -227,6 +227,117 @@ namespace Selection{
                     }
             }
         }
+        public static void sel_3_diff(string a, string b, string c){ layout.border_layout_1();    // ---> Used for the first selection
+            var decorator  = ">>#\u001b[32m";
+            bool select = true;
+           
+            while(select != false){
+                //Console.Write(new string(' ', Console.BufferWidth - Console.CursorLeft)); // Reset the Option display
+            
+                Console.SetCursorPosition(5,10);
+                
+                Console.WriteLine($"\t{(sel_option == 1 ? decorator : "   ")}{a}\u001b[0m");
+                Console.WriteLine($"\t{(sel_option == 2 ? decorator : "   ")}{b}\u001b[0m");
+                Console.WriteLine($"\t{(sel_option == 3 ? decorator : "   ")}{c}\u001b[0m");
+
+                // Resposnisve sword position
+                int pos_x = 34; int pos_y = 7;
+                 
+                switch(sel_option){
+                    case 1:
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.SetCursorPosition(pos_x,pos_y);
+                    Console.Write("                  _");
+                    Console.SetCursorPosition(pos_x,pos_y+1);
+                    Console.Write("       _         | |");
+                    Console.SetCursorPosition(pos_x,pos_y+2);
+                    Console.Write("      | | _______| |---------------------------------------------\\");
+                    Console.SetCursorPosition(pos_x,pos_y+3);
+                    Console.Write("      |:-)_______|==[]============================================>");
+                    Console.SetCursorPosition(pos_x,pos_y+4);
+                    Console.Write("      |_|        | |---------------------------------------------/");
+                    Console.SetCursorPosition(pos_x,pos_y+5);
+                    Console.Write("                 |_|");
+                    Console.ResetColor();
+                   
+      
+                      break;
+     
+
+                   
+                    case 2:
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.SetCursorPosition(pos_x,pos_y);
+                    Console.Write("                  _");
+                    Console.SetCursorPosition(pos_x,pos_y+1);
+                    Console.Write("       _         | |");
+                    Console.SetCursorPosition(pos_x,pos_y+2);
+                    Console.Write("      | | _______| |---------------------------------------------\\");
+                    Console.SetCursorPosition(pos_x,pos_y+3);
+                    Console.Write("      |:-)_______|==[]============================================>");
+                    Console.SetCursorPosition(pos_x,pos_y+4);
+                    Console.Write("      |_|        | |---------------------------------------------/");
+                    Console.SetCursorPosition(pos_x,pos_y+5);
+                    Console.Write("                 |_|");
+                    Console.ResetColor();
+                    break;
+
+                    case 3: 
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.SetCursorPosition(pos_x,pos_y);
+                    Console.Write("                  _");
+                    Console.SetCursorPosition(pos_x,pos_y+1);
+                    Console.Write("       _         | |");
+                    Console.SetCursorPosition(pos_x,pos_y+2);
+                    Console.Write("      | | _______| |---------------------------------------------\\");
+                    Console.SetCursorPosition(pos_x,pos_y+3);
+                    Console.Write("      |:-)_______|==[]============================================>");
+                    Console.SetCursorPosition(pos_x,pos_y+4);
+                    Console.Write("      |_|        | |---------------------------------------------/");
+                    Console.SetCursorPosition(pos_x,pos_y+5);
+                    Console.Write("                 |_|");
+                    Console.ResetColor();
+                    break;
+                    
+
+                }
+               
+                // Indicators
+
+                string d_1 = "\x1b[36mThe Enemies has lower stats and higher attack miss chances           \x1b[0m";
+                string d_2 = "\x1b[33mThe Enemies has a normal stats and attack rate\x1b[0m            ";
+                string d_3 = "             \x1b[31mSo You've chosen death??\x1b[0m                        ";
+               
+
+                Console.SetCursorPosition(50,20);
+                Console.Write($"{(sel_option == 1 ?$"{d_1}"  : "")}");
+                Console.SetCursorPosition(50,20);
+                Console.Write($"{(sel_option == 2 ?$"{d_2}"  : "")}");
+                Console.SetCursorPosition(50,20);
+                Console.Write($"{(sel_option == 3 ?$"{d_3}"  : "")}");
+               
+               
+                
+                ConsoleKeyInfo key = Console.ReadKey();
+
+                 SfX.Selection1(); // Caleed method for the Sound effects
+                
+                    switch (key.Key){
+
+                        case ConsoleKey.UpArrow:
+                        sel_option = sel_option == 1 ? 3 : sel_option -1; 
+                        break;
+
+                        case ConsoleKey.DownArrow:
+                        sel_option = sel_option == 3 ? 1: sel_option + 1;
+                        break;
+
+                        case ConsoleKey.Enter:
+                        select = false;
+                        break;
+                    }
+            }
+        }
 
 
 

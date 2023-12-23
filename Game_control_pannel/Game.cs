@@ -47,18 +47,6 @@ namespace Game{
                 Enemy_Health.Dragon_miss_chances += 60;
                 Enemy_Health.Dragon_health -= 40;
                 Enemy_Health.can_breathe_fire = false;
-
-                
-
-
-
-
-
-
-
-                
-                
-                
                 break;
 
 
