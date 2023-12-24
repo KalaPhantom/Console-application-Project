@@ -1,3 +1,4 @@
+#pragma warning disable
 class layout{
     private const int Height = 20; // unused
     private const int With = 40; // unused

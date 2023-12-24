@@ -1,5 +1,5 @@
 
-
+#pragma warning disable
 class anima
 {
 
@@ -8,6 +8,13 @@ class anima
        foreach (char c in a){
         Console.Write(c);
         Thread.Sleep(30);
+       }
+    }
+     public static void anima2(string a)
+    {
+       foreach (char c in a){
+        Console.Write(c);
+        Thread.SpinWait(2000);
        }
     }
     public static void anima1(string a, string b){ // Accepts two string variable -> preferred with the concatination

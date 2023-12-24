@@ -17,6 +17,7 @@ namespace tesst_1
         public static void Main(string[] args)
         {
           Console.Clear();
+          Console.CursorVisible = false;
 
           bool a = true;
 

@@ -116,6 +116,44 @@ namespace Selection{
                     }
             }
         }
+        public static void sel_menu(string a, string b){     // ---> Used for the first selection
+            var decorator  = ">> # \u001b[32m";
+            bool select = true;
+           
+            while(select != false){
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.BackgroundColor = ConsoleColor.DarkYellow;
+                layout.Box_Generator(40,10,8,40);
+                Console.ResetColor();
+                //Console.Write(new string(' ', Console.BufferWidth - Console.CursorLeft)); // Reset the Option display
+                Console.SetCursorPosition(46,13);
+                
+                
+                Console.Write($"\t{(sel_option == 1 ? decorator : "   ")} {a} \u001b[0m");
+                Console.Write($"  {(sel_option == 2 ? decorator : "   ")} {b} \u001b[0m");
+                //Console.Write($"  {(sel_option == 3 ? decorator : "   ")} {c} \u001b[0m");
+                //Console.Write($"  {(sel_option == 4 ? decorator : "   ")} Ignore \u001b[0m");
+                
+                ConsoleKeyInfo key = Console.ReadKey();
+
+                 SfX.Selection1(); // Caleed method for the Sound effects
+                
+                    switch (key.Key){
+
+                        case ConsoleKey.RightArrow:
+                        sel_option = sel_option == 1 ? 2 : sel_option -1; 
+                        break;
+
+                        case ConsoleKey.LeftArrow:
+                        sel_option = sel_option == 2 ? 1: sel_option + 1;
+                        break;
+
+                        case ConsoleKey.Enter:
+                        select = false;
+                        break;
+                    }
+            }
+        }
         public static void sel_2_battle(string a, string b, string c){ layout.Battle_layout();    // ---> Used for the first selection
             var decorator  = ">> # \u001b[32m";
             bool select = true;
@@ -320,7 +358,7 @@ namespace Selection{
                 
                 ConsoleKeyInfo key = Console.ReadKey();
 
-                 SfX.Selection1(); // Caleed method for the Sound effects
+                 SfX.Selection1(); // Called method for the Sound effects
                 
                     switch (key.Key){
 
