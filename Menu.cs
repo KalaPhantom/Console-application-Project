@@ -85,7 +85,7 @@ namespace Testtt_1
 
             bool player_name_created_valid = false;
 
-            while (player_name_created_valid != true){
+            while (player_name_created_valid != true){ 
                 Console.WriteLine(" ");
                 Console.Clear();
                 layout.border_layout();
@@ -119,7 +119,7 @@ namespace Testtt_1
             
             Console.SetCursorPosition(46,21);
             Console.WriteLine("Press any key to Continue");
-            Console.ReadLine();
+            Console.ReadKey();
 
 
         }

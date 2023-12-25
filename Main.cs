@@ -24,7 +24,7 @@ namespace tesst_1
             do{
                 Console.WriteLine("\a");
                 Console.Clear();
-                 menu.TitleScreen();
+                menu.TitleScreen();
                  
                  layout.border_layout();
             
@@ -37,36 +37,26 @@ namespace tesst_1
                   Difficulty.Global_difficulty();
                   menu.acc_creation();
 
-
-                  // Dialogue Callings ----------------------------------------------------------------------------------->
-                  story.Dialogue_1();
-                  story.Dialogue_2();
-                  story.Dialogue_3();
-                  story.Dialogue_4();
-                  story.Dialogue_5();
-                  story.Dialogue_5_5();
-                  story.Dialogue_7();
-                  story.Dialogue_10();
-                  story.Dialogue_11();
-                  story.Dialogue_12();
-                  story.Dialogue_13();
-
-                  // ------- Under this markings, does the main activity should thrive
-                  
-                  
-                  
-                  
+                  while (Player.battle_health < 0){
+                // Dialogue Callings ----------------------------------------------------------------------------------->
+                    story.Intro1();
+                    story.Dialogue_1();
+                    story.Dialogue_2();
+                    story.Dialogue_3();
+                    story.Dialogue_4();
+                    story.Dialogue_5();
+                    story.Dialogue_5_5();
+                    story.Dialogue_7();
+                    story.Dialogue_8();
+                    story.Dialogue_10();
+                    story.Dialogue_11();
+                    story.Dialogue_12();
                  
-                  // Test damage ----------------------------------------------------------------------------------->
-                 
-                  // -------------------------------------------------------------------------------------> end of the test damage
-                  //decorations.headphone();
+                  }
+                              
                   Console.Clear();
-            
                    // Call test for the title screens
-
                   End.End_screen();
-                  
                   Console.Clear();
                   Console.Write(">>Press Esc button to exit to the console \n>>Press Enter to Go back to the title screen...... ");
                   ConsoleKeyInfo key = Console.ReadKey(true);
@@ -85,10 +75,7 @@ namespace tesst_1
                     break;
 
                   }
-
             }while (a == true);
-        
-        
         }
     }
 }

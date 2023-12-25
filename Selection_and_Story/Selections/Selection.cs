@@ -8,6 +8,8 @@ namespace Selection{
 
 
     public static int sel_option = 1; // Global option for dialogues
+
+    public static int battle_sel_option = 1;
     public static int c_top;
     public static int c_with;
         public static void sel_1(){ layout.border_layout();    // ---> Used for the first selection
@@ -163,13 +165,13 @@ namespace Selection{
                 Console.SetCursorPosition(35,22); // static permanent position 
                 
                 
-                Console.Write($"\t{(sel_option == 1 ? decorator : "   ")} {a} \u001b[0m");
-                Console.Write($"  {(sel_option == 2 ? decorator : "   ")} {b} \u001b[0m");
-                Console.Write($"  {(sel_option == 3 ? decorator : "   ")} {c} \u001b[0m");
+                Console.Write($"\t{(battle_sel_option == 1 ? decorator : "   ")} {a} \u001b[0m");
+                Console.Write($"  {(battle_sel_option == 2 ? decorator : "   ")} {b} \u001b[0m");
+                Console.Write($"  {(battle_sel_option == 3 ? decorator : "   ")} {c} \u001b[0m");
                 //Console.Write($"  {(sel_option == 4 ? decorator : "   ")} Ignore \u001b[0m");
 
                 
-                switch(sel_option){
+                switch(battle_sel_option){
                     case 1: Batte_Simulation.action_box_resetter(); Batte_Simulation.action_box_pos(); Console.Write("Attack the enemy"); break;
                     case 2: Batte_Simulation.action_box_resetter(); Batte_Simulation.action_box_pos(); Console.Write("dodge the enemy attack"); break;
                     case 3: Batte_Simulation.action_box_resetter(); Batte_Simulation.action_box_pos(); Console.Write("Flee (10% success rate)"); break;
@@ -183,11 +185,11 @@ namespace Selection{
                     switch (key.Key){
 
                         case ConsoleKey.LeftArrow:
-                        sel_option = sel_option == 1 ? 4 : sel_option -1; 
+                        battle_sel_option = battle_sel_option == 1 ? 4 : battle_sel_option -1; 
                         break;
 
                         case ConsoleKey.RightArrow:
-                        sel_option = sel_option == 3 ? 1: sel_option + 1;
+                        battle_sel_option = battle_sel_option == 3 ? 1: battle_sel_option + 1;
                         break;
 
                         case ConsoleKey.Enter:
@@ -376,6 +378,8 @@ namespace Selection{
                     }
             }
         }
+
+        
 
 
 

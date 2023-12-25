@@ -11,6 +11,7 @@ namespace player
         public static int damage =10; // Out of bound in the goal but still in progress
 
         public static bool Pl_alive =true;
+        public static bool Is_pl_poisoned = false; 
 
 
 

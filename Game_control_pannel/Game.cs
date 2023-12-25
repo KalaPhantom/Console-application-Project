@@ -16,7 +16,6 @@ namespace Game{
                 case 1:
 
                 //enemy attriutes
-
                 // Wolf
                 Enemy_Health.Wolf_Damage -= 2;
                 Enemy_Health.Wolf_miss_chances += 50;
@@ -85,11 +84,23 @@ namespace Game{
 
                 default: menu.option = 3; break;
             }
+        }
 
 
 
+        // Player score updates
+        public static int Global_score = 0;
+        public static void Score_Display(){
 
+        } 
 
+        // Updates and display the remaining game health of the player
+        public static void Player_Health_Chances(){ 
+
+        }
+
+        public static void HighScoreSystemm(){
+            
         }
     }
 }
