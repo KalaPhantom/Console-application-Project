@@ -13,6 +13,10 @@ namespace player
         public static bool Pl_alive =true;
         public static bool Is_pl_poisoned = false; 
 
+        public static int Slained_enemy_count = 0;
+        public static int Player_score = 0;
+        public static int Flee_count = 0;
+
 
 
         public static int Global_difficulty_multiplyer; 

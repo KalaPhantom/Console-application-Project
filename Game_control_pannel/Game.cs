@@ -15,6 +15,8 @@ namespace Game{
             switch(menu.option){
                 case 1:
 
+                Player.health = 5;
+
                 //enemy attriutes
                 // Wolf
                 Enemy_Health.Wolf_Damage -= 2;
@@ -49,9 +51,13 @@ namespace Game{
                 break;
 
 
-                case 2:  break; // default values 
+                case 2: Player.health = 3;  break; // default values 
 
                 case 3: 
+
+                Player.health = 3;
+
+                //Wolf
                  Enemy_Health.Wolf_Damage += 10;
                 Enemy_Health.Wolf_miss_chances -= 10;
                 Enemy_Health.Wolf_Health += 15;

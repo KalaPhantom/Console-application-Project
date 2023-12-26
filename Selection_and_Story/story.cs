@@ -36,23 +36,37 @@ namespace Story{
     class story{
  
         public static bool static_story1 = true; // Map is accepted -
-         public static bool static_story2; // Knowledge of the dwarf - Moderate
+        public static bool static_story2; // Knowledge of the dwarf - Moderate -- >
         public static bool static_story3 ; // The herron is taken or not
         public static bool static_story5; // Gathered supplies - Crucial if not gathered - the player never returned safely
 
+        public static bool epilogue_1; // The Escapist's ending --> if the player successfully flee to battles multiple times 
+        public static bool epilogue_2; // The dragon slayer --> if the player successfully slains the dragon
+        public static bool epilogue_3; // The model knight --> if he returned the herron 
+        public static bool epilogie_4; // The slayer - if he slained more than 3 enemies throughout the games
 
-        // 
-
-        public static bool epilogue_1; // The Escapist's ending --> all of the monsters he encountered
-        public static bool epilogue_2; // The dragon slayer
-        public static bool epilogue_3; // The model knight
-        public static bool epilogie_4; // The slayer - all of the monsters encountered were slaigned
+        public static bool The_return = false; // if the player play more than once 
 
         
 
 
         public static int pos_t;
         public static int pos_w; 
+
+        public static int battle_xp;  // Acquired from the batlle
+        public static int story_xp; // acquired from the story 
+        public static int story_xp_add; // Acquired XP score in the momment
+
+
+        public static void XP(){
+            (int x, int y) = Console.GetCursorPosition();
+            Console.SetCursorPosition(x , y);
+            anima.anima1($"\n\n\t\t\t\t XP: +\x1b[34m{story_xp_add}\x1b[0m");
+            story_xp += story_xp_add;
+            
+            
+        }
+
         public static void Dlg_reseter(){ // reset and initiate the dialogue frame
             Console.Clear();
             layout.border_layout();
@@ -135,7 +149,7 @@ namespace Story{
             Console.ResetColor();
 
             Console.SetCursorPosition(7,17);
-            anima.anima1("People..."); Thread.Sleep(500); anima.anima1("They died of diseases"); Thread.Sleep(500); anima.anima1("\n\tFarmlands were not able to produce crops, Trees and plants starts to wither and some other people\n\t already left the kingdom");
+            anima.anima1("People..."); Thread.Sleep(500); anima.anima1("They died of diseases"); Thread.Sleep(500); anima.anima1("\n\tFarmlands were not able to produce crops, Trees and plants starts to wither and some other people\n\talready left the kingdom");
             Continue();
 
              Console.Clear();
@@ -193,7 +207,7 @@ namespace Story{
       
          
         }
-        public static void Dialogue_2(){
+        public static void Dialogue_2(){ // Base XP score 10 to 20
             string a = $"\tYou find yourself in the quaint village of Stellar,\n\tsurrounded by towering medieval structures and cobbled streets. \n\tThe air is filled with the aroma of freshly baked bread, and distant sounds \n\tof clashing swords echo from the training grounds. \n\tAs you stroll through the marketplace, an old beggar approaches you,\n\thanding you a weathered map";
             Dlg_reseter();
             anima.anima1(a);
@@ -203,8 +217,8 @@ namespace Story{
             system_selection.sel_1();
 
             switch (system_selection.sel_option){
-                case 1: Console.Clear(); layout.border_layout(); anima.anima1("\n\n\t\t\tYou accept the map and go on your ways"); break;
-                case 2: Console.Clear(); layout.border_layout();anima.anima1("\n\n\t\t\t\tYou Refuse the map "); break;
+                case 1: Console.Clear(); layout.border_layout(); anima.anima1("\n\n\t\t\tYou accept the map and go on your ways"); story_xp_add = 20; XP(); break;
+                case 2: Console.Clear(); layout.border_layout();anima.anima1("\n\n\t\t\t\tYou Refuse the map ");break;
                 case 3: Console.Clear(); layout.border_layout();anima.anima1("\n\n\t\t\t\tYou go on your ways "); break;
             }
             Console.WriteLine("");
@@ -213,7 +227,7 @@ namespace Story{
             layout.border_layout();
 
             if (system_selection.sel_option != 1){
-                anima.anima1("\n\n\n\t\t . Refusing the map, you find yourself with little to do in the village, \x1b[31mgrowing weary\x1b[0m. \n\tIt forces you to go back to the old beggar and accept the map.");
+                anima.anima1("\n\n\n\t\t . Refusing the map, you find yourself with little to do in the village, \x1b[31mgrowing weary\x1b[0m. \n\tIt forces you to go back to the old beggar and accept the map."); story_xp_add = 10; XP();
                 Press();
             }
 
@@ -228,7 +242,7 @@ namespace Story{
             anima.anima1("\t\tAccepting the map, you discover it leads to the legendary Lost Herron \n\thidden deep within the treacherous Darkwood Forest.");
             system_selection.sel_3("Gather supplies from the village before embarking on the journey","Head straight to the Darkwood Forest without any preparation");
             switch(system_selection.sel_option){
-                case 1: Console.WriteLine("\n\n\t\tYou gathered the necessary supplies and go on your ways");break;
+                case 1: Console.WriteLine("\n\n\t\tYou gathered the necessary supplies and go on your ways"); Console.Clear(); layout.border_layout(); story_xp_add = 30; XP(); break;
                 case 2: 
                     switch(a > 50? "Success" : "Fail"){
                         case "Success":  break; // Will not affect the ending
@@ -236,10 +250,10 @@ namespace Story{
 
                     }
                     Console.Clear(); layout.border_layout();
-                    anima.anima1("\n\n\t\t\tWith Confidence - You decide to go ");break;
+                    anima.anima1("\n\n\t\t\tWith Confidence - You decide to go ");story_xp_add = 10; XP();break; 
             }
             Continue();
-            // The Battle happen
+           
         }
 
         public static void Dialogue_4(){
@@ -254,7 +268,7 @@ namespace Story{
 
             if (system_selection.sel_option == 1){
                 switch (chances_random < 90? "avoid": chances_random > 90? "battle": "avoid"){
-                    case "avoid":Console.Clear(); layout.border_layout(); anima.anima1("\n\t\t\tyou passed safely"); break;
+                    case "avoid":Console.Clear(); layout.border_layout(); anima.anima1("\n\t\t\tyou passed safely"); story_xp_add = 40; XP(); break;
                     case "battle":Console.Clear(); layout.border_layout();anima.anima1("\n\t\t\tYou enecoutered a wolf"); Continue();  battle_start(); Batte_Simulation.battle1(Enemy_Health.Wolf_Health,Enemy_Health.Wolf_Damage,Enemy_Health.Wolf_dodge_rate, Enemy_Health.Wolf_attack_rate,Enemy_Health.Wolf_miss_chances,"Wolf");
                     break;
                 }
@@ -282,9 +296,9 @@ namespace Story{
             }
 
             system_selection.sel_3("Approach the figure cautiously","Avoid the figure and continue on your way");
-            system_selection.sel_option = 1;
+         
             switch (system_selection.sel_option){
-                case 1: anima.anima1("\n\n\t\tYou approach the figure cautiously"); break; //  friendly _ Easy // Normal - Random
+                case 1: anima.anima1("\n\n\t\tYou approach the figure cautiously"); Console.Clear(); layout.border_layout(); story_xp_add = 30; XP(); break; //  friendly _ Easy // Normal - Random
                 case 2: anima.anima1("\n\n\t\tAvoiding the hooded figure, \n\t\t you encountered a magic troll"); battle_start();Batte_Simulation.battle1(Enemy_Health.Troll_Health,Enemy_Health.Troll_Dmg,Enemy_Health.Troll_dodge_rate,Enemy_Health.Troll_attack_rate, Enemy_Health.Troll_miss_chances, "Magic Troll");
             break;
             }
@@ -293,24 +307,25 @@ namespace Story{
         }
         public static void Dialogue_5_5(){
              Dlg_reseter();
-             system_selection.sel_option = 1;
+           
              
-             if (Batte_Simulation.is_pl_defeated == true){
-                anima.anima1("Recovering from the battle, the mysterious hooded figure from the distance vanished");
-                Batte_Simulation.is_pl_defeated = true;
+             if (Batte_Simulation.is_pl_defeated == true && system_selection.sel_option != 1){
+                anima.anima1("Recovering from the battle, the mysterious hooded figure from the distance vanished");  story_xp_add = 5; XP();
+                Batte_Simulation.is_pl_defeated = false;
              }
              else{
                   anima.anima1("Approaching the figure, they reveal themselves as a dark sorcerer, offering you a power and health");
                   system_selection.sel_2(" Accept","Decline"); 
              }
            
-             if(system_selection.sel_option == 1){ // depends on the difficulty
-                Player.damage += 20;
+             if(system_selection.sel_option == 1 && Batte_Simulation.is_pl_defeated != true){ // depends on the difficulty
+                Player.damage += 20; anima.anima1("\n\n\t\t\t\tDMG +20"); story_xp_add = 30; XP();
 
              }
-             else if (system_selection.sel_option == 2){
+             else if (system_selection.sel_option == 2 && Batte_Simulation.is_pl_defeated != true){
                 Batte_Simulation.battle1(Enemy_Health.Dark_sorcerer_health, Enemy_Health.Dark_sorcerer_dmg, Enemy_Health.Dark_sorcerer_dodge_rate,Enemy_Health.Dark_sorcerer_attack_rate,Enemy_Health.Dark_sorcerer_miss_chances, "Dark Sorcerer");
              }
+             Continue();
 
         }
         public static void Dialogue_7(){
@@ -322,13 +337,13 @@ namespace Story{
             Random random_situation = new Random();
             switch (system_selection.sel_option){
                 case 1:// -------
-                Console.WriteLine("\n\n\t\t You carefully thread the bridge"); 
+                Console.WriteLine("\n\n\t\t You carefully thread the bridge");  Continue();
                 int situation1 = random_situation.Next(1,100);
 
                 switch (situation1 > 50? "battle" : situation1 <= 20? "collapse" :"safe" ){
-                    case "safe": //The bridge stay intacted
-                    case "battle": Batte_Simulation.battle1(Enemy_Health.Ogre_Health,Enemy_Health.Ogre_dmg,Enemy_Health.Ogre_dodge_rate,Enemy_Health.Ogre_attack_rate,Enemy_Health.Ogre_miss_chances,"Ogre"); break; // You encountered an ogre
-                    case "collapse": Player.health -= 1 ; Console.WriteLine($"\n\n\t\t The Bridge Collapsed, but you manage to get up and continue on your ways \n\n\t\t\t You have {Player.health} health chances left"); break;// The bridge collapse
+                    case "safe": Console.Clear(); layout.border_layout(); anima.anima1("\n\n\t\t You managed to cross to the bridge"); story_xp_add = 30; XP(); Continue();break; //The bridge stay intacted 
+                    case "battle":Console.Clear(); layout.border_layout();anima.anima1("As you are crossing on the bridge, an Ogre aproaches"); Continue(); Batte_Simulation.battle1(Enemy_Health.Ogre_Health,Enemy_Health.Ogre_dmg,Enemy_Health.Ogre_dodge_rate,Enemy_Health.Ogre_attack_rate,Enemy_Health.Ogre_miss_chances,"Ogre"); break; // You encountered an ogre
+                    case "collapse": Console.Clear(); layout.border_layout(); Player.health -= 1 ; anima.anima1($"\n\n\t\t \x1b[32mThe Bridge Collapsed, but you manage to get up and continue on your ways\x1b[0m \n\n\t\t\t You have \x1b[33m{Player.health} \x1b[0mhealth chances left"); break;// The bridge collapse
                     }
                 break;
 
@@ -338,11 +353,11 @@ namespace Story{
                 int situation2 = random_situation2.Next(1,100);
 
                 switch (situation2 > 70? "Safe" : "battle"){
-                    case "Safe": Console.WriteLine("\n\n\t\tYou successfully find an alternative route"); break;
+                    case "Safe": Console.WriteLine("\n\n\t\tYou successfully find an alternative route");  story_xp_add = 30; XP(); break;
                     case "battle":
                     Console.Clear();
                     layout.border_layout();
-                    anima.anima1("\n\n\t\t \x1b[31mYou encoutered an Ogre . . . . . . . \x1b[0m");
+                    anima.anima1("\n\n\t\t \x1b[31mYou encoutered an Ogre . . . . . . . \x1b[0m"); Continue();
                     battle_start();
                     Batte_Simulation.battle1(Enemy_Health.Ogre_Health,Enemy_Health.Ogre_dmg,Enemy_Health.Ogre_dodge_rate,Enemy_Health.Ogre_attack_rate,Enemy_Health.Ogre_miss_chances,"Ogre");
                     break;
@@ -397,7 +412,7 @@ namespace Story{
                         layout.border_layout();
                         anima.anima1("\n\n\t\t\"And another thing adventurer\"........."); Continue(); Console.Clear();
                         layout.border_layout();
-                        anima.anima1("\n\n\t\t\"Beware of the dragon . . . . . . . ."); Continue();
+                        anima.anima1("\n\n\t\t\"Beware of the dragon . . . . . . . .");  story_xp_add = 70; XP(); Continue();
 
                     }
                     else if (system_selection.sel_option == 2){
@@ -412,7 +427,7 @@ namespace Story{
                         anima.anima1("\n\n\t\t Then both of you decide to part ways........ "); Continue();
                         Console.Clear();
                         layout.border_layout();
-                        anima.anima1("\n\n\t\t \"Slain that dragon adventurer........\" The dwarf mutered at a distance \n\t\tYou have no clue what on what he just said"); Continue();
+                        anima.anima1("\n\n\t\t \"Slain that dragon adventurer........\" The dwarf mutered at a distance \n\t\tYou have no clue what on what he just said");  story_xp_add = 30; XP(); Continue();
 
                     }
                 }
@@ -420,7 +435,7 @@ namespace Story{
 
             }
             else{
-                anima.anima1("You escape the scene ............");
+                anima.anima1("You escape the scene ............");  story_xp_add = 10; XP();
             }
            
         }
@@ -431,11 +446,13 @@ namespace Story{
             system_selection.sel_2("Scout the surroundings before entering", "Enter the cave boldly"); // Wrong choice will lead for the bubby trap with poison lessening the health of the player by 2
             
             switch (system_selection.sel_option){
-                case 1: Console.Clear(); layout.border_layout(); anima.anima1("\n\n\t\tYou scouted the area and found a trap . . . . . "); anima.anima1("\n\n\t\t You manage to thread carefully");break;
+                case 1: Console.Clear(); layout.border_layout(); anima.anima1("\n\n\t\tYou scouted the area and found a trap . . . . . "); anima.anima1("\n\n\t\t You manage to thread carefully"); story_xp_add = 10; XP();break;
                 case 2: Console.Clear(); layout.border_layout();
                 anima.anima1("\n\n\t\tWith overwhelming confidence, you decided to eneter to the cave boldy         "); Continue(); Console.Clear(); layout.border_layout();
                 anima.anima1("\n\n\t\t CLAANGGG!!!!, A spike trap impaled your feet inflicting poison to your body"); // We can give the player a choice tyo give up - if the player given up - it will give us an immidiete ending  - either the player died of poison, or the player manage to arrive in the nearby town for a posion cure 
                 // Poison attribute goes here s
+                 story_xp_add = 2; XP();
+                 Player.Is_pl_poisoned = true;
                 break;
 
             }
@@ -447,6 +464,7 @@ namespace Story{
             Dlg_reseter();
             anima.anima1("Inside the cave, you face a choice between two tunnels");
             system_selection.sel_2("Choose the left tunnel","Choose the right tunnel."); // Must have a randomizer
+             story_xp_add = 30; XP();
             Press();
 
         }
@@ -471,10 +489,10 @@ namespace Story{
                         Console.Clear(); layout.border_layout(); Batte_Simulation.battle1(Enemy_Health.Dragon_health,Enemy_Health.Dragon_dm, Enemy_Health.Dragon_dodge_rate,Enemy_Health.Dragon_attack_rate,Enemy_Health.Dragon_miss_chances,"Dragon");
                         if(Batte_Simulation.is_pl_defeated == true && Player.health <0){
                             Console.Clear(); layout.border_layout();
-                            anima.anima1("With such devastating defeat from the dragon. . . . . "); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("You managed to escape. . . . . "); Continue(); Batte_Simulation.is_pl_defeated = false; // initiate epilogue
+                            anima.anima1("With such devastating defeat from the dragon. . . . . "); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("You managed to escape. . . . . "); Continue(); Batte_Simulation.is_pl_defeated = false;  story_xp_add = 10; XP(); // initiate epilogue
                         }
                         else{
-                            Console.Clear(); layout.border_layout(); anima.anima1("With the dragon being defeated........"); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("You manage to take the Golden Herron"); Continue();
+                            Console.Clear(); layout.border_layout(); anima.anima1("With the dragon being defeated........"); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("\tYou manage to take the Golden Herron"); Continue(); static_story2 = true; static_story3 = true;  story_xp_add = 30; XP(); // --> The model knight
                             Dlg_reseter();
                             anima.anima1("Exiting the Enchanted Cave, you hold the Lost Herron in your hands,\n\tmemories of battles and encounters lingering.\n\tThe amulet around your neck and the rewards collected serve as reminders. \n\tDepending on your choices, you either use the Herron to bring prosperity, \n\tmisuse its power, or return it to the hooded figure");
                             Continue();break;
@@ -483,7 +501,7 @@ namespace Story{
 
 
                     case "sleep": 
-                        Console.Clear(); layout.border_layout(); anima.anima1(" You found a sleeping dragon as you inspect your sorroundings....... \n\tYou safely take the Golden Herron and go on your way"); Continue();  // initiate epilogue
+                        Console.Clear(); layout.border_layout(); anima.anima1(" You found a sleeping dragon as you inspect your sorroundings....... \n\tYou safely take the Golden Herron and go on your way"); Continue(); epilogue_3 = true;  story_xp_add = 30; XP(); // initiate epilogue
                         Dlg_reseter();
                         anima.anima1("Exiting the Enchanted Cave, you hold the Lost Herron in your hands,\n\tmemories of battles and encounters lingering.\n\tThe amulet around your neck and the rewards collected serve as reminders. \n\tDepending on your choices, you either use the Herron to bring prosperity, \n\tmisuse its power, or return it to the hooded figure");
                         Continue();break;
@@ -495,14 +513,14 @@ namespace Story{
             case 2: //////////////////////////////
                     switch(dragon_appearance > 10? "battle" : "take"){
                         case "battle" :
-                        anima.anima1("As you are taking the Golden Herron......."); Thread.Sleep(1000);anima.anima1("A dragon emerges from the darkness..."); Continue(); Console.Clear(); layout.border_layout(); battle_start();
+                        Console.Clear(); layout.border_layout();anima.anima1("As you are taking the Golden Herron......."); Thread.Sleep(1000);anima.anima1("A dragon emerges from the darkness..."); Continue(); Console.Clear(); layout.border_layout(); battle_start();
                         Console.Clear(); layout.border_layout(); Batte_Simulation.battle1(Enemy_Health.Dragon_health,Enemy_Health.Dragon_dm, Enemy_Health.Dragon_dodge_rate,Enemy_Health.Dragon_attack_rate,Enemy_Health.Dragon_miss_chances,"Dragon");
-                        if(Batte_Simulation.is_pl_defeated == true && Player.health <0){
+                        if(Batte_Simulation.is_pl_defeated == true){
                             Console.Clear(); layout.border_layout();
-                            anima.anima1("With such devastating defeat from the dragon. . . . . "); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("You managed to escape. . . . . "); Continue(); Batte_Simulation.is_pl_defeated = false; // initiate epilogue
+                            anima.anima1("With such devastating defeat from the dragon. . . . . "); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("You managed to escape. . . . . but you take the Golden Herron with you "); Continue(); Batte_Simulation.is_pl_defeated = false;static_story2 = false; // initiate epilogue
                         }
                         else{
-                            Console.Clear(); layout.border_layout(); anima.anima1("With the dragon being defeated........"); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("You manage to take the Golden Herron"); Continue();
+                            Console.Clear(); layout.border_layout(); anima.anima1("With the dragon being defeated........"); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("\n\t\tYou manage to take the Golden Herron"); static_story2 = true; static_story3 = true; Continue();
                             Dlg_reseter();
                             anima.anima1("Exiting the Enchanted Cave, you hold the Lost Herron in your hands,\n\tmemories of battles and encounters lingering.\n\tThe amulet around your neck and the rewards collected serve as reminders. \n\tDepending on your choices, you either use the Herron to bring prosperity, \n\tmisuse its power, or return it to the hooded figure");
                             Continue();break;
@@ -511,7 +529,7 @@ namespace Story{
                         case "take":
                         Console.Clear(); layout.border_layout(); anima.anima1("You safely take the Golden Herron and go on your way"); Continue();  // initiate epilogue
                         Dlg_reseter();
-                        anima.anima1("Exiting the Enchanted Cave, you hold the Lost Herron in your hands,\n\tmemories of battles and encounters lingering.\n\tThe amulet around your neck and the rewards collected serve as reminders. \n\tDepending on your choices, you either use the Herron to bring prosperity, \n\tmisuse its power, or return it to the hooded figure");
+                        anima.anima1("\tExiting the Enchanted Cave, you hold the Lost Herron in your hands,\n\tmemories of battles and encounters lingering.\n\tThe amulet around your neck and the rewards collected serve as reminders. \n\tDepending on your choices, you either use the Herron to bring prosperity, \n\tmisuse its power, or return it to the hooded figure");
                         Continue();break;
                     }
                 break;
@@ -521,7 +539,7 @@ namespace Story{
         }
         public static void Dialogue_13(){ // ending
             Dlg_reseter();
-            anima.anima1("Exiting the Enchanted Cave, you hold the Lost Herron in your hands,\n\tmemories of battles and encounters lingering.\n\tThe amulet around your neck and the rewards collected serve as reminders. \n\tDepending on your choices, you either use the Herron to bring prosperity, \n\tmisuse its power, or return it to the hooded figure");
+            anima.anima1("\tExiting the Enchanted Cave, you hold the Lost Herron in your hands,\n\tmemories of battles and encounters lingering.\n\tThe amulet around your neck and the rewards collected serve as reminders. \n\tDepending on your choices, you either use the Herron to bring prosperity, \n\tmisuse its power, or return it to the hooded figure");
             Continue();
 
 
@@ -535,12 +553,54 @@ namespace Story{
         public static void Dead(){
         }
         public static void Ending_and_epilogues(){
-            
-            for (int a = 0; a < 100 ; a++){
 
+            // The model knight ? -- The Player Returned with the herron or Never returned as a living person -->
+            if (static_story3 == true){
+                Console.Clear(); layout.border_layout();
+                anima.anima1("\x1b[34mThe Model Knight?\x1b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\t You Returned to the Kingdom of Rohann with the Golden Herron. \n\tPeople cheer as you walk pass on the city streets. \n\tYou handed the Golden Herron the Kingdom's Sorcerers "); Continue();
+                Console.Clear(); layout.border_layout(); anima.anima1("The Sorcerers are able to vanquish the Curse restoring the Kindoms prosper....."); Thread.Sleep(500);anima.anima1("\n\tYou are hailed as the model knight ......."); Continue();
+            }
+            else{}
+
+            // The dragon slayer -- The Player defeats the dragon  and takes the herron -||- The player is defeated and return in the Kingdom of Rohann as a shameful individual
+            if (static_story2 == true){
+                Console.Clear(); layout.border_layout();
+                anima.anima1("\x1b[34mThe dragon Slayer....\x1b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\tRemember that dragon?........");Thread.Sleep(500);anima.anima1("With the defeat of the dragon, people starts to create tales about you......"); Continue();
+                Console.Clear(); layout.border_layout(); anima.anima1("You are now known as the dragon Slayer......");  Continue();
+            }
+            else{}
+
+            // The escapist -- When the player flee to a battle for more than one times
+            if(Player.Flee_count >=3){
+                Console.Clear(); layout.border_layout();
+                anima.anima1("\x1b[34mThe Escapist?\x1b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\t You escape most of your enemy throughout the story....."); Continue();
+            }
+            else{};
+
+            // Like everybody's death -- When the player died in the middle of the story 
+            if (Player.health <= 0){
+                Console.Clear(); layout.border_layout();
+                anima.anima1("\x1b[32mLike Everybody's Death.....?\x1b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\t A dwarf recover your body from the recent battle......."); Continue();
+                Console.Clear(); layout.border_layout(); anima.anima1("He then burry your corpse under a maple tree......."); Thread.Sleep(500);Continue();Console.Clear();layout.border_layout() ;anima.anima1("\n\tIn your gravestone, a poorly written words are engraved......."); Continue();
+                Console.Clear();layout.border_layout() ;anima.anima1("\n\t\"He Lies Here..... An unfortunate adventurer.....\""); Continue();
 
             }
+            else{}
 
+            // Death by posion -- When the player died with posion 
+
+            // Josh Hucherson ending () --> secret ending --> 10% Probability
+
+            // The slayer - all of the monsters encountered were slaigned
+            if (Player.Slained_enemy_count > 3){
+                Console.Clear(); layout.border_layout();
+                anima.anima1("\x1b[32mThe Slayer?\x1b[0m");
+                anima.anima1("\n\tYou defeated more than three enemies...."); Continue();
+            }
+            else{}
+        }
+
+        public static void EndingStats(){
 
         }
 
