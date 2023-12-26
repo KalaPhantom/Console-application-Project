@@ -35,10 +35,11 @@ namespace Story{
 
     class story{
  
-        public static bool static_story1 ; // Map is accepted -
-         public static bool static_story2 ; // Knowledge of the dwarf - Moderate
-        public static bool static_story3 ; // Good ending
-        public static bool static_story5; // Gathered supplies - Crucial
+        public static bool static_story1 = true; // Map is accepted -
+         public static bool static_story2; // Knowledge of the dwarf - Moderate
+        public static bool static_story3 ; // The herron is taken or not
+        public static bool static_story5; // Gathered supplies - Crucial if not gathered - the player never returned safely
+
 
         // 
 
@@ -62,7 +63,7 @@ namespace Story{
         }
         public static void Press(){ // Ask for the user input. to continue the story even further 
             
-            anima.anima1("\n\t\t\t\t\tx1b[1mPress any key to continue. . . . . . . . . . . .\x1b[0m ");
+            anima.anima1("\n\t\t\t\t\t\x1b[1mPress any key to continue. . . . . . . . . . . .\x1b[0m ");
             Console.ReadKey();
 
         }
@@ -71,6 +72,7 @@ namespace Story{
             Console.SetCursorPosition(50,pos_t + 3);
             Console.WriteLine(">> Continue");
             Console.ReadKey();
+            
         }
         public static void battle_start(){ // Called when an enemy encounter happens 
             Dlg_reseter();
@@ -143,23 +145,23 @@ namespace Story{
              Continue();
 
              Console.Clear();
-              layout.border_layout();
+             layout.border_layout();
              Console.SetCursorPosition(7,14);
              anima.anima1("\" Whoever are the able Men or Women of this kingdom, must participate on ending this curse\" - The King said ");
              Continue();
 
              Console.Clear();
-              layout.border_layout();
+             layout.border_layout();
              Console.SetCursorPosition(7,14);
              anima.anima1("The Sorcerers of the Kindom pointed out, \"A particular magical artifact is what the kingdom need \" ....."); Continue();
              Console.Clear();
-              layout.border_layout();
+             layout.border_layout();
              Console.SetCursorPosition(7,17);
              anima.anima1("The Lost Herron. . . . . .");
              Continue();
 
              Console.Clear();
-              layout.border_layout();
+             layout.border_layout();
              Console.SetCursorPosition(7,14);
              anima.anima1("So you"); Thread.Sleep(300); anima.anima1(" ,an able man, presents yourself as a volounteer");
              Continue();
@@ -514,9 +516,6 @@ namespace Story{
                     }
                 break;
                 
-
-
-
            }
 
         }
@@ -527,7 +526,7 @@ namespace Story{
 
 
         }
-        public static void Ending_1(){
+        public static void wkfn (){
 
         }
         public static void Ending_2(){
@@ -536,6 +535,12 @@ namespace Story{
         public static void Dead(){
         }
         public static void Ending_and_epilogues(){
+            
+            for (int a = 0; a < 100 ; a++){
+
+
+            }
+
 
         }
 

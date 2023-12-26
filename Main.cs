@@ -37,7 +37,7 @@ namespace tesst_1
                   Difficulty.Global_difficulty();
                   menu.acc_creation();
 
-                  while (Player.battle_health < 0){
+                  while (Player.Pl_alive == true){
                 // Dialogue Callings ----------------------------------------------------------------------------------->
                     story.Intro1();
                     story.Dialogue_1();
