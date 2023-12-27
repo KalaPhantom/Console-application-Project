@@ -34,6 +34,7 @@ namespace Story{
 
 
     class story{
+        public static int Secret_ending_count;
  
         public static bool static_story1 = true; // Map is accepted -
         public static bool static_story2; // Knowledge of the dwarf - Moderate -- >
@@ -56,6 +57,7 @@ namespace Story{
         public static int battle_xp;  // Acquired from the batlle
         public static int story_xp; // acquired from the story 
         public static int story_xp_add; // Acquired XP score in the momment
+        
 
 
         public static void XP(){
@@ -275,8 +277,8 @@ namespace Story{
             }
             else if (system_selection.sel_option == 2){
                 switch (chances_random < 90? "battle": chances_random > 90? "avoid": "battle"){
-                    case "avoid": anima.anima1("you passed safely"); break;
-                    case "battle": anima.anima1("\n\t\t\tYou enecoutered a wolf"); battle_start(); Batte_Simulation.battle1(Enemy_Health.Wolf_Health,Enemy_Health.Wolf_Damage,Enemy_Health.Wolf_dodge_rate, Enemy_Health.Wolf_attack_rate,Enemy_Health.Wolf_miss_chances,"Wolf");
+                    case "avoid":Console.Clear(); layout.border_layout(); anima.anima1("you passed safely"); Continue(); break;
+                    case "battle":Console.Clear(); layout.border_layout(); anima.anima1("\n\t\t\tYou enecoutered a wolf"); Continue(); battle_start(); Batte_Simulation.battle1(Enemy_Health.Wolf_Health,Enemy_Health.Wolf_Damage,Enemy_Health.Wolf_dodge_rate, Enemy_Health.Wolf_attack_rate,Enemy_Health.Wolf_miss_chances,"Wolf");
                     break;
                 }
 
@@ -298,8 +300,8 @@ namespace Story{
             system_selection.sel_3("Approach the figure cautiously","Avoid the figure and continue on your way");
          
             switch (system_selection.sel_option){
-                case 1: anima.anima1("\n\n\t\tYou approach the figure cautiously"); Console.Clear(); layout.border_layout(); story_xp_add = 30; XP(); break; //  friendly _ Easy // Normal - Random
-                case 2: anima.anima1("\n\n\t\tAvoiding the hooded figure, \n\t\t you encountered a magic troll"); battle_start();Batte_Simulation.battle1(Enemy_Health.Troll_Health,Enemy_Health.Troll_Dmg,Enemy_Health.Troll_dodge_rate,Enemy_Health.Troll_attack_rate, Enemy_Health.Troll_miss_chances, "Magic Troll");
+                case 1: Console.Clear(); layout.border_layout();anima.anima1("\n\n\t\tYou approach the figure cautiously"); Continue(); Console.Clear(); layout.border_layout(); story_xp_add = 30; XP(); break; //  friendly _ Easy // Normal - Random
+                case 2: Console.Clear(); layout.border_layout(); anima.anima1("\n\n\t\tAvoiding the hooded figure, \n\t\t you encountered a magic troll"); Continue(); battle_start();Batte_Simulation.battle1(Enemy_Health.Troll_Health,Enemy_Health.Troll_Dmg,Enemy_Health.Troll_dodge_rate,Enemy_Health.Troll_attack_rate, Enemy_Health.Troll_miss_chances, "Magic Troll");
             break;
             }
             Press();
@@ -311,10 +313,10 @@ namespace Story{
              
              if (Batte_Simulation.is_pl_defeated == true && system_selection.sel_option != 1){
                 anima.anima1("Recovering from the battle, the mysterious hooded figure from the distance vanished");  story_xp_add = 5; XP();
-                Batte_Simulation.is_pl_defeated = false;
+                 Continue();
              }
              else{
-                  anima.anima1("Approaching the figure, they reveal themselves as a dark sorcerer, offering you a power and health");
+                  anima.anima1("The Figure approach.... they reveal themselves as a dark sorcerer, offering you a power and health");
                   system_selection.sel_2(" Accept","Decline"); 
              }
            
@@ -327,6 +329,8 @@ namespace Story{
              }
              Continue();
 
+             Batte_Simulation.is_pl_defeated = false;
+
         }
         public static void Dialogue_7(){
             system_selection.sel_option = 1;
@@ -337,7 +341,8 @@ namespace Story{
             Random random_situation = new Random();
             switch (system_selection.sel_option){
                 case 1:// -------
-                Console.WriteLine("\n\n\t\t You carefully thread the bridge");  Continue();
+                Console.Clear(); layout.border_layout();
+                anima.anima1("\n\n\t\t You carefully thread the bridge");  Continue();
                 int situation1 = random_situation.Next(1,100);
 
                 switch (situation1 > 50? "battle" : situation1 <= 20? "collapse" :"safe" ){
@@ -494,7 +499,7 @@ namespace Story{
                         else{
                             Console.Clear(); layout.border_layout(); anima.anima1("With the dragon being defeated........"); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("\tYou manage to take the Golden Herron"); Continue(); static_story2 = true; static_story3 = true;  story_xp_add = 30; XP(); // --> The model knight
                             Dlg_reseter();
-                            anima.anima1("Exiting the Enchanted Cave, you hold the Lost Herron in your hands,\n\tmemories of battles and encounters lingering.\n\tThe amulet around your neck and the rewards collected serve as reminders. \n\tDepending on your choices, you either use the Herron to bring prosperity, \n\tmisuse its power, or return it to the hooded figure");
+                            anima.anima1("\tExiting the Enchanted Cave, you hold the Lost Herron in your hands,\n\tmemories of battles and encounters lingering.\n\tThe amulet around your neck and the rewards collected serve as reminders. \n\tDepending on your choices, you either use the Herron to bring prosperity, \n\tmisuse its power, or return it to the hooded figure");
                             Continue();break;
                         }
                     break;
@@ -557,7 +562,7 @@ namespace Story{
             // The model knight ? -- The Player Returned with the herron or Never returned as a living person -->
             if (static_story3 == true){
                 Console.Clear(); layout.border_layout();
-                anima.anima1("\x1b[34mThe Model Knight?\x1b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\t You Returned to the Kingdom of Rohann with the Golden Herron. \n\tPeople cheer as you walk pass on the city streets. \n\tYou handed the Golden Herron the Kingdom's Sorcerers "); Continue();
+                anima.anima1("\x1b[34mThe Model Knight?\x1b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\tYou Returned to the Kingdom of Rohann with the Golden Herron. \n\tPeople cheer as you walk pass on the city streets. \n\tYou handed the Golden Herron the Kingdom's Sorcerers "); Continue();
                 Console.Clear(); layout.border_layout(); anima.anima1("The Sorcerers are able to vanquish the Curse restoring the Kindoms prosper....."); Thread.Sleep(500);anima.anima1("\n\tYou are hailed as the model knight ......."); Continue();
             }
             else{}
@@ -596,11 +601,64 @@ namespace Story{
                 Console.Clear(); layout.border_layout();
                 anima.anima1("\x1b[32mThe Slayer?\x1b[0m");
                 anima.anima1("\n\tYou defeated more than three enemies...."); Continue();
+                
             }
             else{}
+
+            Random secret_ending_probability = new Random();
+            int s_ending = secret_ending_probability.Next(1,100);
+
+
+            // Josh Hucherson ending -- > meme reference
+            if (s_ending > 10 || Player.Player_name.ToLower() == "josh"){
+                Secret_ending_count += 1;
+                Console.Clear(); layout.border_layout();
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                anima.anima1("\x1b[32mThe Josh Hutcherson Ending?\x1b[0m");
+                anima.anima1("\n\t*Whistle noises ..............*"); Continue();
+                Console.ResetColor();
+                
+
+
+
+            }
+
+            // Developers ending reference
+            if (Player.Player_name.ToLower() == "lods" || Player.Player_name.ToLower() ==  "len" || Player.Player_name.ToLower() == "buknoy" || Player.Player_name.ToLower() == "andrei"){
+                 Secret_ending_count += 1;
+                 Console.Clear(); layout.border_layout();
+                anima.anima1("\x1b[32mThe Devs Ending\x1b[0m");
+                anima.anima1("\n\t Owww... So you used our nicknames as a player name"); Continue();
+                
+
+            }
+
+
+
+
         }
 
         public static void EndingStats(){
+
+            Console.Clear(); layout.border_layout();
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            layout.Box_Generator(30,2,17,60);
+            Console.ResetColor();
+            layout.border_layout();
+            Console.SetCursorPosition(45,5);
+            Console.WriteLine("Score");
+            Console.WriteLine();
+            Console.WriteLine($"\t\t\t\t   Story XP: ........................{story_xp}");
+            Console.WriteLine($"\t\t\t\t   Battle XP ........................{battle_xp}");
+            Console.WriteLine($"\t\t\t\t   Total Enemy Slained ..............{Player.Slained_enemy_count}");
+            Console.WriteLine($"\t\t\t\t   Battle Losses ....................{Player.Loss_count}");
+            Console.WriteLine($"\t\t\t\t   Secret Endings ...................{Secret_ending_count}/2\n\n\t\t");
+            Player.Slained_enemy_count = 0;
+            Continue();
+
+            
 
         }
 

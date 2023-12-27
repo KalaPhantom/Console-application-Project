@@ -14,13 +14,13 @@ class anima
     {
        foreach (char c in a){
         Console.Write(c);
-        Thread.SpinWait(2000);
+        Thread.Sleep(1/2);
        }
     }
     public static void anima1(string a, string b){ // Accepts two string variable -> preferred with the concatination
         foreach (char c in a){
         Console.Write(c);
-        Thread.Sleep(30);
+        Thread.Sleep(1);
        
 
        }

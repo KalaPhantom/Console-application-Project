@@ -3,6 +3,7 @@ using player;
 using enemy;
 using Battle_Mechanics;
 using Selection;
+using Story;
 
 
 namespace Simulations{ 
@@ -105,7 +106,9 @@ namespace Simulations{
                     action_box_resetter(); action_box_pos();
                     anima.anima1("Enemy defeated . . . . . ");
                     healthBar.Battle(a,b,pl_actions,d,c,cc);
-                    Player.Slained_enemy_count +=1;
+                    Player.Slained_enemy_count +=1; Thread.Sleep(1000);
+                    action_box_resetter(); action_box_pos();
+                    anima.anima1("Battle XP +100"); story.battle_xp += 100;
 
                 }
                 else if (Player.battle_health <= 0 && a >0){
@@ -114,13 +117,15 @@ namespace Simulations{
                     anima.anima1("Fail - - "); // 
                     action_box_pos_s2();
                     anima.anima1("You have been defeated . . . . .");
-                    Player.Pl_alive = false;
+                    Player.Pl_alive = false; Thread.Sleep(1000);
                     Player.health -= 1; // Lessens the player overall health count out of maximum value 
                     Console.Title = $"HP {Player.health}";
                     Console.Clear();
                     layout.border_layout();
                     anima.anima1($"You have \x1b[31m{Player.health}\x1b[0m health remaining");
-                    is_pl_defeated = true;
+                    Console.WriteLine();
+                    is_pl_defeated = true; action_box_resetter(); action_box_pos(); anima.anima1("Battle XP +5"); story.battle_xp += 5; Player.Loss_count +=1;
+                    Console.WriteLine();
                 }
                 else if (a <= 0 && Player.health <= 0){
                     action_box_resetter(); action_box_pos();

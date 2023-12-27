@@ -39,7 +39,7 @@ namespace Battle_Mechanics{
             Console.SetCursorPosition(text_post_x,text_post_y+3);
             Console.Write($"* Dodge rate: \x1b[33m{pl_dodge_rate}\x1b[0m");
             Console.SetCursorPosition(text_post_x,text_post_y+4);
-            Console.Write($"* Attribute: {(Player.Is_pl_poisoned == true? "\x1b[m32Poisoned\x1b[0m]" : "Normal")} ");
+            Console.Write($"* Attribute: {(Player.Is_pl_poisoned == true? "\x1b[32mPoisoned\x1b[0m" : "Normal")} ");
 
 
             // Enemy display stats

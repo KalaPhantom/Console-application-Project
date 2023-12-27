@@ -8,8 +8,8 @@ class layout_preset{
     public static void diff_selection(){
         Console.Clear();
         layout.border_layout_1();
-        Console.ForegroundColor = ConsoleColor.White;
-        Console.BackgroundColor = ConsoleColor.White;
+        Console.ForegroundColor = ConsoleColor.DarkRed;
+        Console.BackgroundColor = ConsoleColor.DarkRed;
         layout.Box_Generator(2,3,19,30);
         Console.ResetColor();
 
@@ -33,7 +33,7 @@ class layout_preset{
 
         
 
-        Console.ReadKey();
+       
         Console.ResetColor();
 
     }

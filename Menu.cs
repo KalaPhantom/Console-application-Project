@@ -149,8 +149,12 @@ namespace Testtt_1
             Console.ReadKey();
             Console.Clear();
             Console.WriteLine(a);
-            
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine();
+
+            anima.anima2("\n\t           <<Use the arrow keys (Left/Right/Top/Down) to navigate and press Enter to Select >>");
             system_selection.sel_menu("Play","About");
+            Console.ResetColor();
             
             switch (system_selection.sel_option){
                 case 1:   break;
