@@ -84,6 +84,7 @@ namespace Selection{
                     }
             }
         }
+
          public static void sel_2(string a, string b){ layout.border_layout();    // ---> Used for the first selection
             var decorator  = ">> # \u001b[32m";
             bool select = true;
@@ -137,7 +138,8 @@ namespace Selection{
                 //Console.Write($"  {(sel_option == 4 ? decorator : "   ")} Ignore \u001b[0m");
                 
                 ConsoleKeyInfo key = Console.ReadKey();
-
+               
+               
                  SfX.Selection1(); // Caleed method for the Sound effects
                 
                     switch (key.Key){

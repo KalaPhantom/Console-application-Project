@@ -1,11 +1,14 @@
 
 #pragma warning disable
+using Sound;
+
 class anima
 {
 
     public static void anima1(string a)
     {
        foreach (char c in a){
+       
         Console.Write(c);
         Thread.Sleep(30);
        }

@@ -101,3 +101,4 @@ D:\Programming Projects\Console application Project\bin\Debug\net7.0\runtimes\wi
 D:\Programming Projects\Console application Project\bin\Debug\net7.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 D:\Programming Projects\Console application Project\obj\Debug\net7.0\Testtt 1.csproj.AssemblyReference.cache
 D:\Programming Projects\Console application Project\obj\Debug\net7.0\Testtt 1.csproj.CopyComplete
+D:\Programming Projects\Console application Project\obj\Debug\net7.0\Testtt 1.sourcelink.json

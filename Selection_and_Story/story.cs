@@ -1,9 +1,13 @@
 
 using System.Runtime.CompilerServices;
+using System.Security.Policy;
 using enemy;
 using player;
 using Selection;
 using Simulations;
+using tesst_1;
+using Highscore;
+using Sound;
 
 
 /*
@@ -47,6 +51,12 @@ namespace Story{
         public static bool epilogie_4; // The slayer - if he slained more than 3 enemies throughout the games
 
         public static bool The_return = false; // if the player play more than once 
+
+
+        // Contains the resent player score
+        
+
+        
 
         
 
@@ -100,6 +110,38 @@ namespace Story{
         }
 
         public static void Tutorials(){
+
+            if(Player.play_count > 0){
+                Console.Clear(); layout.border_layout();
+                anima.anima2("Skip the Reminder Dialogues...?");
+                system_selection.sel_2("Yes","No");
+
+                if (system_selection.sel_option == 2){
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Clear(); layout.border_layout(); 
+                    anima.anima1("Hi there adventurer.........."); Thread.Sleep(1000); Console.Clear(); layout.border_layout();
+                    anima.anima1("Before we begin..... here is just a few reminders......."); Thread.Sleep(1500); Console.Clear(); layout.border_layout();
+                    anima.anima1("This game contains a very short story. Expect a quick gameplay........"); Thread.Sleep(1000); Console.Clear(); layout.border_layout();
+                    anima.anima1("\tUse the Arrow keys on your keyboard to navigate throughout the choices in the story \n\tPress the enter key to select....."); Continue(); Console.Clear(); layout.border_layout();
+                    anima.anima1("Be careful on your choices, it will lead to a different path......"); Continue();Console.Clear(); layout.border_layout();
+                    anima.anima1("Goodluck... and enjoy"); Thread.Sleep(500); anima.anima1("\n\n\tPress any key to continue to your journey..."); Console.ReadKey();
+                    Console.ResetColor();
+                }
+            }
+            else{
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Clear(); layout.border_layout(); 
+                anima.anima1("Hi there adventurer.........."); Thread.Sleep(1000); Console.Clear(); layout.border_layout();
+                anima.anima1("Before we begin..... here is just a few reminders......."); Thread.Sleep(1500); Console.Clear(); layout.border_layout();
+                anima.anima1("This game contains a very short story. Expect a quick gameplay........"); Thread.Sleep(1000); Console.Clear(); layout.border_layout();
+                anima.anima1("\tUse the Arrow keys on your keyboard to navigate throughout the choices in the story \n\tPress the enter key to select....."); Continue();Console.Clear(); layout.border_layout();
+                anima.anima1("Be careful on your choices, it will lead to a different path......"); Continue();Console.Clear(); layout.border_layout();
+                anima.anima1("Goodluck... and enjoy"); Thread.Sleep(500); anima.anima1("\n\n\tPress any key to continue to your journey..."); Console.ReadKey();
+                Console.ResetColor();
+
+            }
+
+           
 
         }
 
@@ -241,6 +283,7 @@ namespace Story{
 
             Console.Clear();
             layout.border_layout();
+            system_selection.sel_option = 1;
             anima.anima1("\t\tAccepting the map, you discover it leads to the legendary Lost Herron \n\thidden deep within the treacherous Darkwood Forest.");
             system_selection.sel_3("Gather supplies from the village before embarking on the journey","Head straight to the Darkwood Forest without any preparation");
             switch(system_selection.sel_option){
@@ -313,7 +356,7 @@ namespace Story{
              
              if (Batte_Simulation.is_pl_defeated == true && system_selection.sel_option != 1){
                 anima.anima1("Recovering from the battle, the mysterious hooded figure from the distance vanished");  story_xp_add = 5; XP();
-                 Continue();
+                 
              }
              else{
                   anima.anima1("The Figure approach.... they reveal themselves as a dark sorcerer, offering you a power and health");
@@ -336,7 +379,7 @@ namespace Story{
             system_selection.sel_option = 1;
             Dlg_reseter();
             anima.anima1("Continuing through Darkwood, you stumble upon a rickety bridge spanning a chasm.");
-            system_selection.sel_2("Cross the bridge carefull", "Look for an alternative route"); // -> Wrong decision will let the player to encounter am ogre // or a bridge will collapse
+            system_selection.sel_2("Cross the bridge carefully", "Look for an alternative route"); // -> Wrong decision will let the player to encounter am ogre // or a bridge will collapse
 
             Random random_situation = new Random();
             switch (system_selection.sel_option){
@@ -348,7 +391,7 @@ namespace Story{
                 switch (situation1 > 50? "battle" : situation1 <= 20? "collapse" :"safe" ){
                     case "safe": Console.Clear(); layout.border_layout(); anima.anima1("\n\n\t\t You managed to cross to the bridge"); story_xp_add = 30; XP(); Continue();break; //The bridge stay intacted 
                     case "battle":Console.Clear(); layout.border_layout();anima.anima1("As you are crossing on the bridge, an Ogre aproaches"); Continue(); Batte_Simulation.battle1(Enemy_Health.Ogre_Health,Enemy_Health.Ogre_dmg,Enemy_Health.Ogre_dodge_rate,Enemy_Health.Ogre_attack_rate,Enemy_Health.Ogre_miss_chances,"Ogre"); break; // You encountered an ogre
-                    case "collapse": Console.Clear(); layout.border_layout(); Player.health -= 1 ; anima.anima1($"\n\n\t\t \x1b[32mThe Bridge Collapsed, but you manage to get up and continue on your ways\x1b[0m \n\n\t\t\t You have \x1b[33m{Player.health} \x1b[0mhealth chances left"); break;// The bridge collapse
+                    case "collapse": Console.Clear(); layout.border_layout(); Player.health -= 1 ; anima.anima1($"\n\n\t\t \x1b[32mThe Bridge Collapsed........\x1b[0m \n\n\t\t\t You have \x1b[33m{Player.health} \x1b[0mhealth chances left"); Continue(); if(Player.health > 0){Console.Clear(); layout.border_layout(); anima.anima1("But you manage to get up and continue on your ways");} Console.WriteLine(); break;// The bridge collapse
                     }
                 break;
 
@@ -389,7 +432,7 @@ namespace Story{
                 // battle of the bandits
                 Batte_Simulation.battle1(Enemy_Health.Bandits_health, Enemy_Health.Bandits_dm,Enemy_Health.Bandits_dodge_rate,Enemy_Health.Bandits_attack_rate,Enemy_Health.Bandits_miss_chances,"Group of bandits");
                 
-                if (Batte_Simulation.is_pl_defeated == false){
+                if (Batte_Simulation.is_pl_defeated == false && Batte_Simulation.pl_escape_count <=0){
                     Console.Clear();
                     layout.border_layout();
                     anima.anima1("\n\n\t\tWith all of the bandits being defeated, The dwarf cheerfully thank you \n\n\t\tHanding you a Health Potion");
@@ -432,11 +475,11 @@ namespace Story{
                         anima.anima1("\n\n\t\t Then both of you decide to part ways........ "); Continue();
                         Console.Clear();
                         layout.border_layout();
-                        anima.anima1("\n\n\t\t \"Slain that dragon adventurer........\" The dwarf mutered at a distance \n\t\tYou have no clue what on what he just said");  story_xp_add = 30; XP(); Continue();
+                        anima.anima1("\n\n\t\t \"Slain that dragon adventurer........\" The dwarf mutered at a distance \n\t\tYou have no clue  what he just said");  story_xp_add = 30; XP(); Continue();
 
                     }
                 }
-                else {Batte_Simulation.is_pl_defeated = false;}
+                else {Batte_Simulation.is_pl_defeated = false; Batte_Simulation.is_player_fled = false;}
 
             }
             else{
@@ -489,14 +532,14 @@ namespace Story{
                 Console.Clear(); layout.border_layout();
 
                 switch(dragon_appearance > 20? "battle" : "sleep"){
-                    case "battle": 
+                    case "battle": SfX.Rorr();
                      anima.anima1("As you are inspecting the sorroundings....."); Thread.Sleep(1000);anima.anima1("A dragon emerges from the darkness..."); Continue(); Console.Clear(); layout.border_layout(); battle_start();
                         Console.Clear(); layout.border_layout(); Batte_Simulation.battle1(Enemy_Health.Dragon_health,Enemy_Health.Dragon_dm, Enemy_Health.Dragon_dodge_rate,Enemy_Health.Dragon_attack_rate,Enemy_Health.Dragon_miss_chances,"Dragon");
-                        if(Batte_Simulation.is_pl_defeated == true && Player.health <0){
+                        if(Batte_Simulation.is_pl_defeated == true && Player.health > 0){
                             Console.Clear(); layout.border_layout();
                             anima.anima1("With such devastating defeat from the dragon. . . . . "); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("You managed to escape. . . . . "); Continue(); Batte_Simulation.is_pl_defeated = false;  story_xp_add = 10; XP(); // initiate epilogue
                         }
-                        else{
+                        else if (Batte_Simulation.is_pl_defeated == false){
                             Console.Clear(); layout.border_layout(); anima.anima1("With the dragon being defeated........"); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("\tYou manage to take the Golden Herron"); Continue(); static_story2 = true; static_story3 = true;  story_xp_add = 30; XP(); // --> The model knight
                             Dlg_reseter();
                             anima.anima1("\tExiting the Enchanted Cave, you hold the Lost Herron in your hands,\n\tmemories of battles and encounters lingering.\n\tThe amulet around your neck and the rewards collected serve as reminders. \n\tDepending on your choices, you either use the Herron to bring prosperity, \n\tmisuse its power, or return it to the hooded figure");
@@ -518,7 +561,7 @@ namespace Story{
             case 2: //////////////////////////////
                     switch(dragon_appearance > 10? "battle" : "take"){
                         case "battle" :
-                        Console.Clear(); layout.border_layout();anima.anima1("As you are taking the Golden Herron......."); Thread.Sleep(1000);anima.anima1("A dragon emerges from the darkness..."); Continue(); Console.Clear(); layout.border_layout(); battle_start();
+                        Console.Clear(); layout.border_layout();anima.anima1("As you are taking the Golden Herron......."); Thread.Sleep(1000);SfX.Rorr(); anima.anima1("A dragon emerges from the darkness..."); Continue(); Console.Clear(); layout.border_layout(); battle_start();
                         Console.Clear(); layout.border_layout(); Batte_Simulation.battle1(Enemy_Health.Dragon_health,Enemy_Health.Dragon_dm, Enemy_Health.Dragon_dodge_rate,Enemy_Health.Dragon_attack_rate,Enemy_Health.Dragon_miss_chances,"Dragon");
                         if(Batte_Simulation.is_pl_defeated == true){
                             Console.Clear(); layout.border_layout();
@@ -527,7 +570,7 @@ namespace Story{
                         else{
                             Console.Clear(); layout.border_layout(); anima.anima1("With the dragon being defeated........"); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("\n\t\tYou manage to take the Golden Herron"); static_story2 = true; static_story3 = true; Continue();
                             Dlg_reseter();
-                            anima.anima1("Exiting the Enchanted Cave, you hold the Lost Herron in your hands,\n\tmemories of battles and encounters lingering.\n\tThe amulet around your neck and the rewards collected serve as reminders. \n\tDepending on your choices, you either use the Herron to bring prosperity, \n\tmisuse its power, or return it to the hooded figure");
+                            anima.anima1("Exiting the Enchanted Cave, you hold the Lost Herron in your hands,\n\tmemories of battles and encounters lingering.\n\tThe amulet around your neck and the rewards collected serve as reminders. \n\tDepending on your choices, you either use the Herron to bring prosperity, \n\t or misuse its power");
                             Continue();break;
                         }
                         break; 
@@ -535,7 +578,7 @@ namespace Story{
                         Console.Clear(); layout.border_layout(); anima.anima1("You safely take the Golden Herron and go on your way"); Continue();  // initiate epilogue
                         Dlg_reseter();
                         anima.anima1("\tExiting the Enchanted Cave, you hold the Lost Herron in your hands,\n\tmemories of battles and encounters lingering.\n\tThe amulet around your neck and the rewards collected serve as reminders. \n\tDepending on your choices, you either use the Herron to bring prosperity, \n\tmisuse its power, or return it to the hooded figure");
-                        Continue();break;
+                        Continue(); Console.Clear(); layout.border_layout(); anima.anima1("EPILOGUE . . . . . . . . . . . "); Continue();break;
                     }
                 break;
                 
@@ -558,6 +601,8 @@ namespace Story{
         public static void Dead(){
         }
         public static void Ending_and_epilogues(){
+
+            SfX.Ending();
 
             // The model knight ? -- The Player Returned with the herron or Never returned as a living person -->
             if (static_story3 == true){
@@ -610,7 +655,7 @@ namespace Story{
 
 
             // Josh Hucherson ending -- > meme reference
-            if (s_ending > 10 || Player.Player_name.ToLower() == "josh"){
+            if (s_ending < 10 || Player.Player_name.ToLower() == "josh"){
                 Secret_ending_count += 1;
                 Console.Clear(); layout.border_layout();
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
@@ -640,6 +685,7 @@ namespace Story{
 
         public static void EndingStats(){
 
+            // Status..........    
             Console.Clear(); layout.border_layout();
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -656,7 +702,61 @@ namespace Story{
             Console.WriteLine($"\t\t\t\t   Battle Losses ....................{Player.Loss_count}");
             Console.WriteLine($"\t\t\t\t   Secret Endings ...................{Secret_ending_count}/2\n\n\t\t");
             Player.Slained_enemy_count = 0;
+            Player.play_count += 1; // Updates the play count of the player
             Continue();
+
+            //Score and High score
+            Console.Clear(); layout.border_layout();
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            layout.Box_Generator(30,2,17,60);
+            Console.ResetColor();
+            Console.SetCursorPosition(45,5);
+            Console.WriteLine("Score");
+            Console.WriteLine();
+            
+            int Total_score = story_xp + battle_xp; // Current score
+            int High_Score = Score.High_Score(); // High score
+         
+            if(Player.play_count == 0){
+                Score.Delete_or_update_score(@"High_Score_System\Current_highscore.txt");
+                Score.Delete_or_update_score(@"High_Score_System\Current_score.txt");
+                //Write the new ones
+                Score.Score_writer(Total_score,Total_score);
+
+            }
+
+            if(Total_score >= High_Score){
+                //Delete the file contents
+                Score.Delete_or_update_score(@"High_Score_System\Current_highscore.txt");
+                Score.Delete_or_update_score(@"High_Score_System\Current_score.txt");
+                //Write the new ones
+                Score.Score_writer(Total_score,Total_score);
+            }
+            else{
+                Score.Delete_or_update_score(@"High_Score_System\Current_highscore.txt");
+                Score.Score_writer(Total_score,High_Score);
+            }
+
+
+            
+           
+
+            //High Score
+
+           
+
+
+           
+          
+            Console.WriteLine($"\t\t\t\t   Total Score (XP): ................{story_xp + battle_xp}");
+            Console.WriteLine($"t\t\t\t\t  High Score .......................{Score.High_Score()}");
+            Continue();
+           
+          
+            
+           
+
 
             
 

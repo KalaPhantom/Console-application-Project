@@ -4,12 +4,15 @@ using enemy;
 using Battle_Mechanics;
 using Selection;
 using Story;
+using Sound;
 
 
 namespace Simulations{ 
     class Batte_Simulation{
 
-        public static bool is_pl_defeated = false;
+        public static bool is_pl_defeated;
+        public static bool is_player_fled = false;
+        public static int pl_escape_count = 0;
         public static void action_box_pos(){
             Console.SetCursorPosition(36,4);
         }
@@ -35,11 +38,11 @@ namespace Simulations{
                 Random dmg_e = new Random();
                 int en_actions = dmg_e.Next(1,100); // Random Percentage
                 int pl_actions = dmg_e.Next(1,100); // Random Percentage 
-                int en_attack = dmg_e.Next(1,3); // Random attack attributer 
-                int pl_attack = dmg_e.Next(1,3); // Random attack attributer
+                int en_attack = dmg_e.Next(1,2); // Random attack attributer 
+                int pl_attack = dmg_e.Next(1,2); // Random attack attributer
                 int en_miss_chances = dmg_e.Next(1,100);
                 int player_flee = dmg_e.Next(1,100);
-                 bool is_player_fled = false;
+             
 
                 
 
@@ -64,12 +67,13 @@ namespace Simulations{
                         action_box_resetter(); action_box_pos(); anima.anima1("You choose to attack");
                         switch(en_actions <c? "attack" : en_actions >d? "dodge": "attack" ){ // Random enemy response
                             case "attack":  
+                            SfX.Punch();
                             if (enemy_dodge == false){a -= Player.damage*pl_attack; action_box_resetter(); action_box_pos(); Console.Write("You hit the enemy !!!"); healthBar.Battle(a,b,pl_actions,d,c,cc); }// Player attack
-                            if(en_miss_chances>e){ Player.battle_health -= b  *en_attack; action_box_resetter(); action_box_pos(); anima.anima1("The enemy manages to retaliate"); healthBar.Battle(a,b,pl_actions,d,c,cc);  }//Enemy retalliate
+                            if(en_miss_chances>e){ Player.battle_health -= b  *en_attack; action_box_resetter(); action_box_pos(); SfX.Punch(); anima.anima1("The enemy manages to retaliate"); healthBar.Battle(a,b,pl_actions,d,c,cc);  }//Enemy retalliate
                             else if(en_miss_chances < e){action_box_resetter(); action_box_pos(); anima.anima1("The enemy attack but misses"); Thread.Sleep(1000);}
                            
                             break; // enemy attack
-                            case "dodge": enemy_dodge = true; action_box_resetter(); action_box_pos(); Thread.Sleep(1000); anima.anima1("Enemy dodged your attack and retaliates"); Player.battle_health -= b  *en_attack;  healthBar.Battle(a,b,pl_actions,d,c,cc); break;
+                            case "dodge": enemy_dodge = true; action_box_resetter(); action_box_pos(); Thread.Sleep(1000); SfX.Dodge(); anima.anima1("Enemy dodged your attack and retaliates"); Player.battle_health -= b  *en_attack;  healthBar.Battle(a,b,pl_actions,d,c,cc); break;
                     
                          }
                           if (enemy_dodge == true) { enemy_dodge = false; }
@@ -78,21 +82,23 @@ namespace Simulations{
 
                     case 2: // Player dodge choice 
                         switch (pl_actions <60? "Dodge" : pl_actions > 60?"Fail": "Dodge"){
-                            case "Dodge": action_box_resetter(); action_box_pos(); Console.WriteLine("you dodged the enemy");break;
-                            case "Fail": action_box_resetter(); action_box_pos();anima.anima1("You failed to dodge");  Player.battle_health -= b  *en_attack; break; 
+                            case "Dodge": SfX.Dodge();action_box_resetter(); action_box_pos(); Console.WriteLine("you dodged the enemy");break;
+                            case "Fail": SfX.Punch(); action_box_resetter(); action_box_pos();anima.anima1("You failed to dodge");  Player.battle_health -= b  *en_attack; break; 
                         }
                      break;
                     case 3: action_box_resetter(); action_box_pos(); anima.anima1("You tried to flee . . . . . . "); Thread.Sleep(500);
 
                     switch (player_flee < 10? "flee" : "fail"){
                         case "flee": action_box_resetter(); action_box_pos(); anima.anima1("You flee successfully"); is_player_fled = true; Thread.Sleep(1000); action_box_resetter(); action_box_pos() ;break;
-                        default: action_box_resetter(); action_box_pos(); anima.anima1("You fail to flee"); break;
+                        default: action_box_resetter(); action_box_pos(); Player.battle_health -= b  *en_attack;anima.anima1("You fail to flee"); break;
                     }
                     break;
                 }
 
                 if (is_player_fled == true){
                     is_player_fled = false;
+                    pl_escape_count += 1;
+                   
                     break;
                 }
 
@@ -109,6 +115,7 @@ namespace Simulations{
                     Player.Slained_enemy_count +=1; Thread.Sleep(1000);
                     action_box_resetter(); action_box_pos();
                     anima.anima1("Battle XP +100"); story.battle_xp += 100;
+                    
 
                 }
                 else if (Player.battle_health <= 0 && a >0){
@@ -124,7 +131,7 @@ namespace Simulations{
                     layout.border_layout();
                     anima.anima1($"You have \x1b[31m{Player.health}\x1b[0m health remaining");
                     Console.WriteLine();
-                    is_pl_defeated = true; action_box_resetter(); action_box_pos(); anima.anima1("Battle XP +5"); story.battle_xp += 5; Player.Loss_count +=1;
+                    is_pl_defeated = true; action_box_resetter(); action_box_pos(); anima.anima1("\n\tBattle XP +5"); story.battle_xp += 5; Player.Loss_count +=1;
                     Console.WriteLine();
                 }
                 else if (a <= 0 && Player.health <= 0){

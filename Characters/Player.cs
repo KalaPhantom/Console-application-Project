@@ -17,6 +17,7 @@ namespace player
         public static int Player_score = 0;
         public static int Flee_count = 0;
         public static int Loss_count = 0;
+        public static int play_count;
 
 
 

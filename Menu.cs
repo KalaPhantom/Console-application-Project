@@ -4,6 +4,7 @@ using Details;
 using player; // Global object for the player data
 using Selection;
 using Sound;
+using Highscore;
 using tesst_1;
 
 namespace Testtt_1
@@ -145,15 +146,27 @@ namespace Testtt_1
             Console.ResetColor();
             Console.WriteLine("\n\n\n\n");
 
-            layout.Reset_or_Center(">>Press any Key to continue<<");
+            layout.Reset_or_Center(">>Press any Key to continue<<\n");
+             Console.WriteLine("\n\n\n");
+                anima.anima2($"\t\t        Your current High Score: \x1b[32m{Score.High_Score()}\x1b[0m ");
+                anima.anima2($"\t\tYour Previous  Score: \x1b[32m{Score.Score_current()}\x1b[0m ");
+                
+           
+                
             Console.ReadKey();
             Console.Clear();
             Console.WriteLine(a);
+           
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine();
+          
+
 
             anima.anima2("\n\t           <<Use the arrow keys (Left/Right/Top/Down) to navigate and press Enter to Select >>");
+             
+       
             system_selection.sel_menu("Play","About");
+
+           
             Console.ResetColor();
             
             switch (system_selection.sel_option){

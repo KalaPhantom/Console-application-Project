@@ -68,7 +68,7 @@ namespace Game{
                 Enemy_Health.Ogre_Health += 10;
 
                 //Bandits
-                Enemy_Health.Bandits_dm -= 20;
+                Enemy_Health.Bandits_dm += 20;
                 Enemy_Health.Bandits_miss_chances -= 5;
                 Enemy_Health.Bandits_health += 20;
 

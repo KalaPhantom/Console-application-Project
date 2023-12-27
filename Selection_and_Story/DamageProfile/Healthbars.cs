@@ -69,7 +69,7 @@ namespace Battle_Mechanics{
                 Console.ResetColor();
             }
            
-            Console.Write("                                "); // => The easiest solution on deleting a certain part in the console
+            Console.Write("                                     "); // => The easiest solution on deleting a certain part in the console
             Console.SetCursorPosition(healthbar_position,16);
             Console.Write($"\x1b[31m[] {enemy_name}\x1b[0m");
 
@@ -82,7 +82,7 @@ namespace Battle_Mechanics{
                 Console.ResetColor();
                
             }
-            Console.Write("                              ");
+            Console.Write("                                 ");
       
 ;
 
