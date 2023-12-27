@@ -3,10 +3,8 @@ using player;
 namespace Highscore{
 
 
-// This is not my original code
-// it is coined from:
 
-//
+// This code is coined from: https://stackoverflow.com/questions/1368539/how-do-i-read-and-edit-a-txt-file-in-c
 
     class Score{
 
