@@ -7,6 +7,7 @@ using Game;
 using System.Threading;
 using System.Runtime.CompilerServices;
 using Sound;
+using Simulations;
 
 
 // This portion is the main activity
@@ -21,6 +22,8 @@ namespace tesst_1
         {
           Console.Clear();
           Console.CursorVisible = false;
+           
+
           
          
 
@@ -50,32 +53,34 @@ namespace tesst_1
                   while (Player.Pl_alive == true){  // Dialogue Callings ----------------------------------------------------------------------------------->
                     story.Tutorials();
                     story.Intro1();
-                    if (Player.health <=0){break;}
+                    if (Player.health <=0){Batte_Simulation.deth_in_story_mid = true; break;}
                     story.Dialogue_1();
-                    if (Player.health <=0){break;}
+                    if (Player.health <=0){Batte_Simulation.deth_in_story_mid = true; break;}
                     story.Dialogue_2();
-                    if (Player.health <=0){break;}
+                    if (Player.health <=0){Batte_Simulation.deth_in_story_mid = true; break;}
                     story.Dialogue_3();
-                    if (Player.health <=0){break;}
+                    if (Player.health <=0){Batte_Simulation.deth_in_story_mid = true; break;}
                     story.Dialogue_4();
-                    if (Player.health <=0){break;}
+                    if (Player.health <=0){Batte_Simulation.deth_in_story_mid = true; break;}
                     story.Dialogue_5();
-                    if (Player.health <=0){break;}
+                    if (Player.health <=0){Batte_Simulation.deth_in_story_mid = true; break;}
                     story.Dialogue_5_5();
-                    if (Player.health <=0){break;}
+                    if (Player.health <=0){Batte_Simulation.deth_in_story_mid = true; break;}
                     story.Dialogue_7();
-                    if (Player.health <=0){break;}
+                    if (Player.health <=0){Batte_Simulation.deth_in_story_mid = true; break;}
                     story.Dialogue_8();
-                    if (Player.health <=0){break;}
+                    if (Player.health <=0){Batte_Simulation.deth_in_story_mid = true; break;}
                     story.Dialogue_10();
-                    if (Player.health <=0){break;}
+                    if (Player.health <=0){Batte_Simulation.deth_in_story_mid = true; break;}
                     story.Dialogue_11();
-                    if (Player.health <=0){break;}
+                    if (Player.health <=0){Batte_Simulation.deth_in_story_mid = true; break;}
                     story.Dialogue_12();
-                    if (Player.health <=0){break;}       
-                    Player.Pl_alive = false;          
+                    if (Player.health <=0){Batte_Simulation.deth_in_story_mid = true; break;}
+                    Player.Pl_alive = false;       
+                           
                   }
                   Player.Pl_alive = true;
+                  Batte_Simulation.deth_in_story_mid = false;
 
 
                   story.Ending_and_epilogues();

@@ -9,6 +9,7 @@ using Sound;
 
 namespace Simulations{ 
     class Batte_Simulation{
+        public static bool deth_in_story_mid = false;
 
         public static bool is_pl_defeated = false;
         public static bool is_player_fled = false;
@@ -129,7 +130,7 @@ namespace Simulations{
                     Console.Title = $"HP {Player.health}";
                     Console.Clear();
                     layout.border_layout();
-                    anima.anima1($"You have \x1b[31m{Player.health}\x1b[0m health remaining");
+                    anima.anima1($"You have \u001b[31m{Player.health}\u001b[0m health remaining");
                     Console.WriteLine(); Thread.Sleep(1000);
                     is_pl_defeated = true; action_box_resetter(); action_box_pos(); anima.anima1("\n\tBattle XP +5"); story.battle_xp += 5; Player.Loss_count +=1;
                     Console.WriteLine();
@@ -142,6 +143,8 @@ namespace Simulations{
                 }
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.BackgroundColor = ConsoleColor.White;
+
+                if (cc != "Dragon" && Player.health <= 0){deth_in_story_mid = true;}
               
                 
                 

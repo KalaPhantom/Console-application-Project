@@ -14,8 +14,8 @@ namespace Highscore{
             string high_score = @"High_Score_System\Current_highscore.txt";
             string current_score = @"High_Score_System\Current_score.txt";
 
-           StoreScoreValue(high_score,SC);
-           StoreScoreValue(current_score,HS);
+           StoreScoreValue(high_score,HS);
+           StoreScoreValue(current_score,SC);
 
 
         }

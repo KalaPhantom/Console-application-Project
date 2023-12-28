@@ -41,14 +41,14 @@ namespace Story{
         public static int Secret_ending_count;
  
         public static bool static_story1 = true; // Map is accepted -
-        public static bool static_story2; // Knowledge of the dwarf - Moderate -- >
+        public static bool static_story2;
         public static bool static_story3 ; // The herron is taken or not
         public static bool static_story5; // Gathered supplies - Crucial if not gathered - the player never returned safely
 
         public static bool epilogue_1; // The Escapist's ending --> if the player successfully flee to battles multiple times 
         public static bool epilogue_2; // The dragon slayer --> if the player successfully slains the dragon
         public static bool epilogue_3; // The model knight --> if he returned the herron 
-        public static bool epilogie_4; // The slayer - if he slained more than 3 enemies throughout the games
+        public static bool epilogie_4; // The dwarf
 
         public static bool The_return = false; // if the player play more than once 
 
@@ -117,8 +117,9 @@ namespace Story{
                 system_selection.sel_2("Yes","No");
 
                 if (system_selection.sel_option == 2){
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                   
                     Console.Clear(); layout.border_layout(); 
+                     Console.ForegroundColor = ConsoleColor.Yellow;
                     anima.anima1("Hi there adventurer.........."); Thread.Sleep(1000); Console.Clear(); layout.border_layout();
                     anima.anima1("Before we begin..... here is just a few reminders......."); Thread.Sleep(1500); Console.Clear(); layout.border_layout();
                     anima.anima1("This game contains a very short story. Expect a quick gameplay........"); Thread.Sleep(1000); Console.Clear(); layout.border_layout();
@@ -129,8 +130,9 @@ namespace Story{
                 }
             }
             else{
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                
                 Console.Clear(); layout.border_layout(); 
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 anima.anima1("Hi there adventurer.........."); Thread.Sleep(1000); Console.Clear(); layout.border_layout();
                 anima.anima1("Before we begin..... here is just a few reminders......."); Thread.Sleep(1500); Console.Clear(); layout.border_layout();
                 anima.anima1("This game contains a very short story. Expect a quick gameplay........"); Thread.Sleep(1000); Console.Clear(); layout.border_layout();
@@ -316,14 +318,14 @@ namespace Story{
             if (system_selection.sel_option == 1){
                 switch (chances_random < 90? "avoid": chances_random > 90? "battle": "avoid"){
                     case "avoid":Console.Clear(); layout.border_layout(); anima.anima1("\n\t\t\tyou passed safely"); story_xp_add = 40; XP(); break;
-                    case "battle":Console.Clear(); layout.border_layout();anima.anima1("\n\t\t\tYou enecoutered a wolf"); Continue();  battle_start(); Batte_Simulation.battle1(Enemy_Health.Wolf_Health,Enemy_Health.Wolf_Damage,Enemy_Health.Wolf_dodge_rate, Enemy_Health.Wolf_attack_rate,Enemy_Health.Wolf_miss_chances,"Wolf");
+                    case "battle":Console.Clear(); layout.border_layout();anima.anima1("\n\t\t\t\u001b[31mYou enecoutered a wolf\u001b[0m"); Continue();  battle_start(); Batte_Simulation.battle1(Enemy_Health.Wolf_Health,Enemy_Health.Wolf_Damage,Enemy_Health.Wolf_dodge_rate, Enemy_Health.Wolf_attack_rate,Enemy_Health.Wolf_miss_chances,"Wolf");
                     break;
                 }
             }
             else if (system_selection.sel_option == 2){
                 switch (chances_random < 90? "battle": chances_random > 90? "avoid": "battle"){
                     case "avoid":Console.Clear(); layout.border_layout(); anima.anima1("you passed safely"); Continue(); break;
-                    case "battle":Console.Clear(); layout.border_layout(); anima.anima1("\n\t\t\tYou enecoutered a wolf"); Continue(); battle_start(); Batte_Simulation.battle1(Enemy_Health.Wolf_Health,Enemy_Health.Wolf_Damage,Enemy_Health.Wolf_dodge_rate, Enemy_Health.Wolf_attack_rate,Enemy_Health.Wolf_miss_chances,"Wolf");
+                    case "battle":Console.Clear(); layout.border_layout(); anima.anima1("\n\t\t\t\u001b[31mYou enecoutered a wolf\u001b[0m"); Continue(); battle_start(); Batte_Simulation.battle1(Enemy_Health.Wolf_Health,Enemy_Health.Wolf_Damage,Enemy_Health.Wolf_dodge_rate, Enemy_Health.Wolf_attack_rate,Enemy_Health.Wolf_miss_chances,"Wolf");
                     break;
                 }
 
@@ -338,15 +340,15 @@ namespace Story{
             Dlg_reseter();
 
             switch (system_selection.sel_option){ // Need to finish the function for the battle 
-                case 1: Dlg_reseter(); anima.anima1("Chossing the \x1b[33mwell-trodden Path, you encountered a mystirious hooded figure\x1b[0m \n\n\t You have no Idea if it is Hostile ");  break;
-                case 2: Dlg_reseter(); anima.anima1("Choosing the \x1b[33m Dense ticket path, you encountered a mystirous hooded figure\x1b[0m \n\n\t You have no idea if it is Hostile"); break;
+                case 1: Dlg_reseter(); anima.anima1("Chossing the \u001b[33mwell-trodden Path, you encountered a mystirious hooded figure\u001b[0m \n\n\t You have no Idea if it is Hostile ");  break;
+                case 2: Dlg_reseter(); anima.anima1("Choosing the \u001b[33m Dense ticket path, you encountered a mystirous hooded figure\u001b[0m \n\n\t You have no idea if it is Hostile"); break;
             }
 
             system_selection.sel_3("Approach the figure cautiously","Avoid the figure and continue on your way");
          
             switch (system_selection.sel_option){
                 case 1: Console.Clear(); layout.border_layout();anima.anima1("\n\n\t\tYou approach the figure cautiously"); Continue(); Console.Clear(); layout.border_layout(); story_xp_add = 30; XP(); break; //  friendly _ Easy // Normal - Random
-                case 2: Console.Clear(); layout.border_layout(); anima.anima1("\n\n\t\tAvoiding the hooded figure, \n\t\t you encountered a magic troll"); Continue(); battle_start();Batte_Simulation.battle1(Enemy_Health.Troll_Health,Enemy_Health.Troll_Dmg,Enemy_Health.Troll_dodge_rate,Enemy_Health.Troll_attack_rate, Enemy_Health.Troll_miss_chances, "Magic Troll");
+                case 2: Console.Clear(); layout.border_layout(); anima.anima1("\n\n\t\tAvoiding the hooded figure, \n\t\t \u001b[31myou encountered a magic troll\u001b[0m"); Continue(); battle_start();Batte_Simulation.battle1(Enemy_Health.Troll_Health,Enemy_Health.Troll_Dmg,Enemy_Health.Troll_dodge_rate,Enemy_Health.Troll_attack_rate, Enemy_Health.Troll_miss_chances, "Magic Troll");
             break;
             }
             Press();
@@ -357,7 +359,7 @@ namespace Story{
            
              
              if (Batte_Simulation.is_pl_defeated == true && system_selection.sel_option != 1){
-                anima.anima1("Recovering from the battle, the mysterious hooded figure from the distance vanished");  story_xp_add = 5; XP(); Batte_Simulation.is_pl_defeated = false;
+                anima.anima1("Recovering from the battle, the mysterious hooded figure from the distance vanished");  story_xp_add = 5; XP();
                  
              }
              else{
@@ -371,6 +373,7 @@ namespace Story{
 
              }
              else if (system_selection.sel_option == 2 && Batte_Simulation.is_pl_defeated != true){
+                Console.Clear(); layout.border_layout(); anima.anima1("\u001b[31mThe Sorcerer decide to fight you\u001b[0m");
                 Batte_Simulation.battle1(Enemy_Health.Dark_sorcerer_health, Enemy_Health.Dark_sorcerer_dmg, Enemy_Health.Dark_sorcerer_dodge_rate,Enemy_Health.Dark_sorcerer_attack_rate,Enemy_Health.Dark_sorcerer_miss_chances, "Dark Sorcerer");
              }
              Continue();
@@ -393,8 +396,8 @@ namespace Story{
 
                 switch (situation1 > 50? "battle" : situation1 <= 20? "collapse" :"safe" ){
                     case "safe": Console.Clear(); layout.border_layout(); anima.anima1("\n\n\t\t You managed to cross to the bridge"); story_xp_add = 30; XP(); Continue();break; //The bridge stay intacted 
-                    case "battle":Console.Clear(); layout.border_layout();anima.anima1("As you are crossing on the bridge, an Ogre aproaches"); Continue(); Batte_Simulation.battle1(Enemy_Health.Ogre_Health,Enemy_Health.Ogre_dmg,Enemy_Health.Ogre_dodge_rate,Enemy_Health.Ogre_attack_rate,Enemy_Health.Ogre_miss_chances,"Ogre"); break; // You encountered an ogre
-                    case "collapse": Console.Clear(); layout.border_layout(); Player.health -= 1 ; anima.anima1($"\n\n\t\t \x1b[32mThe Bridge Collapsed........\x1b[0m \n\n\t\t\t You have \x1b[33m{Player.health} \x1b[0mhealth chances left"); Continue(); if(Player.health > 0){Console.Clear(); layout.border_layout(); anima.anima1("But you manage to get up and continue on your ways");} Console.WriteLine(); break;// The bridge collapse
+                    case "battle":Console.Clear(); layout.border_layout();anima.anima1("\u001b[31mAs you are crossing on the bridge, an Ogre aproaches\u001b[0m"); Continue(); Batte_Simulation.battle1(Enemy_Health.Ogre_Health,Enemy_Health.Ogre_dmg,Enemy_Health.Ogre_dodge_rate,Enemy_Health.Ogre_attack_rate,Enemy_Health.Ogre_miss_chances,"Ogre"); break; // You encountered an ogre
+                    case "collapse": Console.Clear(); layout.border_layout(); Player.health -= 1 ; anima.anima1($"\n\n\t\t \u001b[32mThe Bridge Collapsed........\u001b[0m \n\n\t\t\t You have \u001b[33m{Player.health} \u001b[0mhealth chances left"); Continue(); if(Player.health > 0){Console.Clear(); layout.border_layout(); anima.anima1("But you manage to get up and continue on your ways");} Console.WriteLine(); break;// The bridge collapse
                     }
                 break;
 
@@ -404,11 +407,11 @@ namespace Story{
                 int situation2 = random_situation2.Next(1,100);
 
                 switch (situation2 > 70? "Safe" : "battle"){
-                    case "Safe": Console.WriteLine("\n\n\t\tYou successfully find an alternative route");  story_xp_add = 30; XP(); break;
+                    case "Safe": Console.Clear();layout.border_layout();anima.anima1("\n\n\t\tYou successfully find an alternative route");  story_xp_add = 30; XP(); break;
                     case "battle":
                     Console.Clear();
                     layout.border_layout();
-                    anima.anima1("\n\n\t\t \x1b[31mYou encoutered an Ogre . . . . . . . \x1b[0m"); Continue();
+                    anima.anima1("\n\n\t\t \u001b[31mYou encoutered an Ogre . . . . . . . \u001b[0m"); Continue();
                     battle_start();
                     Batte_Simulation.battle1(Enemy_Health.Ogre_Health,Enemy_Health.Ogre_dmg,Enemy_Health.Ogre_dodge_rate,Enemy_Health.Ogre_attack_rate,Enemy_Health.Ogre_miss_chances,"Ogre");
                     break;
@@ -434,8 +437,9 @@ namespace Story{
                 anima.anima1("\n\n\t\t\tYou decided to save the hostage ........");
                 // battle of the bandits
                 Batte_Simulation.battle1(Enemy_Health.Bandits_health, Enemy_Health.Bandits_dm,Enemy_Health.Bandits_dodge_rate,Enemy_Health.Bandits_attack_rate,Enemy_Health.Bandits_miss_chances,"Group of bandits");
-                
-                if (Batte_Simulation.is_pl_defeated == false && Batte_Simulation.pl_escape_count <=0){
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                if(Batte_Simulation.is_pl_defeated == true){epilogie_4 = false;} else {epilogie_4 = true;}
+                if (Batte_Simulation.is_pl_defeated == false && epilogie_4 == true){
                     Console.Clear();
                     layout.border_layout();
                     anima.anima1("\n\n\t\tWith all of the bandits being defeated, The dwarf cheerfully thank you \n\n\t\tHanding you a Health Potion");
@@ -488,6 +492,7 @@ namespace Story{
             else{
                 anima.anima1("You escape the scene ............");  story_xp_add = 10; XP();
             }
+            Console.ResetColor();
            
         }
 
@@ -541,7 +546,7 @@ namespace Story{
                         Console.Clear(); layout.border_layout(); Batte_Simulation.battle1(Enemy_Health.Dragon_health,Enemy_Health.Dragon_dm, Enemy_Health.Dragon_dodge_rate,Enemy_Health.Dragon_attack_rate,Enemy_Health.Dragon_miss_chances,"Dragon");
                         if(Batte_Simulation.is_pl_defeated == true && Player.health > 0){
                             Console.Clear(); layout.border_layout();
-                            anima.anima1("With such devastating defeat from the dragon. . . . . "); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("You managed to escape. . . . . "); Continue(); Batte_Simulation.is_pl_defeated = false;  story_xp_add = 10; XP(); // initiate epilogue
+                            anima.anima1("With such devastating defeat from the dragon. . . . . "); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("\n\tYou managed to escape. . . . .and take the golden herron "); Continue(); Batte_Simulation.is_pl_defeated = false;  story_xp_add = 10; static_story3 = true; XP(); // initiate epilogue
                         }
                         else if (Batte_Simulation.is_pl_defeated == false && Player.battle_health > 0){
                             Console.Clear(); layout.border_layout(); anima.anima1("With the dragon being defeated........"); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("\tYou manage to take the Golden Herron"); Continue(); static_story2 = true; static_story3 = true;  story_xp_add = 30; XP(); // --> The model knight
@@ -611,10 +616,15 @@ namespace Story{
             // The model knight ? -- The Player Returned with the herron or Never returned as a living person -->
             if (static_story3 == true){
                 Console.Clear(); layout.border_layout();
-                anima.anima1("\x1b[34mThe Model Knight?\x1b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\tYou Returned to the Kingdom of Rohann with the Golden Herron. \n\tPeople cheer as you walk pass on the city streets. \n\tYou handed the Golden Herron the Kingdom's Sorcerers "); Continue();
+                anima.anima1("\x1b[34mThe Model Knight\x1b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\tYou Returned to the Kingdom of Rohann with the Golden Herron. \n\tPeople cheer as you walk pass on the city streets. \n\tYou handed the Golden Herron the Kingdom's Sorcerers "); Continue();
                 Console.Clear(); layout.border_layout(); anima.anima1("The Sorcerers are able to vanquish the Curse restoring the Kindoms prosper....."); Thread.Sleep(500);anima.anima1("\n\tYou are hailed as the model knight ......."); Continue();
             }
-            else{}
+            else if (Player.battle_health> 0 && static_story3 == false && Batte_Simulation.deth_in_story_mid == true){
+                Console.Clear(); layout.border_layout();
+                anima.anima1("\x1b[34mThe Exile Ending\x1b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\tYou Returned to the Kingdom of Rohann without the Golden Herron. \n\tPeople losses hope as you walk on the alley \n\tAt last, the remaining people leave "); Continue();
+                Console.Clear(); layout.border_layout(); anima.anima1("The Kingdom has fallen"); Thread.Sleep(500);anima.anima1("\n\tAnd you as well leave and become an excile...."); Continue();
+            
+            }
 
             // The dragon slayer -- The Player defeats the dragon  and takes the herron -||- The player is defeated and return in the Kingdom of Rohann as a shameful individual
             if (static_story2 == true){
@@ -720,27 +730,27 @@ namespace Story{
             Console.WriteLine();
             
             int Total_score = story_xp + battle_xp; // Current score
-            int High_Score = Score.High_Score(); // High score
+           
          
-            if(Player.play_count == 0){
-                Score.Delete_or_update_score(@"High_Score_System\Current_highscore.txt");
-                Score.Delete_or_update_score(@"High_Score_System\Current_score.txt");
-                //Write the new ones
-                Score.Score_writer(Total_score,Total_score);
+            if(Player.play_count > 0){
+               
+                if(Total_score >= Score.High_Score()){
+                    //Delete the file contents
+                    Score.Delete_or_update_score(@"High_Score_System\Current_highscore.txt");
+                    Score.Delete_or_update_score(@"High_Score_System\Current_score.txt");
+                    //Write the new ones
+                    Score.Score_writer(Total_score,Total_score);
+
+                }
+                 else{
+                    Score.Delete_or_update_score(@"High_Score_System\Current_highscore.txt");
+                    Score.Score_writer(Total_score,Score.High_Score());
+                }
+           
 
             }
 
-            if(Total_score >= High_Score){
-                //Delete the file contents
-                Score.Delete_or_update_score(@"High_Score_System\Current_highscore.txt");
-                Score.Delete_or_update_score(@"High_Score_System\Current_score.txt");
-                //Write the new ones
-                Score.Score_writer(Total_score,Total_score);
-            }
-            else{
-                Score.Delete_or_update_score(@"High_Score_System\Current_highscore.txt");
-                Score.Score_writer(Total_score,High_Score);
-            }
+          
 
 
             

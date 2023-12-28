@@ -149,8 +149,8 @@ namespace Testtt_1
 
             layout.Reset_or_Center(">>Press any Key to continue<<\n");
              Console.WriteLine("\n\n\n");
-                anima.anima2($"\t\t        Your current High Score: \x1b[32m{Score.High_Score()}\x1b[0m ");
-                anima.anima2($"\t\tYour Previous  Score: \x1b[32m{Score.Score_current()}\x1b[0m ");
+                anima.anima2($"\t\t        Your current High Score: \u001b[32m{Score.High_Score()}\u001b[0m ");
+                anima.anima2($"\t\tYour Previous  Score: \u001b[32m{Score.Score_current()}\u001b[0m ");
                 
            
                 
