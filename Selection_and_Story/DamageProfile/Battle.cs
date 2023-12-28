@@ -10,7 +10,7 @@ using Sound;
 namespace Simulations{ 
     class Batte_Simulation{
 
-        public static bool is_pl_defeated;
+        public static bool is_pl_defeated = false;
         public static bool is_player_fled = false;
         public static int pl_escape_count = 0;
         public static void action_box_pos(){
@@ -130,7 +130,7 @@ namespace Simulations{
                     Console.Clear();
                     layout.border_layout();
                     anima.anima1($"You have \x1b[31m{Player.health}\x1b[0m health remaining");
-                    Console.WriteLine();
+                    Console.WriteLine(); Thread.Sleep(1000);
                     is_pl_defeated = true; action_box_resetter(); action_box_pos(); anima.anima1("\n\tBattle XP +5"); story.battle_xp += 5; Player.Loss_count +=1;
                     Console.WriteLine();
                 }

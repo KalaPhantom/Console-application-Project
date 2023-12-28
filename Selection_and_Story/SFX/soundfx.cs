@@ -28,7 +28,10 @@ namespace Sound{
          public static void Rorr(){
             string FilePath = @"Selection_and_Story\SFX\dragon-roar-96996.wav";
             string absulute = Path.GetFullPath(FilePath);
-             using (var soundPlayer = new SoundPlayer(absulute)) soundPlayer.Play();        
+            SoundPlayer player = new SoundPlayer();
+            player.SoundLocation = absulute;
+            player.Load();
+            player.Play();       
          }
           public static void Punch(){
             string FilePath = @"Selection_and_Story\SFX\Punchh.wav";

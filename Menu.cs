@@ -79,7 +79,7 @@ namespace Testtt_1
                  
 
         }
-#pragma warning restore IDE1006 // Naming Styles
+#pragma warning restore IDE1006 // Naming Styles waring disabled
 
 #pragma warning disable 
         public static void acc_creation(){
@@ -130,6 +130,7 @@ namespace Testtt_1
             Console.SetCursorPosition(13,1);
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkYellow;
+            
              string a = """
 ████████╗██╗  ██╗███████╗    ██╗      ██████╗ ███████╗████████╗    ██╗  ██╗███████╗██████╗ ██████╗  ██████╗ ███╗   ██╗
 ╚══██╔══╝██║  ██║██╔════╝    ██║     ██╔═══██╗██╔════╝╚══██╔══╝    ██║  ██║██╔════╝██╔══██╗██╔══██╗██╔═══██╗████╗  ██║

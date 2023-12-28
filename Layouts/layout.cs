@@ -23,11 +23,12 @@ class layout{
          //Console.Clear();
 
          Console.SetCursorPosition(0,0);
+
+            //Console width and height 
             int aa = 120; // Width 
             int bb = 25; // Height
 
-            //Cursor position
-
+            //Cursor position in default
             int def_width = 2;
             int def_height = 2;
 

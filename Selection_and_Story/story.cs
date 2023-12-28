@@ -258,6 +258,7 @@ namespace Story{
             (int wi , int h) =Console.GetCursorPosition();
             Console.SetCursorPosition(40,h+3);
             (system_selection.c_with, system_selection.c_top ) = Console.GetCursorPosition();
+            system_selection.sel_option = 1;
             system_selection.sel_1();
 
             switch (system_selection.sel_option){
@@ -305,6 +306,7 @@ namespace Story{
             Console.Clear();
             layout.border_layout();
             anima.anima1("\n\n\tAs you delve into the heart of Darkwood, a forked path presents itself");
+            system_selection.sel_option = 1;
             system_selection.sel_3("Take the well-trodden path","Venture into the dense thicket");
 
             Random rnd = new Random();
@@ -355,11 +357,12 @@ namespace Story{
            
              
              if (Batte_Simulation.is_pl_defeated == true && system_selection.sel_option != 1){
-                anima.anima1("Recovering from the battle, the mysterious hooded figure from the distance vanished");  story_xp_add = 5; XP();
+                anima.anima1("Recovering from the battle, the mysterious hooded figure from the distance vanished");  story_xp_add = 5; XP(); Batte_Simulation.is_pl_defeated = false;
                  
              }
              else{
                   anima.anima1("The Figure approach.... they reveal themselves as a dark sorcerer, offering you a power and health");
+                  system_selection.sel_option = 1;
                   system_selection.sel_2(" Accept","Decline"); 
              }
            
@@ -491,6 +494,7 @@ namespace Story{
         public static void Dialogue_10(){ // Death by poision -- epilogue
             Dlg_reseter();
             anima.anima1("After that encounter, you reach the Enchanted Cave where the Herron is rumored to rest.");
+            system_selection.sel_option = 1;
             system_selection.sel_2("Scout the surroundings before entering", "Enter the cave boldly"); // Wrong choice will lead for the bubby trap with poison lessening the health of the player by 2
             
             switch (system_selection.sel_option){
@@ -528,7 +532,7 @@ namespace Story{
 
            switch(system_selection.sel_option){
 
-            case 1://////////////////////////////////
+            case 1:////////////////////////////////// --- Inspect the soroundings 
                 Console.Clear(); layout.border_layout();
 
                 switch(dragon_appearance > 20? "battle" : "sleep"){
@@ -539,7 +543,7 @@ namespace Story{
                             Console.Clear(); layout.border_layout();
                             anima.anima1("With such devastating defeat from the dragon. . . . . "); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("You managed to escape. . . . . "); Continue(); Batte_Simulation.is_pl_defeated = false;  story_xp_add = 10; XP(); // initiate epilogue
                         }
-                        else if (Batte_Simulation.is_pl_defeated == false){
+                        else if (Batte_Simulation.is_pl_defeated == false && Player.battle_health > 0){
                             Console.Clear(); layout.border_layout(); anima.anima1("With the dragon being defeated........"); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("\tYou manage to take the Golden Herron"); Continue(); static_story2 = true; static_story3 = true;  story_xp_add = 30; XP(); // --> The model knight
                             Dlg_reseter();
                             anima.anima1("\tExiting the Enchanted Cave, you hold the Lost Herron in your hands,\n\tmemories of battles and encounters lingering.\n\tThe amulet around your neck and the rewards collected serve as reminders. \n\tDepending on your choices, you either use the Herron to bring prosperity, \n\tmisuse its power, or return it to the hooded figure");
