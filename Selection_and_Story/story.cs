@@ -588,7 +588,7 @@ namespace Story{
                         Console.Clear(); layout.border_layout(); anima.anima1("You safely take the Golden Herron and go on your way"); Continue();  // initiate epilogue
                         Dlg_reseter();
                         anima.anima1("\tExiting the Enchanted Cave, you hold the Lost Herron in your hands,\n\tmemories of battles and encounters lingering.\n\tThe amulet around your neck and the rewards collected serve as reminders. \n\tDepending on your choices, you either use the Herron to bring prosperity, \n\tmisuse its power, or return it to the hooded figure");
-                        Continue(); Console.Clear(); layout.border_layout(); anima.anima1("EPILOGUE . . . . . . . . . . . "); Continue();break;
+                        Continue(); Console.Clear(); layout.border_layout(); anima.anima1("EPILOGUE . . . . . . . . . . . "); static_story3 = true; Continue();break;
                     }
                 break;
                 

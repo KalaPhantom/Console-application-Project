@@ -81,6 +81,7 @@ namespace tesst_1
                   }
                   Player.Pl_alive = true;
                   Batte_Simulation.deth_in_story_mid = false;
+                  Player.Is_pl_poisoned = false;
 
 
                   story.Ending_and_epilogues();
