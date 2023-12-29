@@ -324,7 +324,7 @@ namespace Story{
             }
             else if (system_selection.sel_option == 2){
                 switch (chances_random < 90? "battle": chances_random > 90? "avoid": "battle"){
-                    case "avoid":Console.Clear(); layout.border_layout(); anima.anima1("you passed safely"); Continue(); break;
+                    case "avoid":Console.Clear(); layout.border_layout(); anima.anima1("you passed safely");break;
                     case "battle":Console.Clear(); layout.border_layout(); anima.anima1("\n\t\t\t\u001b[31mYou enecoutered a wolf\u001b[0m"); Continue(); battle_start(); Batte_Simulation.battle1(Enemy_Health.Wolf_Health,Enemy_Health.Wolf_Damage,Enemy_Health.Wolf_dodge_rate, Enemy_Health.Wolf_attack_rate,Enemy_Health.Wolf_miss_chances,"Wolf");
                     break;
                 }
