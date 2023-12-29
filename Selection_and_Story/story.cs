@@ -45,7 +45,7 @@ namespace Story{
         public static bool static_story3 ; // The herron is taken or not
         public static bool static_story5; // Gathered supplies - Crucial if not gathered - the player never returned safely
 
-        public static bool epilogue_1; // The Escapist's ending --> if the player successfully flee to battles multiple times 
+        public static bool epilogue_1; // - exile ending 
         public static bool epilogue_2; // The dragon slayer --> if the player successfully slains the dragon
         public static bool epilogue_3; // The model knight --> if he returned the herron 
         public static bool epilogie_4; // The dwarf
@@ -488,6 +488,7 @@ namespace Story{
                     }
                 }
                 else {Batte_Simulation.is_pl_defeated = false; Batte_Simulation.is_player_fled = false;}
+                
 
             }
             else{
@@ -553,7 +554,7 @@ namespace Story{
                             Console.Clear(); layout.border_layout(); anima.anima1("With the dragon being defeated........"); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("\tYou manage to take the Golden Herron"); Continue(); static_story2 = true; static_story3 = true;  story_xp_add = 30; XP(); // --> The model knight
                             Dlg_reseter();
                             anima.anima1("\tExiting the Enchanted Cave, you hold the Lost Herron in your hands,\n\tmemories of battles and encounters lingering.\n\tThe amulet around your neck and the rewards collected serve as reminders. \n\tDepending on your choices, you either use the Herron to bring prosperity, \n\tmisuse its power, or return it to the hooded figure");
-                            Continue();break;
+                            Continue();
                         }
                     break;
 
@@ -573,17 +574,18 @@ namespace Story{
                         case "battle" :
                         Console.Clear(); layout.border_layout();anima.anima1("As you are taking the Golden Herron......."); Thread.Sleep(1000);SfX.Rorr(); anima.anima1("A dragon emerges from the darkness..."); Continue(); Console.Clear(); layout.border_layout(); battle_start();
                         Console.Clear(); layout.border_layout(); Batte_Simulation.battle1(Enemy_Health.Dragon_health,Enemy_Health.Dragon_dm, Enemy_Health.Dragon_dodge_rate,Enemy_Health.Dragon_attack_rate,Enemy_Health.Dragon_miss_chances,"Dragon");
-                        if(Batte_Simulation.is_pl_defeated == true){
+                        if(Batte_Simulation.is_pl_defeated == true && Player.health > 0){
                             Console.Clear(); layout.border_layout();
                             anima.anima1("With such devastating defeat from the dragon. . . . . "); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("You managed to escape. . . . . but you take the Golden Herron with you "); Continue(); Batte_Simulation.is_pl_defeated = false;static_story2 = false; // initiate epilogue
                         }
-                        else{
-                            Console.Clear(); layout.border_layout(); anima.anima1("With the dragon being defeated........"); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("\n\t\tYou manage to take the Golden Herron"); static_story2 = true; static_story3 = true; Continue();
+                        else if (Batte_Simulation.is_pl_defeated == false && Player.battle_health > 0){
+                            Console.Clear(); layout.border_layout(); anima.anima1("With the dragon being defeated........"); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("\tYou manage to take the Golden Herron"); Continue(); static_story2 = true; static_story3 = true;  story_xp_add = 30; XP(); // --> The model knight
                             Dlg_reseter();
-                            anima.anima1("Exiting the Enchanted Cave, you hold the Lost Herron in your hands,\n\tmemories of battles and encounters lingering.\n\tThe amulet around your neck and the rewards collected serve as reminders. \n\tDepending on your choices, you either use the Herron to bring prosperity, \n\t or misuse its power");
-                            Continue();break;
+                            anima.anima1("\tExiting the Enchanted Cave, you hold the Lost Herron in your hands,\n\tmemories of battles and encounters lingering.\n\tThe amulet around your neck and the rewards collected serve as reminders. \n\tDepending on your choices, you either use the Herron to bring prosperity, \n\tmisuse its power, or return it to the hooded figure");
+                            Continue();
                         }
-                        break; 
+                        break;
+
                         case "take":
                         Console.Clear(); layout.border_layout(); anima.anima1("You safely take the Golden Herron and go on your way"); Continue();  // initiate epilogue
                         Dlg_reseter();
@@ -622,8 +624,8 @@ namespace Story{
             }
             else if (Player.battle_health> 0 && Batte_Simulation.deth_in_story_mid == false){
                 Console.Clear(); layout.border_layout();
-                anima.anima1("\x1b[34mThe Exile Ending\x1b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\tYou Returned to the Kingdom of Rohann without the Golden Herron. \n\tPeople losses hope as you walk on the alley \n\tAt last, the remaining people leave "); Continue();
-                Console.Clear(); layout.border_layout(); anima.anima1("The Kingdom has fallen"); Thread.Sleep(500);anima.anima1("\n\tAnd you as well leave and become an excile...."); Continue();
+                anima.anima1("\x1b[34mThe Exile Ending\x1b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\tWith you never returned in the kingdom \n\tPeople losses hope as time pass by  \n\tAt last, the remaining people leave "); Continue();
+                Console.Clear(); layout.border_layout(); anima.anima1("The Kingdom has fallen"); Thread.Sleep(500);anima.anima1("\n\tAnd you has been forgotten...."); Continue();
             
             }
 

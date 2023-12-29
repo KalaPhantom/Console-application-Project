@@ -133,7 +133,7 @@ namespace Simulations{
                     anima.anima1($"You have \u001b[31m{Player.health}\u001b[0m health remaining");
                     Console.WriteLine(); Thread.Sleep(1000);
                     is_pl_defeated = true; action_box_resetter(); action_box_pos(); anima.anima1("\n\tBattle XP +5"); story.battle_xp += 5; Player.Loss_count +=1;
-                    Console.WriteLine();
+                    Console.WriteLine(); Thread.Sleep(500);
                 }
                 else if (a <= 0 && Player.health <= 0){
                     action_box_resetter(); action_box_pos();
