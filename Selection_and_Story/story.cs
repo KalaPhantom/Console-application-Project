@@ -332,6 +332,7 @@ namespace Story{
             }
             // Battle happens // fight with a wolf
             Player.battle_health = 50; // Reset
+            Batte_Simulation.is_pl_defeated = false;
 
             Continue();
         }
@@ -619,7 +620,7 @@ namespace Story{
                 anima.anima1("\x1b[34mThe Model Knight\x1b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\tYou Returned to the Kingdom of Rohann with the Golden Herron. \n\tPeople cheer as you walk pass on the city streets. \n\tYou handed the Golden Herron the Kingdom's Sorcerers "); Continue();
                 Console.Clear(); layout.border_layout(); anima.anima1("The Sorcerers are able to vanquish the Curse restoring the Kindoms prosper....."); Thread.Sleep(500);anima.anima1("\n\tYou are hailed as the model knight ......."); Continue();
             }
-            else if (Player.battle_health> 0 && static_story3 == false && Batte_Simulation.deth_in_story_mid == true){
+            else if (Player.battle_health> 0 && Batte_Simulation.deth_in_story_mid == false){
                 Console.Clear(); layout.border_layout();
                 anima.anima1("\x1b[34mThe Exile Ending\x1b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\tYou Returned to the Kingdom of Rohann without the Golden Herron. \n\tPeople losses hope as you walk on the alley \n\tAt last, the remaining people leave "); Continue();
                 Console.Clear(); layout.border_layout(); anima.anima1("The Kingdom has fallen"); Thread.Sleep(500);anima.anima1("\n\tAnd you as well leave and become an excile...."); Continue();
@@ -743,7 +744,7 @@ namespace Story{
 
                 }
                  else{
-                    Score.Delete_or_update_score(@"High_Score_System\Current_highscore.txt");
+                    Score.Delete_or_update_score(@"High_Score_System\Current_score.txt");
                     Score.Score_writer(Total_score,Score.High_Score());
                 }
            
@@ -764,7 +765,7 @@ namespace Story{
            
           
             Console.WriteLine($"\t\t\t\t   Total Score (XP): ................{story_xp + battle_xp}");
-            Console.WriteLine($"t\t\t\t\t  High Score .......................{Score.High_Score()}");
+            Console.WriteLine($"\t\t\t\t  High Score .......................{Score.High_Score()}");
             Continue();
            
           

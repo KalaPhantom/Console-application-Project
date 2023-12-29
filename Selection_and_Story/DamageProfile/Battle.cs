@@ -144,7 +144,7 @@ namespace Simulations{
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.BackgroundColor = ConsoleColor.White;
 
-                if (cc != "Dragon" && Player.health <= 0){deth_in_story_mid = true;}
+                if (cc != "Dragon" && Player.health == 0){deth_in_story_mid = true;}
               
                 
                 
