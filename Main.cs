@@ -8,6 +8,7 @@ using System.Threading;
 using System.Runtime.CompilerServices;
 using Sound;
 using Simulations;
+using enemy;
 
 
 // This portion is the main activity
@@ -37,6 +38,7 @@ namespace tesst_1
                 Console.WriteLine("\a");
                 Console.Clear();
                 menu.TitleScreen();
+                Player.Pl_at_resetter(); Enemy_Health.Res_en();
                 
                  
                  layout.border_layout();

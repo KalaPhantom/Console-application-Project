@@ -41,14 +41,14 @@ namespace Story{
         public static int Secret_ending_count;
  
         public static bool static_story1 = true; // Map is accepted -
-        public static bool static_story2;
-        public static bool static_story3 ; // The herron is taken or not
-        public static bool static_story5; // Gathered supplies - Crucial if not gathered - the player never returned safely
+        public static bool static_story2 = false;
+        public static bool static_story3 = false; // The herron is taken or not
+        public static bool static_story5 = false; // Gathered supplies - Crucial if not gathered - the player never returned safely
 
-        public static bool epilogue_1; // - exile ending 
-        public static bool epilogue_2; // The dragon slayer --> if the player successfully slains the dragon
-        public static bool epilogue_3; // The model knight --> if he returned the herron 
-        public static bool epilogie_4; // The dwarf
+        public static bool epilogue_1 = false;// - exile ending 
+        public static bool epilogue_2 = false; // The dragon slayer --> if the player successfully slains the dragon
+        public static bool epilogue_3= false; // The model knight --> if he returned the herron 
+        public static bool epilogie_4 = false; // The dwarf
 
         public static bool The_return = false; // if the player play more than once 
 
@@ -67,6 +67,9 @@ namespace Story{
         public static int battle_xp;  // Acquired from the batlle
         public static int story_xp; // acquired from the story 
         public static int story_xp_add; // Acquired XP score in the momment
+
+        
+    
         
 
 
@@ -114,6 +117,7 @@ namespace Story{
             if(Player.play_count > 0){
                 Console.Clear(); layout.border_layout();
                 anima.anima2("Skip the Reminder Dialogues...?");
+                system_selection.sel_option = 1;
                 system_selection.sel_2("Yes","No");
 
                 if (system_selection.sel_option == 2){
@@ -576,7 +580,7 @@ namespace Story{
                         Console.Clear(); layout.border_layout(); Batte_Simulation.battle1(Enemy_Health.Dragon_health,Enemy_Health.Dragon_dm, Enemy_Health.Dragon_dodge_rate,Enemy_Health.Dragon_attack_rate,Enemy_Health.Dragon_miss_chances,"Dragon");
                         if(Batte_Simulation.is_pl_defeated == true && Player.health > 0){
                             Console.Clear(); layout.border_layout();
-                            anima.anima1("With such devastating defeat from the dragon. . . . . "); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("You managed to escape. . . . . but you take the Golden Herron with you "); Continue(); Batte_Simulation.is_pl_defeated = false;static_story2 = false; // initiate epilogue
+                            anima.anima1("With such devastating defeat from the dragon. . . . . "); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("You managed to escape. . . . . but you take the Golden Herron with you "); Continue(); Batte_Simulation.is_pl_defeated = false;static_story2 = false; static_story3 = true;// initiate epilogue
                         }
                         else if (Batte_Simulation.is_pl_defeated == false && Player.battle_health > 0){
                             Console.Clear(); layout.border_layout(); anima.anima1("With the dragon being defeated........"); Thread.Sleep(1000); Console.WriteLine(); anima.anima1("\tYou manage to take the Golden Herron"); Continue(); static_story2 = true; static_story3 = true;  story_xp_add = 30; XP(); // --> The model knight

@@ -22,6 +22,22 @@ namespace player
 
 
         public static int Global_difficulty_multiplyer; 
+
+        public static void Pl_at_resetter(){
+          
+
+        battle_health =  50;
+        
+        damage =10; // Out of bound in the goal but still in progress
+        Pl_alive =true;
+        Is_pl_poisoned = false; 
+        Slained_enemy_count = 0;
+        Player_score = 0;
+        Flee_count = 0;
+        Loss_count = 0;
+        
+
+        }
     }
     
 }
