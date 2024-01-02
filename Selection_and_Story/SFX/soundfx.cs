@@ -73,6 +73,13 @@ namespace Sound{
             player.Play(); 
            
          }
+           public static  void Josh_Hutcherson(){
+            SoundPlayer player = new SoundPlayer();
+            player.SoundLocation = @"Selection_and_Story\SFX\EndBg.wav";
+            player.Load();
+            player.Play(); 
+           
+         }
          
       
      }

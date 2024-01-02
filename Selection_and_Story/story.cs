@@ -677,6 +677,7 @@ namespace Story{
 
             // Josh Hucherson ending -- > meme reference
             if (s_ending < 10 || Player.Player_name.ToLower() == "josh"){
+                SfX.Josh_Hutcherson();
                 Secret_ending_count += 1;
                 Console.Clear(); layout.border_layout();
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;

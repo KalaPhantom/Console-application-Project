@@ -58,7 +58,7 @@ namespace Game{
                 Player.health = 3;
 
                 //Wolf
-                 Enemy_Health.Wolf_Damage += 10;
+                 Enemy_Health.Wolf_Damage += 20;
                 Enemy_Health.Wolf_miss_chances -= 10;
                 Enemy_Health.Wolf_Health += 15;
 
@@ -108,5 +108,7 @@ namespace Game{
         public static void HighScoreSystemm(){
             
         }
+
+        
     }
 }
