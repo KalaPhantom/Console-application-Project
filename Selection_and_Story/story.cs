@@ -623,12 +623,12 @@ namespace Story{
             // The model knight ? -- The Player Returned with the herron or Never returned as a living person -->
             if (static_story3 == true){
                 Console.Clear(); layout.border_layout();
-                anima.anima1("\x1b[34mThe Model Knight\x1b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\tYou Returned to the Kingdom of Rohann with the Golden Herron. \n\tPeople cheer as you walk pass on the city streets. \n\tYou handed the Golden Herron the Kingdom's Sorcerers "); Continue();
+                anima.anima1("\u001b[34mThe Model Knight\u001b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\tYou Returned to the Kingdom of Rohann with the Golden Herron. \n\tPeople cheer as you walk pass on the city streets. \n\tYou handed the Golden Herron the Kingdom's Sorcerers "); Continue();
                 Console.Clear(); layout.border_layout(); anima.anima1("The Sorcerers are able to vanquish the Curse restoring the Kindoms prosper....."); Thread.Sleep(500);anima.anima1("\n\tYou are hailed as the model knight ......."); Continue();
             }
             else if (Player.battle_health> 0 && Batte_Simulation.deth_in_story_mid == false){
                 Console.Clear(); layout.border_layout();
-                anima.anima1("\x1b[34mThe Exile Ending\x1b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\tWith you never returned in the kingdom \n\tPeople losses hope as time pass by  \n\tAt last, the remaining people leave "); Continue();
+                anima.anima1("\u001b[33mThe Exile Ending\u001b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\tWith you never returned in the kingdom \n\tPeople losses hope as time pass by  \n\tAt last, the remaining people leave "); Continue();
                 Console.Clear(); layout.border_layout(); anima.anima1("The Kingdom has fallen"); Thread.Sleep(500);anima.anima1("\n\tAnd you has been forgotten...."); Continue();
             
             }
@@ -636,7 +636,7 @@ namespace Story{
             // The dragon slayer -- The Player defeats the dragon  and takes the herron -||- The player is defeated and return in the Kingdom of Rohann as a shameful individual
             if (static_story2 == true){
                 Console.Clear(); layout.border_layout();
-                anima.anima1("\x1b[34mThe dragon Slayer....\x1b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\tRemember that dragon?........");Thread.Sleep(500);anima.anima1("With the defeat of the dragon, people starts to create tales about you......"); Continue();
+                anima.anima1("\u001b[34mThe dragon Slayer....\u001b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\tRemember that dragon?........");Thread.Sleep(500);anima.anima1("With the defeat of the dragon, people starts to create tales about you......"); Continue();
                 Console.Clear(); layout.border_layout(); anima.anima1("You are now known as the dragon Slayer......");  Continue();
             }
             else{}
@@ -644,14 +644,14 @@ namespace Story{
             // The escapist -- When the player flee to a battle for more than one times
             if(Player.Flee_count >=3){
                 Console.Clear(); layout.border_layout();
-                anima.anima1("\x1b[34mThe Escapist?\x1b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\t You escape most of your enemy throughout the story....."); Continue();
+                anima.anima1("\u001b[34mThe Escapist?\u001b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\t You escape most of your enemy throughout the story....."); Continue();
             }
             else{};
 
             // Like everybody's death -- When the player died in the middle of the story 
             if (Player.health <= 0){
                 Console.Clear(); layout.border_layout();
-                anima.anima1("\x1b[32mLike Everybody's Death.....?\x1b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\t A dwarf recover your body from the recent battle......."); Continue();
+                anima.anima1("\u001b[32mLike Everybody's Death.....?\u001b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\t A dwarf recover your body from the recent battle......."); Continue();
                 Console.Clear(); layout.border_layout(); anima.anima1("He then burry your corpse under a maple tree......."); Thread.Sleep(500);Continue();Console.Clear();layout.border_layout() ;anima.anima1("\n\tIn your gravestone, a poorly written words are engraved......."); Continue();
                 Console.Clear();layout.border_layout() ;anima.anima1("\n\t\"He Lies Here..... An unfortunate adventurer.....\""); Continue();
 
@@ -665,7 +665,7 @@ namespace Story{
             // The slayer - all of the monsters encountered were slaigned
             if (Player.Slained_enemy_count > 3){
                 Console.Clear(); layout.border_layout();
-                anima.anima1("\x1b[32mThe Slayer?\x1b[0m");
+                anima.anima1("\u001b[32mThe Slayer?\u001b[0m");
                 anima.anima1("\n\tYou defeated more than three enemies...."); Continue();
                 
             }
@@ -681,7 +681,7 @@ namespace Story{
                 Secret_ending_count += 1;
                 Console.Clear(); layout.border_layout();
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                anima.anima1("\x1b[32mThe Josh Hutcherson Ending?\x1b[0m");
+                anima.anima1("\u001b[32mThe Josh Hutcherson Ending?\u001b[0m");
                 anima.anima1("\n\t*Whistle noises ..............*"); Continue();
                 Console.ResetColor();
                 
@@ -694,7 +694,7 @@ namespace Story{
             if (Player.Player_name.ToLower() == "lods" || Player.Player_name.ToLower() ==  "len" || Player.Player_name.ToLower() == "buknoy" || Player.Player_name.ToLower() == "andrei"){
                  Secret_ending_count += 1;
                  Console.Clear(); layout.border_layout();
-                anima.anima1("\x1b[32mThe Devs Ending\x1b[0m");
+                anima.anima1("\u001b[32mThe Devs Ending\u001b[0m");
                 anima.anima1("\n\t Owww... So you used our nicknames as a player name"); Continue();
                 
 
