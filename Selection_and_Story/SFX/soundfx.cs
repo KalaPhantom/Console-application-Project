@@ -75,7 +75,7 @@ namespace Sound{
          }
            public static  void Josh_Hutcherson(){
             SoundPlayer player = new SoundPlayer();
-            player.SoundLocation = @"Selection_and_Story\SFX\EndBg.wav";
+            player.SoundLocation = @"Selection_and_Story\SFX\pianos-by-jtwayne-7-174717.wav";
             player.Load();
             player.Play(); 
            
