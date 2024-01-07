@@ -201,7 +201,8 @@ namespace Selection{
                     layout.def_layout();
             }
         }
-         public static void sel_3(string a, string b, string c){ layout.border_layout();    // ---> Used for the first selection
+         public static void sel_3(string a, string b, string c){ // ---> Used for the first selection
+            layout.border_layout();    
             var decorator  = ">>#\u001b[32m";
             bool select = true;
            

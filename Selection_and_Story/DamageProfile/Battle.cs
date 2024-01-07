@@ -27,7 +27,7 @@ namespace Simulations{
             Console.WriteLine("                                    ");                                                   
         }
       
-         public static void battle1(int a, int b,int c, int d, int e, string cc){ // Enemy-- Where a = for the enemy health ||| b is for the enemy damage ||| c is for the enemy dodge rate ||| d is for the enemy attack rate || e is for the enemy miss rate
+         public static void battle1(int a, int b,int c, int d, int e, string cc){ // Enemy-- Where a = for the enemy health ||| b is for the enemy damage ||| c is for the enemy dodge rate ||| d is for the enemy attack rate || e is for the enemy miss rate || we
          
             Console.Clear();
             Console.BackgroundColor = ConsoleColor.DarkCyan;
@@ -147,8 +147,6 @@ namespace Simulations{
                 if (cc != "Dragon" && Player.health == 0){deth_in_story_mid = true;} else {deth_in_story_mid = false;}
               
                 
-                
-
                 Console.ResetColor();
             }
             

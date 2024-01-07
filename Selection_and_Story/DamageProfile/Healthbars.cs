@@ -45,7 +45,7 @@ namespace Battle_Mechanics{
             // Enemy display stats
 
             Console.SetCursorPosition(text_post_x,text_post_y +6);
-             Console.Write($" \x1b[31m[] {enemy_name}\x1b[0m"); // name
+            Console.Write($" \x1b[31m[] {enemy_name}\x1b[0m"); // name
             Console.SetCursorPosition(text_post_x,text_post_y +7);
             Console.Write($"* HP: {(Enemy_Health >20 ? $"\x1b[33m{Enemy_Health}\x1b[0m": $"\x1b[31m{Enemy_Health}\x1b[0m")}");
             Console.SetCursorPosition(text_post_x,text_post_y +8);
@@ -53,7 +53,7 @@ namespace Battle_Mechanics{
             Console.SetCursorPosition(text_post_x,text_post_y +9);
             Console.Write($"* Attack rate: \x1b[31m{en_attack_rate}\x1b[0m");
             Console.SetCursorPosition(text_post_x,text_post_y +10);
-            Console.Write($"* dodge rate: \x1b[31m{en_dodge_rate}\x1b[0m");
+            Console.Write($"* dodg-e rate: \x1b[31m{en_dodge_rate}\x1b[0m");
 
 
 

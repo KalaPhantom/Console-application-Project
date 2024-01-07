@@ -357,8 +357,8 @@ namespace Story{
             break;
             }
             Press();
-
         }
+        
         public static void Dialogue_5_5(){
              Dlg_reseter();
            
@@ -621,7 +621,7 @@ namespace Story{
             SfX.Ending();
 
             // The model knight ? -- The Player Returned with the herron or Never returned as a living person -->
-            if (static_story3 == true){
+            if (static_story3 == true && Player.battle_health> 0){
                 Console.Clear(); layout.border_layout();
                 anima.anima1("\u001b[34mThe Model Knight\u001b[0m"); Thread.Sleep(1000);anima.anima1("\n\n\tYou Returned to the Kingdom of Rohann with the Golden Herron. \n\tPeople cheer as you walk pass on the city streets. \n\tYou handed the Golden Herron the Kingdom's Sorcerers "); Continue();
                 Console.Clear(); layout.border_layout(); anima.anima1("The Sorcerers are able to vanquish the Curse restoring the Kindoms prosper....."); Thread.Sleep(500);anima.anima1("\n\tYou are hailed as the model knight ......."); Continue();
@@ -684,9 +684,6 @@ namespace Story{
                 anima.anima1("\u001b[32mThe Josh Hutcherson Ending?\u001b[0m");
                 anima.anima1("\n\t*Whistle noises ..............*"); Continue();
                 Console.ResetColor();
-                
-
-
 
             }
 
@@ -697,7 +694,6 @@ namespace Story{
                 anima.anima1("\u001b[32mThe Devs Ending\u001b[0m");
                 anima.anima1("\n\t Owww... So you used our nicknames as a player name"); Continue();
                 
-
             }
 
 

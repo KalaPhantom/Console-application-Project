@@ -1,14 +1,13 @@
-﻿using System.Data.Common;
+﻿
 using player;
 using Story;
 using Testtt_1;
 using Death;
 using Game;
-using System.Threading;
-using System.Runtime.CompilerServices;
 using Sound;
 using Simulations;
 using enemy;
+using System.Runtime.CompilerServices;
 
 
 // This portion is the main activity
@@ -24,26 +23,34 @@ namespace tesst_1
           Console.Clear();
           Console.CursorVisible = false;
            
-
+          
           
          
 
          
 
           bool a = true;
-        
 
             do{
+
+                story.epilogue_1 = false;
+                story.epilogue_2 = false;
+                story.epilogue_3 = false;
+                story.epilogie_4 = false;
+
+                story.static_story1 =false;
+                story.static_story2 = false;
+                story.static_story3 = false;
+                story.static_story5 = false;
+                
+
                 SfX.MainBg2();
                 Console.WriteLine("\a");
                 Console.Clear();
                 menu.TitleScreen();
                 Player.Pl_at_resetter(); Enemy_Health.Res_en();
                 
-                 
                  layout.border_layout();
-            
-
                  // movement.a = Console.ReadLine();
 
                  // main menus
@@ -84,7 +91,6 @@ namespace tesst_1
                   Player.Pl_alive = true;
                   Batte_Simulation.deth_in_story_mid = false;
                   Player.Is_pl_poisoned = false;
-
 
                   story.Ending_and_epilogues();
                   story.EndingStats();

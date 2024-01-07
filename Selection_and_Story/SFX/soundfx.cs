@@ -18,7 +18,7 @@ namespace Sound{
             /*string FilePath = @"Selection_and_Story\SFX\untitled.wav";
              using (var soundPlayer = new SoundPlayer(FilePath)) soundPlayer.Play(); */
 
-               SoundPlayer player = new SoundPlayer();
+            SoundPlayer player = new SoundPlayer();
             player.SoundLocation = @"Selection_and_Story\SFX\untitled.wav";
             player.Play(); 
           
@@ -44,10 +44,8 @@ namespace Sound{
             player.SoundLocation = @"Selection_and_Story\SFX\EndBg.wav";
             player.Load();
             player.Play(); 
-          
-            
-            
          }
+         
          public static  void MainBg2(){
             SoundPlayer player = new SoundPlayer();
             player.SoundLocation = @"Selection_and_Story\SFX\MainBg2.wav";
@@ -75,7 +73,7 @@ namespace Sound{
          }
            public static  void Josh_Hutcherson(){
             SoundPlayer player = new SoundPlayer();
-            player.SoundLocation = @"Selection_and_Story\SFX\pianos-by-jtwayne-7-174717.wav";
+            player.SoundLocation = @"Selection_and_Story\SFX\josh-hutcherson-whistle-made-with-Voicemod-technology.wav";
             player.Load();
             player.Play(); 
            
